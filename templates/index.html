@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wasm-VMP 加壳工具 | 终极 WebAssembly 保护</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="background-glow"></div>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fa-solid fa-shield-halved"></i> Wasm-VMP
+            </div>
+            <nav>
+                <a href="#" class="active">首页</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h1>保护您的 <span class="gradient-text">WebAssembly</span></h1>
+                <p class="subtitle">下一代 Wasm 二进制虚拟化保护。一键混淆，零配置。</p>
+            </section>
+
+            <section class="upload-section">
+                <div class="upload-card" id="drop-zone">
+                    <div class="upload-icon">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                    </div>
+                    <h3>拖放 .wasm 文件到这里</h3>
+                    <p>或 <span class="browse-btn">浏览文件</span></p>
+                    <input type="file" id="file-input" accept=".wasm" hidden>
+                    <div class="file-info" id="file-info" style="display: none;">
+                        <i class="fa-regular fa-file-code"></i>
+                        <span id="filename">example.wasm</span>
+                        <i class="fa-solid fa-xmark remove-file" id="remove-file"></i>
+                    </div>
+                    <button id="upload-btn" class="cta-button" disabled>
+                        立即保护 <i class="fa-solid fa-lock"></i>
+                    </button>
+                </div>
+            </section>
+
+            <section class="selection-section" id="selection-section" style="display: none;">
+                <div class="selection-card">
+                    <h3>选择要保护的函数</h3>
+                    <p>选择您希望虚拟化的函数。建议优先保护核心逻辑函数。</p>
+
+                    <div class="selection-controls">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="select-all">
+                            <span>全选</span>
+                        </label>
+                        <span id="selected-count" style="color: var(--text-muted); font-size: 0.9rem;">已选择 0 个</span>
+                    </div>
+
+                    <div class="function-list-container">
+                        <div class="function-list" id="function-list">
+                            <!-- Function items will be injected here -->
+                        </div>
+                    </div>
+
+                    <button id="start-protect-btn" class="cta-button">
+                        开始保护 <i class="fa-solid fa-shield-halved"></i>
+                    </button>
+                </div>
+            </section>
+
+            <section class="seo-features">
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fa-solid fa-microchip"></i>
+                        <h3>虚拟化保护</h3>
+                        <p>将标准 WebAssembly 指令转换为自定义虚拟指令集，彻底隐藏原始逻辑，让逆向工程变得不可能。</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <h3>一键混淆</h3>
+                        <p>无需复杂的配置文件或构建脚本。只需拖放您的 .wasm 文件，即可自动完成全流程保护。</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fa-solid fa-shield-virus"></i>
+                        <h3>防篡改机制</h3>
+                        <p>内置运行时完整性校验，确保您的代码在执行过程中未被修改或注入，保障应用安全。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="status-section" id="status-section" style="display: none;">
+                <div class="status-card">
+                    <div class="loader" id="loader">
+                        <div class="spinner"></div>
+                    </div>
+                    <div class="status-text">
+                        <h3 id="status-title">处理中...</h3>
+                        <p id="status-desc">正在虚拟化指令并生成自定义操作码...</p>
+                    </div>
+                    <div class="success-icon" id="success-icon" style="display: none;">
+                        <i class="fa-solid fa-check-circle"></i>
+                    </div>
+                </div>
+            </section>
+
+            <section class="result-section" id="result-section" style="display: none;">
+                <div class="result-card">
+                    <div class="result-header">
+                        <h3>保护完成！</h3>
+                        <p>您的文件已成功加壳并混淆。</p>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="#" id="download-link" class="download-button">
+                            下载受保护的文件 <i class="fa-solid fa-download"></i>
+                        </a>
+                        <button class="secondary-button" onclick="location.reload()">处理另一个</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Wasm-VMP 团队. 为安全而生.</p>
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 15px;">
+                <a href="https://beian.miit.gov.cn" target="_blank"
+                    style="color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; transition: all 0.3s; font-weight: 500;">
+                    <img src="{{ url_for('static', filename='gxbtb.png') }}" alt="ICP备案图标"
+                        style="width: 16px; height: 16px; margin-right: 5px; vertical-align: middle;">
+                    赣ICP备2025064395号-2
+                </a>
+                <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32010402002309" rel="noreferrer"
+                    target="_blank"
+                    style="color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; transition: all 0.3s; font-weight: 500;">
+                    苏公网安备32010402002309号
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
