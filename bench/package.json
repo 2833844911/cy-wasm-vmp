@@ -1,0 +1,1 @@
+{"private":true,"description":"WAT fixture compiler for WASM compatibility tests","devDependencies":{"wabt":"1.0.39"},"scripts":{"test":"node test_compatibility.mjs"}}

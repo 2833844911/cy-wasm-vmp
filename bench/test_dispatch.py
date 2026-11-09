@@ -23,12 +23,6 @@ from build_md5 import (add, binary, call, choose, const, get, load, loop, mul,
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-try:
-    import symbol
-except ModuleNotFoundError:
-    symbol = types.ModuleType('symbol')
-    symbol.continue_stmt = 0
-    sys.modules['symbol'] = symbol
 from wasm_vmp import JiexStart
 import wasm_vmp.core as core
 
@@ -67,8 +61,8 @@ def function(locals_, code):
 
 
 def module(types_, functions):
-    # The final dummy function is deliberately outside protection because the
-    # upstream engine skips its last original function. Every test is before it.
+    # Retain the historical dummy for comparisons with pre-v2 engines. Current
+    # core protects every original function, including this final function.
     funcs = list(functions) + [('dummy', 0, [], const(0))]
     exports = [string(name) + b'\x00' + uleb(i) for i, (name, *_) in enumerate(funcs[:-1])]
     exports += [string('memory') + b'\x02\x00', string('counter') + b'\x03\x00']
@@ -129,6 +123,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--engine-source', type=Path)
     parser.add_argument('--json-output', type=Path)
+    parser.add_argument('--allow-known-baseline-failures', action='store_true',
+                        help='For historical baselines only: allow the old implicit-function br_if failures.')
     parser.add_argument('--strict', action='store_true',
                         help='Fail also for the documented pre-existing implicit-function br_if defect.')
     args = parser.parse_args()
@@ -165,12 +161,12 @@ def main():
               'knownPreexistingFailureCount': sum(x.get('knownPreexistingFailureCount', 0) for x in results),
               'suites': results, 'checks': sum(x.get('checks', 0) for x in results),
               'scope': 'Source-built control flow, direct/recursive calls, memory/global operations, i64/f32/f64 typed values, repeated calls. Not exhaustive for all WASM features.',
-              'knownPreexistingIssue': 'br_if to the implicit function label already produces an incorrect result in the preserved corrected baseline. It is retained and classified separately, not treated as a passing correctness test.'}
+              'historicalIssue': 'Implicit-function br_if failed in the pre-v2 baseline. Current source must pass all checks; only explicit --allow-known-baseline-failures permits that historical failure.'}
     text = json.dumps(report, indent=2)
     print(text)
     if args.json_output:
         args.json_output.write_text(text + '\n')
-    return 0 if report['passed' if args.strict else 'passedSupportedScope'] else 1
+    return 0 if report['passedSupportedScope' if args.allow_known_baseline_failures and not args.strict else 'passed'] else 1
 
 
 if __name__ == '__main__':

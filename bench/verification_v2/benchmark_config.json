@@ -1,0 +1,27 @@
+{
+  "before": "verification_v2/baseline.wasm",
+  "after": "verification_v2/optimized.wasm",
+  "output": "verification_v2/runtime_results.json",
+  "protectionBefore": {
+    "revision": "80d5852",
+    "settings": {
+      "selected_functions": [
+        0,
+        1,
+        2
+      ],
+      "not_jeb": true
+    }
+  },
+  "protectionOptimized": {
+    "revision": "v2 source",
+    "settings": {
+      "selected_functions": [
+        0,
+        1,
+        2
+      ],
+      "not_jeb": true
+    }
+  }
+}

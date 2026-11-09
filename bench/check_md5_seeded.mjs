@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import {createHash} from 'node:crypto';
 import assert from 'node:assert/strict';
-const base = new URL('./', import.meta.url);
+const base = process.argv[2] ? new URL(process.argv[2].replace(/\/?$/, '/') , new URL('../', import.meta.url)) : new URL('./', import.meta.url);
 const cases = ['', 'a', 'abc', 'message digest', 'abcdefghijklmnopqrstuvwxyz',
   'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789',
   '12345678901234567890123456789012345678901234567890123456789012345678901234567890',

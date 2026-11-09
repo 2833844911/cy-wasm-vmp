@@ -2,6 +2,8 @@
 
 日期：2026-11-09。基础仓库 [2833844911/cy-wasm-vmp](https://github.com/2833844911/cy-wasm-vmp)，提交 `e998a57301ef37c0453e3e567da137d50450a566`。
 
+> 本页是第一轮历史结果。当前源码已修复本页所述 br_if 缺陷；最新结果与内存限制见 [第二轮报告](verification_v2/README.md)。
+
 ## 结果
 
 保留 MD5 压缩函数和入口的指令虚拟化，将线性扫描处理器改为直接分派，本次实现快了约 9.5～9.9 倍。输出体积也从 5497 降到 5277 字节。本仓库已集成优化源码；下文主表与原始 JSON 保留压缩包中的 Linux 测试记录。macOS 独立复核结果见 [verification_macos](verification_macos/README.md)。

@@ -15,12 +15,6 @@ from build_md5 import (
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-try:
-    import symbol
-except ModuleNotFoundError:
-    symbol = types.ModuleType("symbol")
-    symbol.continue_stmt = 0
-    sys.modules["symbol"] = symbol
 from wasm_vmp import JiexStart
 
 

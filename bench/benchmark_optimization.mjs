@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import assert from 'node:assert/strict';
 
 const here = dirname(fileURLToPath(import.meta.url));
+const config = process.argv[2] ? JSON.parse(readFileSync(process.argv[2], 'utf8')) : {};
 const targetMs = 120;
 const samplesPerCase = 7;
 const median = xs => [...xs].sort((a, b) => a - b)[Math.floor(xs.length / 2)];
@@ -39,8 +40,8 @@ async function load(name, path) {
 
 const variants = [
   await load('native_wasm', resolve(here, 'md5.wasm')),
-  await load('correctness_fixed_vmp', resolve(here, 'md5_vmp_before_optimization.wasm')),
-  await load('optimized_vmp', resolve(here, 'md5_vmp_optimized.wasm')),
+  await load('correctness_fixed_vmp', resolve(here, config.before || 'md5_vmp_before_optimization.wasm')),
+  await load('optimized_vmp', resolve(here, config.after || 'md5_vmp_optimized.wasm')),
 ];
 
 const rfc = [
@@ -150,8 +151,8 @@ for (const { label, data } of workloads) {
 
 const result = {
   generatedAt: new Date().toISOString(),
-  protectionBefore: JSON.parse(readFileSync(resolve(here, 'protection_before_optimization.json'), 'utf8')),
-  protectionOptimized: JSON.parse(readFileSync(resolve(here, 'protection_optimized.json'), 'utf8')),
+  protectionBefore: config.protectionBefore || JSON.parse(readFileSync(resolve(here, 'protection_before_optimization.json'), 'utf8')),
+  protectionOptimized: config.protectionOptimized || JSON.parse(readFileSync(resolve(here, 'protection_optimized.json'), 'utf8')),
   fixture: 'Portable loop-based MD5 explicitly encoded as WASM by build_md5.py; md5.c is a source reference, not the compiler used. This benchmark does not cover arbitrary compiler outputs or all MD5 implementations.',
   environment: { node: process.version, v8: process.versions.v8, platform: platform(), arch: arch(), osRelease: release(), cpu: cpus()[0]?.model, logicalCpus: cpus().length },
   scope: 'Same freestanding WASM MD5: native, previous correctness-fixed VMP, optimized VMP. Repeated hashing of a prefilled input buffer, no host crypto, copying, or hexadecimal conversion in timed loop. Includes JavaScript-to-WASM function-call overhead. Node crypto is a correctness oracle only.',
@@ -160,6 +161,6 @@ const result = {
   correctness: { passed: true, moduleHashChecks: correctnessChecks, rfcVectors: rfc.length, deterministicLengths: correctnessLengths, utf8Cases: 3, oracle: 'node:crypto MD5 plus RFC 1321 known results', scopeLimit: 'Finite test set, not a proof of equivalence.' },
   cases,
 };
-const outPath = resolve(here, 'optimization_results.json');
+const outPath = resolve(here, config.output || 'optimization_results.json');
 writeFileSync(outPath, JSON.stringify(result, null, 2) + '\n');
 console.log(`Saved ${outPath}`);

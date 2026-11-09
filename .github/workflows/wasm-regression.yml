@@ -1,0 +1,44 @@
+name: WASM regression
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  compatibility:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        python: ['3.9', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: bench/package-lock.json
+      - run: npm ci --prefix bench --ignore-scripts
+      - name: Structured control flow and numeric compatibility
+        run: |
+          python3 bench/test_dispatch.py --strict --json-output /tmp/dispatch.json
+          python3 bench/test_if_else.py
+          node bench/test_compatibility.mjs /tmp/compatibility.json
+          node bench/test_base64.mjs /tmp/base64.json
+      - name: Rebuild MD5 with three seeds
+        run: |
+          python3 bench/protect_optimized.py --output-dir /tmp/vmp-md5
+          python3 bench/protect_optimized.py --seed 20261110 --suffix seed20261110 --output-dir /tmp/vmp-md5
+          python3 bench/protect_optimized.py --seed 20261111 --suffix seed20261111 --output-dir /tmp/vmp-md5
+          node bench/check_md5_seeded.mjs /tmp/vmp-md5
+      - name: Fetch pinned official tests
+        run: |
+          git init /tmp/wasm-spec
+          git -C /tmp/wasm-spec remote add origin https://github.com/WebAssembly/testsuite.git
+          git -C /tmp/wasm-spec fetch --depth 1 origin 92a3d806c7d70f5b63f125e6155b8d76304509f1
+          git -C /tmp/wasm-spec checkout --detach FETCH_HEAD
+      - name: Official supported numeric and control suites
+        run: node bench/test_spec.mjs /tmp/wasm-spec /tmp/spec.json i32,i64,f32,f64,conversions,local_get,local_set,unwind,return,func,int_exprs,float_exprs,endianness,store

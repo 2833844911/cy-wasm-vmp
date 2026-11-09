@@ -96,3 +96,23 @@ normal handler returns directly to the existing interpreter loop.
         code.append(add_instr(0x0C, pack_op(loop_depth)))
     code.extend([add_instr(0x0B), add_instr(0x00)])
     return code
+
+
+def build_local_dispatch(selector_local, bodies):
+    """Select one typed local access in constant time; invalid indices trap."""
+    count = len(bodies)
+    layout = list(range(count))
+    random.shuffle(layout)
+    positions = {key: position for position, key in enumerate(layout)}
+    code = [add_instr(0x02, 0x40), add_instr(0x02, 0x40)]
+    code.extend(add_instr(0x02, 0x40) for _ in layout)
+    code.extend([
+        add_instr(0x20, pack_op(selector_local)),
+        add_instr(0x0E, [pack_op(count)] + [pack_op(positions[i]) for i in range(count)] + [pack_op(count)]),
+    ])
+    for position, key in enumerate(layout):
+        code.append(add_instr(0x0B))
+        code.extend(bodies[key])
+        code.append(add_instr(0x0C, pack_op(count - position)))
+    code.extend([add_instr(0x0B), add_instr(0x00), add_instr(0x0B)])
+    return code

@@ -1,5 +1,4 @@
 import random
-from symbol import continue_stmt
 
 from .consts import WASM_OPCODES
 

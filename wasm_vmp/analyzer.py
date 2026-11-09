@@ -171,6 +171,8 @@ class WasmAnalyzer:
         elif 'extend' in name:
             if category == 'i32': # i32.extend8_s, i32.extend16_s
                  return ['i32'], ['i32']
+            if name in ['i64.extend8_s', 'i64.extend16_s', 'i64.extend32_s']:
+                return ['i64'], ['i64']
             return ['i32'], ['i64'] # i64.extend_i32_s/u
         elif 'promote' in name: return ['f32'], ['f64']
         elif 'demote' in name: return ['f64'], ['f32']
@@ -442,107 +444,71 @@ class WasmAnalyzer:
         # --- Pass 2: Generation ---
         cursor = 0 
         
+        def block_signature(operands):
+            value = operands[0] if operands else 0x40
+            value = value['val'] if isinstance(value, dict) else value
+            is_index = bool(operands and isinstance(operands[0], dict) and operands[0].get('type_index'))
+            if value == 0x40 and not is_index:
+                return [], []
+            if value in VALUE_TYPE_NAMES and not is_index:
+                return [], [VALUE_TYPE_NAMES[value]]
+            signature = self.types[value]
+            return list(signature['params']), list(signature['results'])
+
         def parse_sequence(current_stack, stop_at_else=False):
             nonlocal cursor
             nodes = []
-            
+            reachable = True
+            skipped_depth = 0
             while cursor < total_instrs:
                 inst = instructions[cursor]
                 cursor += 1
-                
-                name = inst[0]
-                opcode = inst[1]
-                operands = inst[2]
-                
-                static_pops, static_pushes = self._get_op_stack_effect(name, operands, inferred_locals)
-                
-                actual_pops = []
-                for required_type in reversed(static_pops):
-                    if current_stack:
-                        val_type = current_stack.pop()
-                        if required_type == 'any' or required_type == 'unknown':
-                            actual_pops.insert(0, val_type)
+                name, opcode, operands = inst[:3]
+                if not reachable:
+                    if name in ['block', 'loop', 'if']:
+                        skipped_depth += 1
+                    elif name == 'end':
+                        if skipped_depth:
+                            skipped_depth -= 1
                         else:
-                            actual_pops.insert(0, required_type)
-                    else:
-                        t = 'unknown' if required_type == 'any' else required_type
-                        actual_pops.insert(0, t)
-                
-                actual_pushes = []
-                if name == 'select':
-                    res_type = 'unknown'
-                    if len(actual_pops) >= 2:
-                        val1 = actual_pops[0]
-                        val2 = actual_pops[1]
-
-                        # Fix: Unify types if one is unknown
-                        if val1 in ('unknown', 'any') and val2 not in ('unknown', 'any'):
-                            val1 = val2
-                            actual_pops[0] = val2
-                        elif val2 in ('unknown', 'any') and val1 not in ('unknown', 'any'):
-                            val2 = val1
-                            actual_pops[1] = val1
-                        
-                        if val1 not in ('unknown', 'any'):
-                            res_type = val1
-                        elif val2 not in ('unknown', 'any'):
-                            res_type = val2
-                        else:
-                            res_type = val1 if val1 != 'unknown' else 'any'
-                    elif len(actual_pops) >= 1:
-                        res_type = actual_pops[0]
-                    
-                    actual_pushes.append(res_type)
-                    current_stack.append(res_type)
-                elif name == 'local.tee':
-                    if len(actual_pops) >= 1:
-                        res_type = actual_pops[0]
-                        actual_pushes.append(res_type)
-                        current_stack.append(res_type)
-                    else:
-                        actual_pushes.append('unknown')
-                        current_stack.append('unknown')
-                else:
-                    for t in static_pushes:
-                        pt = 'unknown' if t == 'any' else t
-                        actual_pushes.append(pt)
-                        current_stack.append(pt)
-                
-                node = {
-                    'name': name,
-                    'opcode': opcode,
-                    'operands': operands,
-                    'pops': actual_pops,
-                    'pushes': actual_pushes,
-                    'children': [],
-                    'else_children': [],
-                    'original_instruction': inst
-                }
-                
-                if name in ['block', 'loop', 'if']:
-                    if name == 'if':
-                        stack_snapshot = list(current_stack)
-                        node['children'] = parse_sequence(current_stack, stop_at_else=True)
-                        last_inst = instructions[cursor-1]
-                        if last_inst[0] == 'else':
-                            current_stack[:] = list(stack_snapshot)
-                            node['else_children'] = parse_sequence(current_stack)
-                        else:
-                            block_type = operands[0] if operands else 0x40
-                            if block_type == 0x40:
-                                current_stack[:] = list(stack_snapshot)
-                    else:
-                        node['children'] = parse_sequence(current_stack)
-                        
-                elif name == 'end':
-                    return nodes
-                elif name == 'else':
-                    if stop_at_else:
+                            return nodes
+                    elif name == 'else' and not skipped_depth and stop_at_else:
                         return nodes
-                    pass
-                    
+                    continue
+                if name == 'end' or (name == 'else' and stop_at_else):
+                    return nodes
+                before = list(current_stack)
+                node = {'name': name, 'opcode': opcode, 'operands': operands,
+                        'pops': [], 'pushes': [], 'children': [], 'else_children': [],
+                        'original_instruction': inst, 'stack_before': before}
+                if name in ['block', 'loop', 'if']:
+                    params, results = block_signature(operands)
+                    if name == 'if' and current_stack:
+                        current_stack.pop()
+                    base = current_stack[:-len(params)] if params else list(current_stack)
+                    node['entry_stack'] = list(base)
+                    node['label_types'] = params if name == 'loop' else results
+                    node['children'] = parse_sequence(list(base) + params, stop_at_else=name == 'if')
+                    if name == 'if' and instructions[cursor-1][0] == 'else':
+                        node['else_children'] = parse_sequence(list(base) + params)
+                    current_stack[:] = list(base) + results
+                else:
+                    pops, pushes = self._get_op_stack_effect(name, operands, inferred_locals)
+                    actual = []
+                    for required in reversed(pops):
+                        found = current_stack.pop() if current_stack else 'unknown'
+                        actual.insert(0, found if required in ['any', 'unknown'] else required)
+                    if name == 'select':
+                        chosen = next((t for t in actual[:2] if t not in ['any', 'unknown']), 'unknown')
+                        actual[:2] = [chosen, chosen]
+                        pushes = [chosen]
+                    elif name == 'local.tee':
+                        pushes = [actual[0]]
+                    node['pops'], node['pushes'] = actual, list(pushes)
+                    current_stack.extend(pushes)
+                    if name in ['unreachable', 'br', 'return', 'br_table']:
+                        reachable = False
                 nodes.append(node)
-                
             return nodes
 
         generation_stack = list(initial_stack) if initial_stack else []

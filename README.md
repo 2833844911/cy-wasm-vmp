@@ -3,9 +3,13 @@
 **中文** | [English](README_EN.md)
 
 一个强大的 WebAssembly 二进制混淆和保护工具，通过虚拟化、控制流扁平化和数据加密技术来保护 WASM 代码。
-## 2026-11-09 调度优化
+## 2026-11-09 第二轮优化与兼容性
 
-已集成 `br_table` 直接分派与 if/else 正确性修复。MD5 示例的测试结果、复现方法及兼容性限制见 [优化说明](bench/README_OPTIMIZATION.md) 和 [独立复核](bench/verification_macos/README.md)。已知函数隐式标签 `br_if` 返回值问题仍存在，完整回归并非全部通过。
+已集成两轮直接分派优化及控制流、类型、模块节修复。本机 MD5 比第一轮再快约 1.7～1.8 倍，构建约快 38 倍。详见 [本轮结果与复现](bench/verification_v2/README.md)。原先的 `br_if` 返回值问题已修复。
+
+187 类样例、三种子构建及 Base64/MD5 回归通过；官方支持范围 132 个模块通过。广泛官方检查仍有 10 次内存语义差异，引用类型等尚未支持，不能宣称任意 WASM 全部兼容。报告保留失败项。
+
+第一轮历史记录见 [优化说明](bench/README_OPTIMIZATION.md)。
 
 ## 在线使用
 https://wasm.tsvmp.com/

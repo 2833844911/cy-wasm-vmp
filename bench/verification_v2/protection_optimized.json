@@ -1,0 +1,23 @@
+{
+  "repository": "2833844911/cy-wasm-vmp",
+  "base_commit": "80d585271a29da3642f25989340b1c364c0419d0",
+  "random_seed": 20261109,
+  "settings": {
+    "not_jeb": true,
+    "selected_functions": null,
+    "instruction_expansion_factor": 1
+  },
+  "local_changes": "V2 local dispatch, bounded ID sampling, structured control-flow and compatibility fixes.",
+  "python_compatibility": "Unused symbol import removed from the library; no shim required.",
+  "protected_function_indices": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "note": "All original functions, including the final accessor, are protected.",
+  "protection_seconds": 0.006626625000000001,
+  "baseline_bytes": 1152,
+  "protected_bytes": 5296,
+  "protected_sha256": "eb06eb2113eccbdd1b6c71ecb231887c55899f3a33ee6bd9901fe083f77bc451"
+}

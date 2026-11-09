@@ -8,7 +8,7 @@ from .utils import (
 import random
 from .block_definitions import define_instruction_blocks
 from .control_flow_flattener import build_bst_dispatch
-from .dispatch import build_table_dispatch
+from .dispatch import build_table_dispatch, build_local_dispatch
 from .opaque_utils import generate_obfuscated_constant, generate_always_true_check, generate_fake_vmp_block
 
 off = 0
@@ -69,10 +69,12 @@ class WasmVMP:
         self.sp_global_idx = sp_global_idx
 
 
-        self.allshuz = [i for i in range(0 + 5, max_code + 500000)]
-        self.allreturntype = [i for i in range(0 + 5, max_code + 500000)]
-        random.shuffle(self.allshuz)
-        random.shuffle(self.allreturntype)
+        # Sample from the original sparse namespace without materializing and
+        # shuffling half a million integers for every module. An instruction
+        # needs at most four control-flow IDs; leave room for fixed handlers.
+        namespace = range(5, max_code + 500000)
+        self.allshuz = random.sample(namespace, min(len(namespace), max_code * 6 + 512))
+        self.allreturntype = random.sample(namespace, min(len(namespace), max_code + 64))
         self.codec = codec
         self.analyzer = WasmAnalyzer(func_signatures=func_signatures, global_types=global_types, types=self.codec.types)
 
@@ -158,102 +160,28 @@ class WasmVMP:
         )
         func_type_idx = 0x40  # 0x40 表示 void (无参无返)
 
-        # Generate Checks
+        get_bodies, tee_bodies = [], []
+        typed_access = {'i32': (0x28, 0x36, 4), 'i64': (0x29, 0x37, 8),
+                        'f32': (0x2A, 0x38, 4), 'f64': (0x2B, 0x39, 8)}
         for i in range(new_local_idx):
-            type_name = self.locals_types[i]
-
-            # Check if tmp_i32 == i
-            t_list_local_get.append(add_instr(0x20, pack_op(tmp_i32)))
-            t_list_local_get.append(add_instr(0x41, pack_op(i)))
-            t_list_local_get.append(add_instr(0x46))  # eq
-            t_list_local_get.append(add_instr(0x04, 0x40))  # if
-
-            # Body
-            t_list_local_get.append(add_instr(0x20, pack_op(duizhangmem)))  # get SP
-            t_list_local_get.append(add_instr(0x20, pack_op(i)))  # local.get i
-
-            if type_name == 'i32':
-                t_list_local_get.append(add_instr(0x36, [pack_op(0), pack_op(0)]))
-                sz = 4
-            elif type_name == 'i64':
-                t_list_local_get.append(add_instr(0x37, [pack_op(0), pack_op(0)]))
-                sz = 8
-            elif type_name == 'f32':
-                t_list_local_get.append(add_instr(0x38, [pack_op(0), pack_op(0)]))
-                sz = 4
-            elif type_name == 'f64':
-                t_list_local_get.append(add_instr(0x39, [pack_op(0), pack_op(0)]))
-                sz = 8
-            else:
-                # Should not happen for standard locals
-                sz = 4
-
-                # Increment SP
-            t_list_local_get.append(add_instr(0x20, pack_op(duizhangmem)))
-            t_list_local_get.append(add_instr(0x41, pack_op(sz)))
-            t_list_local_get.append(add_instr(0x6A))
-            t_list_local_get.append(add_instr(0x21, pack_op(duizhangmem)))
-
-            t_list_local_get.append(add_instr(0x0B))  # end if
-
-        t_list_local_get.append(add_instr(0x0B))  # End of Dispatch IF
+            load, store, size = typed_access[self.locals_types[i]]
+            get_bodies.append([
+                add_instr(0x20, pack_op(duizhangmem)), add_instr(0x20, pack_op(i)),
+                add_instr(store, [pack_op(0), pack_op(0)]),
+                add_instr(0x20, pack_op(duizhangmem)), add_instr(0x41, pack_op(size)),
+                add_instr(0x6A), add_instr(0x21, pack_op(duizhangmem)),
+            ])
+            tee_bodies.append([
+                add_instr(0x20, pack_op(duizhangmem)), add_instr(0x41, pack_op(size)),
+                add_instr(0x6B), add_instr(load, [pack_op(0), pack_op(0)]),
+                add_instr(0x21, pack_op(i)),
+            ])
+        t_list_local_get.extend(build_local_dispatch(tmp_i32, get_bodies))
+        t_list_local_get.append(add_instr(0x0B))
         if_block_list[local_get_code_idx] = t_list_local_get
         self.local_get_code_idx = local_get_code_idx
-
-        # Generate Checks for local.tee
-        for i in range(new_local_idx):
-            type_name = self.locals_types[i]
-
-            # Check if tmp_i32 == i
-            t_list_local_tee.append(add_instr(0x20, pack_op(tmp_i32)))
-            t_list_local_tee.append(add_instr(0x41, pack_op(i)))
-            t_list_local_tee.append(add_instr(0x46))  # eq
-            t_list_local_tee.append(add_instr(0x04, 0x40))  # if
-
-            # Body
-            # 1. Load Value from Stack (Peek)
-            t_list_local_tee.append(add_instr(0x20, pack_op(duizhangmem)))  # get SP
-
-            if type_name == 'i32':
-                sz = 4
-                t_list_local_tee.append(add_instr(0x41, pack_op(4)))
-                t_list_local_tee.append(add_instr(0x6B))  # sub
-                t_list_local_tee.append(add_instr(0x28, [pack_op(0), pack_op(0)]))  # i32.load (peek)
-                # Store to local
-                t_list_local_tee.append(add_instr(0x21, pack_op(i)))  # local.set i
-
-            elif type_name == 'i64':
-                sz = 8
-                t_list_local_tee.append(add_instr(0x41, pack_op(8)))
-                t_list_local_tee.append(add_instr(0x6B))  # sub
-                t_list_local_tee.append(add_instr(0x29, [pack_op(0), pack_op(0)]))  # i64.load (peek)
-                # Store to local
-                t_list_local_tee.append(add_instr(0x21, pack_op(i)))  # local.set i
-
-            elif type_name == 'f32':
-                sz = 4
-                t_list_local_tee.append(add_instr(0x41, pack_op(4)))
-                t_list_local_tee.append(add_instr(0x6B))  # sub
-                t_list_local_tee.append(add_instr(0x2A, [pack_op(0), pack_op(0)]))  # f32.load (peek)
-                # Store to local
-                t_list_local_tee.append(add_instr(0x21, pack_op(i)))  # local.set i
-
-            elif type_name == 'f64':
-                sz = 8
-                t_list_local_tee.append(add_instr(0x41, pack_op(8)))
-                t_list_local_tee.append(add_instr(0x6B))  # sub
-                t_list_local_tee.append(add_instr(0x2B, [pack_op(0), pack_op(0)]))  # f64.load (peek)
-                # Store to local
-                t_list_local_tee.append(add_instr(0x21, pack_op(i)))  # local.set i
-
-            else:
-                sz = 4
-
-                # SP No Change (Peek)
-
-            t_list_local_tee.append(add_instr(0x0B))  # end if
-
-        t_list_local_tee.append(add_instr(0x0B))  # End of Dispatch IF
+        t_list_local_tee.extend(build_local_dispatch(tmp_i32, tee_bodies))
+        t_list_local_tee.append(add_instr(0x0B))
         if_block_list[local_tee_code_idx] = t_list_local_tee
         self.local_tee_code_idx = local_tee_code_idx
 
@@ -622,6 +550,38 @@ class WasmVMP:
         # ==========================================
         # 3. 核心递归函数：生成扁平化代码块
         # ==========================================
+        branch_fixups = []
+        sizes = {'i32': 4, 'i64': 8, 'f32': 4, 'f64': 8}
+
+        def frame(code, target):
+            return {'id': target, 'height': sum(sizes[t] for t in code['entry_stack']),
+                    'types': code['label_types']}
+
+        def cleanup_branch(code, target, conditional=False):
+            height = sum(sizes[t] for t in code['stack_before']) - (4 if conditional else 0)
+            result_size = sum(sizes[t] for t in target['types'])
+            discarded = height - target['height'] - result_size
+            if discarded <= 0:
+                return []
+            body = []
+            offset = 0
+            for kind in target['types']:
+                load, store = {'i32': (0x28, 0x36), 'i64': (0x29, 0x37),
+                               'f32': (0x2A, 0x38), 'f64': (0x2B, 0x39)}[kind]
+                body.extend([
+                    add_instr(0x20, pack_op(duizhangmem)),
+                    add_instr(0x41, pack_op(result_size + discarded - offset)), add_instr(0x6B),
+                    add_instr(0x20, pack_op(duizhangmem)),
+                    add_instr(0x41, pack_op(result_size - offset)), add_instr(0x6B),
+                    add_instr(load, [pack_op(0), pack_op(0)]),
+                    add_instr(store, [pack_op(0), pack_op(0)]),
+                ])
+                offset += sizes[kind]
+            body.extend([add_instr(0x20, pack_op(duizhangmem)),
+                         add_instr(0x41, pack_op(discarded)), add_instr(0x6B),
+                         add_instr(0x21, pack_op(duizhangmem))])
+            return body
+
         def push_code_list(code_list, current_block_entry_id, deep=0, deep_end=[]):
             # f_idx_e 追踪当前控制流的 ID
             f_idx_e = current_block_entry_id
@@ -683,7 +643,7 @@ class WasmVMP:
 
                     # [递归] 处理子分支 (使用 children 和 else_children)
                     # 处理 True 分支
-                    last_id_of_true = push_code_list(code['children'], true_branch_start_id, deep + 1, deep_end+[end_merge_id])
+                    last_id_of_true = push_code_list(code['children'], true_branch_start_id, deep + 1, deep_end+[frame(code, end_merge_id)])
                     all_code_list.append(last_id_of_true)
                     # 创建链接块：子分支结束后强行跳转到 end_merge_id
                     all_code_list.append('goto')
@@ -693,7 +653,7 @@ class WasmVMP:
 
                     # 处理 Else 分支
                     if len(code['else_children']) != 0:
-                        last_id_of_false = push_code_list(code['else_children'], false_branch_start_id, deep + 1, deep_end+[end_merge_id])
+                        last_id_of_false = push_code_list(code['else_children'], false_branch_start_id, deep + 1, deep_end+[frame(code, end_merge_id)])
                         all_code_list.append(last_id_of_false)
                         # 创建链接块：子分支结束后强行跳转到 end_merge_id
                         all_code_list.append('goto')
@@ -884,7 +844,7 @@ class WasmVMP:
 
 
                     # 3. 递归处理内部
-                    last_id_of_true = push_code_list(code['children'], next_instr_id, deep + 1, deep_end+[end_merge_id])
+                    last_id_of_true = push_code_list(code['children'], next_instr_id, deep + 1, deep_end+[frame(code, end_merge_id)])
                     all_code_list.append(last_id_of_true)
 
                     # if_block_list.append(create_link_block(last_id_of_true, end_merge_id, new_local_idx)) # block 的end
@@ -902,7 +862,7 @@ class WasmVMP:
                     # 2. Recurse
                     # [关键] Loop 的 br 0 目标是 Loop 开头 (next_instr_id)
                     # 所以 deep_end 压入 next_instr_id
-                    last_id_of_true = push_code_list(code['children'], next_instr_id, deep + 1, deep_end+[next_instr_id])
+                    last_id_of_true = push_code_list(code['children'], next_instr_id, deep + 1, deep_end+[frame(code, next_instr_id)])
                     all_code_list.append(last_id_of_true)
 
                     # 3. Exit Link
@@ -934,9 +894,13 @@ class WasmVMP:
                     else:
                         # case 2: 跳到某个 Block 的结束位置
                         # 正常取出目标 ID
-                        target_id = deep_end[-(br_depth + 1)]
-
-
+                        target = deep_end[-(br_depth + 1)]
+                        target_id = target['id']
+                        cleanup = cleanup_branch(code, target)
+                        if cleanup:
+                            t_list.extend(cleanup)
+                            t_list.append(add_instr(0x0B))
+                            if_block_list[this_instr_id] = t_list
                         all_code_list.append('goto')
                         all_code_list.append("x-"+str(target_id))
 
@@ -969,18 +933,42 @@ class WasmVMP:
                     # ================= Case A: 跳出函数 (Return) =================
                     if br_depth >= len(deep_end):
 
-                        all_code_list.append("if")
-                        all_code_list.append("over")
-                        all_code_list.append("x-"+str(fallthrough_id))
+                        # Consume only the condition. A taken branch exits the
+                        # interpreter and preserves the result below it on SP.
+                        t_list.extend([
+                            add_instr(0x20, pack_op(duizhangmem)),
+                            add_instr(0x41, pack_op(4)),
+                            add_instr(0x6B),
+                            add_instr(0x22, pack_op(duizhangmem)),
+                            add_instr(0x28, [pack_op(0), pack_op(0)]),
+                            add_instr(0x0D, pack_op(2)),
+                            add_instr(0x0B),
+                        ])
+                        if_block_list[this_instr_id] = t_list
 
                     # ================= Case B: 内部跳转 (Set PC) =================
                     else:
                         # 获取跳转目标
-                        target_id = deep_end[-(br_depth + 1)]
-
-                        all_code_list.append("if")
-                        all_code_list.append("x-"+str(target_id))
-                        all_code_list.append("x-"+str(fallthrough_id))
+                        target = deep_end[-(br_depth + 1)]
+                        target_id = target['id']
+                        cleanup = cleanup_branch(code, target, conditional=True)
+                        if cleanup:
+                            t_list.extend([
+                                add_instr(0x20, pack_op(duizhangmem)), add_instr(0x41, pack_op(4)),
+                                add_instr(0x6B), add_instr(0x22, pack_op(duizhangmem)),
+                                add_instr(0x28, [pack_op(0), pack_op(0)]), add_instr(0x04, 0x40),
+                            ])
+                            t_list.extend(cleanup)
+                            address = add_instr(0x41, pack_op(0))
+                            branch_fixups.append((address, target_id))
+                            t_list.extend([add_instr(0x20, pack_op(self.code_memsig_addr)), address,
+                                           add_instr(0x6A), add_instr(0x21, pack_op(self.code_memsig_new_addr)),
+                                           add_instr(0x0B), add_instr(0x0B)])
+                            if_block_list[this_instr_id] = t_list
+                        else:
+                            all_code_list.append("if")
+                            all_code_list.append("x-"+str(target_id))
+                            all_code_list.append("x-"+str(fallthrough_id))
 
 
                     f_idx_e = next_instr_id
@@ -1164,7 +1152,7 @@ class WasmVMP:
             # [Optimization] Coalesce ID + Generic Op
             # If current is ID and next is Generic Op, map ID to current_mem_idx but DON'T consume space for ID
             is_generic_next = False
-            if isinstance(zl, int) and idx + 1 < len(all_code_list):
+            if isinstance(zl, int) and zl not in if_block_list and idx + 1 < len(all_code_list):
                 next_zl = all_code_list[idx+1]
                 if (next_zl in ['if', 'goto', 'i32.const', 'local.get', 'local.tee', 'i32.load', 'i64.load'] or 
                     next_zl in self.op_map):
@@ -1220,6 +1208,8 @@ class WasmVMP:
                 current_mem_idx += 1
 
         final_mem_idx = current_mem_idx # Point to end (for 'over' jumps)
+        for instruction, target_id in branch_fixups:
+            instruction[2][0]['val'] = id_to_mem_idx[target_id] * 4
 
         # 把一样的指令合并
         zbhebing = {}
@@ -1273,7 +1263,7 @@ class WasmVMP:
 
             # [Optimization] Coalesce ID + Generic Op
             is_generic_next = False
-            if isinstance(zl, int) and idx + 1 < len(all_code_list):
+            if isinstance(zl, int) and zl not in if_block_list and idx + 1 < len(all_code_list):
                 next_zl = all_code_list[idx+1]
                 if (next_zl in ['if', 'goto', 'i32.const', 'local.get', 'local.tee', 'i32.load', 'i64.load'] or 
                     next_zl in self.op_map):

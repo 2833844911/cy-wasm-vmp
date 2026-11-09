@@ -10,6 +10,11 @@ import random
 from .instructions_expander import InstructionExpander
 
 class JiexStart:
+    @staticmethod
+    def _section_order(section_id):
+        # DataCount precedes Code despite its numeric section ID being 12.
+        return {12: 9.5}.get(section_id, section_id)
+
 # ... (existing code)
 
 
@@ -70,6 +75,11 @@ class JiexStart:
             elif sec_id == 3: # Function
                 self.functions = self.codec.decode_function_section(payload)
 
+            elif sec_id == 5: # Memory
+                count, length = read_leb128_unsigned(payload, 0)
+                if count != 1 or payload[length] & ~1:
+                    raise ValueError('Unsupported WASM multiple, shared, or 64-bit memory')
+
             elif sec_id == 6: # Global
                 self.globals = self.codec.decode_global_section(payload)
 
@@ -107,6 +117,10 @@ class JiexStart:
                 func_signatures[func_idx] = (sig['params'], sig['results'])
             func_idx += 1
 
+        internal_memories = sum(read_leb128_unsigned(s['data'], 0)[0]
+                                for s in self.section_lists if s['section_id'] == 5)
+        if internal_memories + sum(i['kind'] == 2 for i in self.imports) > 1:
+            raise ValueError('Unsupported WASM multiple memories')
         self.analyzer.func_signatures = func_signatures
         print(f"-> Analyzer updated with {len(func_signatures)} function signatures")
 
@@ -134,9 +148,16 @@ class JiexStart:
 
     def encrypt_module(self, output_filename="output.wasm", not_jeb=False, selected_functions=None, instruction_expansion_factor=1):
         """
-        :param selected_functions: List of global function indices to encrypt. If None, encrypt all (except last one as per original logic).
+        :param selected_functions: List of global function indices to encrypt. If None, encrypt all defined functions.
         :param instruction_expansion_factor: How many instruction variants to keep (N:M reduction).
         """
+        self.protected_function_indices = []
+        selected = [i for i in range(len(self.function_codes))
+                    if selected_functions is None or self.codec.imported_func_count + i in selected_functions]
+        if not selected:
+            with open(output_filename, 'wb') as output:
+                output.write(self.wasm_data)
+            return
         print(f"\n{'#' * 60}\n# Start Encryption & Rebuilding\n{'#' * 60}")
         
         new_wasm = bytearray()
@@ -184,7 +205,8 @@ class JiexStart:
         if global_sec:
              global_sec['data'] = encoded_globals
         else:
-             print("WARN: No Global Section found to inject SP. VMP might fail.")
+             self.section_lists.append({'section_id': 6, 'data': encoded_globals})
+             self.section_lists.sort(key=lambda section: self._section_order(section['section_id']))
 
         # [Instruction Expansion]
         # Perform expansion BEFORE scanning for VMP locals, so new locals are counted.
@@ -204,9 +226,14 @@ class JiexStart:
             'f32': {'count': 0, 'type_name': 'f32', 'type': 125, 'len': 1},
             'f64': {'count': 0, 'type_name': 'f64', 'type': 124, 'len': 1},
         }
+        # Preprocessing can add locals; include them when sizing interpreter locals.
+        for funidx, function in enumerate(self.function_codes):
+            global_idx = self.codec.imported_func_count + funidx
+            if selected_functions is None or global_idx in selected_functions:
+                preprocess_br_table(function)
         max_code = 0
         print(selected_functions)
-        for funidx in range(len(self.function_codes) - 1):
+        for funidx in range(len(self.function_codes)):
             global_idx = self.codec.imported_func_count + funidx
             
             # Filter if selection is provided
@@ -215,6 +242,11 @@ class JiexStart:
                     continue
         # for funidx in range(2,3):
             target_fun = self.function_codes[funidx]
+            numeric_types = {'i32', 'i64', 'f32', 'f64'}
+            used_types = target_fun['signature']['params'] + target_fun['signature']['results']
+            used_types += [group['type_name'] for group in target_fun['locals']]
+            if any(kind not in numeric_types for kind in used_types):
+                raise ValueError(f'Unsupported WASM reference/vector value type in function {global_idx}')
             max_code += len(target_fun['code'])
             locals_types= {'i32':0, 'i64':0, 'f32':0, 'f64':0}
             for locals in target_fun['locals']:
@@ -280,7 +312,7 @@ class JiexStart:
 
         wasmVmp = WasmVMP(max_parem, max_resul,local_dict,self.codec, max_code, len(self.function_codes),sp_global_idx=sp_global_idx, func_signatures=self.analyzer.func_signatures, global_types=self.analyzer.global_types, instruction_expansion_factor=instruction_expansion_factor)
 
-        for funidx in range(len(self.function_codes) - 1):
+        for funidx in range(len(self.function_codes)):
             target_func = self.function_codes[funidx]
             
             # Calculate global index for checking against selection
@@ -303,8 +335,7 @@ class JiexStart:
             # if len(target_func['code']) < 40:
             #     continue
 
-            # [Preprocessor] Remove br_table
-            preprocess_br_table(target_func)
+            # br_table was lowered before the locals sizing pass.
 
             # if funidx == 95:
             #     print(f"[Core Debug] Post-Preprocess Func #95 Locals: {target_func['locals']}")
@@ -320,6 +351,7 @@ class JiexStart:
 
             vmp_data_offset += len(mycodeshuz) * 4
             target_func['code'] = codeoffun
+            self.protected_function_indices.append(global_idx)
         newfunction = wasmVmp.over()
 
         # [VMP Injection] Append the VMP Interpreter Function to the module
@@ -369,6 +401,10 @@ class JiexStart:
         self.obfuscator.params = {} # Reset or init params if used
 
         stack_size = 1024 * 1024 * 1 # 1MB Stack
+        if not any(s['section_id'] == 5 for s in self.section_lists) and not any(i['kind'] == 2 for i in self.imports):
+            pages = (sp_start_addr + stack_size + 65535) // 65536
+            self.section_lists.append({'section_id': 5, 'data': bytes([1, 0]) + bytes(write_leb128_unsigned(pages))})
+            self.section_lists.sort(key=lambda s: self._section_order(s['section_id']))
         self.codec.ensure_memory_size(self.section_lists, sp_start_addr + stack_size)
         #
         segment_configs = []
@@ -462,7 +498,7 @@ class JiexStart:
                     'data': new_data_sec
                 })
                 # Sort sections? WASM requires order. Data (11) is usually last.
-                self.section_lists.sort(key=lambda x: x['section_id'])
+                self.section_lists.sort(key=lambda x: self._section_order(x['section_id']))
 
 
             # Update Data Count Section (ID 12) if present

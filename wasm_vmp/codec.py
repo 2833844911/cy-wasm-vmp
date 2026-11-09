@@ -18,7 +18,8 @@ class WasmCodec:
         self.imported_func_count = 0
 
     def decode_module_header(self, bytes_data, offset):
-        if len(bytes_data) < 8: return
+        if len(bytes_data) - offset < 8:
+            raise ValueError('Truncated WASM header')
         magic_word = bytes_data[offset:offset + 4]
         if magic_word != WASM_MAGIC: raise ValueError("Invalid Magic")
         version = bytes_data[offset + 4:offset + 8]
@@ -31,6 +32,8 @@ class WasmCodec:
         offset += 1
         section_length, length_bytes = read_leb128_unsigned(wasm_data, offset)
         offset += length_bytes
+        if offset + section_length > len(wasm_data):
+            raise ValueError('Truncated WASM section')
         section_info = {
             'section_id': section_id,
             'data': wasm_data[offset:offset + section_length],
@@ -58,7 +61,7 @@ class WasmCodec:
             offset += 1
             
             if type_code != 0x60: # WASM_FUNCTION_TYPE_CODE
-                continue
+                raise ValueError(f'Unsupported WASM type form 0x{type_code:02x}')
                 
             param_count, pb = read_leb128_unsigned(payload_data, offset)
             offset += pb
@@ -339,11 +342,26 @@ class WasmCodec:
                 opcode_name = get_opcode_name(opcode)
                 instr_offset += 1
                 operand_int_list = []
+                if opcode_name.startswith('unknown_') or (opcode >= 0xD0 and opcode != 0xFC):
+                    raise ValueError(f"Unsupported WASM opcode 0x{opcode:02x} in function {global_func_index} at byte {start_offset}")
 
                 if opcode in block_start_opcodes:
-                    block_type = instruction_bytes[instr_offset]
+                    first = instruction_bytes[instr_offset]
+                    if first == 0x40 or first in VALUE_TYPE_NAMES:
+                        instr_offset += 1
+                        operand_int_list = [first]
+                    else:
+                        block_type, length = read_leb128_signed(instruction_bytes, instr_offset)
+                        instr_offset += length
+                        operand_int_list = [{'val': block_type, 'len': length, 'type_index': True}]
+
+                elif opcode == 0x1C:
+                    count, length = read_leb128_unsigned(instruction_bytes, instr_offset)
+                    instr_offset += length
+                    if count != 1 or instruction_bytes[instr_offset] not in (0x7F, 0x7E, 0x7D, 0x7C):
+                        raise ValueError('Unsupported WASM typed select value type')
+                    operand_int_list = [self._pack_operand(count, length), self._pack_operand(instruction_bytes[instr_offset], 1)]
                     instr_offset += 1
-                    operand_int_list = [block_type]
 
                 elif opcode in [0x20, 0x21, 0x22, 0x23, 0x24, 0x10, 0x0C, 0x0D, 0x25, 0x26]:
                     idx, idx_bytes = read_leb128_unsigned(instruction_bytes, instr_offset)
@@ -403,6 +421,8 @@ class WasmCodec:
                 elif opcode == 0xFC:
                     sub_opcode, sub_b = read_leb128_unsigned(instruction_bytes, instr_offset)
                     instr_offset += sub_b
+                    if sub_opcode > 11:
+                        raise ValueError(f"Unsupported WASM 0xfc subopcode {sub_opcode} in function {global_func_index}")
                     args = []
                     # Simplified bulk memory handling
                     if sub_opcode in [10, 8]: # copy / init
@@ -464,10 +484,15 @@ class WasmCodec:
                     val, len_ = self._extract_operand(operands[0])
                     # Fix: Handle value types (0x7F=i32 etc) and 0x40 (void) as raw bytes
                     # If we use write_leb128_signed(127), we get 0xFF 0x00 (Index 127) which is wrong for i32
-                    if val == 0x40 or (val >= 0x70 and val <= 0x7F):
+                    is_type_index = isinstance(operands[0], dict) and operands[0].get('type_index', False)
+                    if not is_type_index and (val == 0x40 or val in VALUE_TYPE_NAMES):
                         temp_buf.append(val)
                     else:
                         temp_buf.extend(write_leb128_signed(val))
+
+                elif opcode == 0x1C:
+                    temp_buf.extend(write_leb128_unsigned(self._extract_operand(operands[0])[0]))
+                    temp_buf.append(self._extract_operand(operands[1])[0])
 
                 elif opcode in [0x20, 0x21, 0x22, 0x23, 0x24, 0x10, 0x0C, 0x0D, 0x25, 0x26]:
                     val, length = self._extract_operand(operands[0])
@@ -562,6 +587,8 @@ class WasmCodec:
                     offset += b
             elif kind == EXTERNAL_MEMORY:
                 flags = payload_data[offset]
+                if flags & ~1:
+                    raise ValueError('Unsupported WASM shared or 64-bit memory')
                 offset += 1
                 i_pages, b = read_leb128_unsigned(payload_data, offset)
                 offset += b
@@ -579,8 +606,7 @@ class WasmCodec:
                 desc['global_type_name'] = type_name
                 desc['global_mut'] = g_mut
             elif kind == EXTERNAL_TAG:
-                 offset += 1 # attr
-                 print("WARN: TAG skipped")
+                 raise ValueError('Unsupported WASM exception tag import')
             
             imports.append(desc)
             

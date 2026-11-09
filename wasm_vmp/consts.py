@@ -37,6 +37,7 @@ WASM_OPCODES = {
 
     # Variable (0x1A-0x26)
     0x1A: "drop",                 # 丢弃：丢弃栈顶值
+    0x1C: "select",               # Typed select (numeric value types)
     0x1B: "select",               # 选择：根据条件选择两个值之一
     0x20: "local.get",            # 获取局部变量：读取局部变量的值
     0x21: "local.set",            # 设置局部变量：写入局部变量的值
