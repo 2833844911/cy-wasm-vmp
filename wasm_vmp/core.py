@@ -3,7 +3,7 @@ from .consts import WASM_MAGIC, WASM_VERSION
 from .codec import WasmCodec
 from .analyzer import WasmAnalyzer
 from .obfuscator import WasmObfuscator
-from .utils import write_leb128_unsigned, write_leb128_signed, read_leb128_unsigned
+from .utils import write_leb128_unsigned, write_leb128_signed, read_leb128_unsigned, read_leb128_signed
 from .wasmvmp import WasmVMP
 from .preprocessor import preprocess_br_table
 import random
@@ -152,6 +152,7 @@ class JiexStart:
         :param instruction_expansion_factor: How many instruction variants to keep (N:M reduction).
         """
         self.protected_function_indices = []
+        self.vmp_frame_sizes = {}
         selected = [i for i in range(len(self.function_codes))
                     if selected_functions is None or self.codec.imported_func_count + i in selected_functions]
         if not selected:
@@ -170,20 +171,15 @@ class JiexStart:
 
         # 1.5 Inject Global SP (Stack Pointer) for VMP
         self.obfuscator.can_safe_mem = self.codec.find_safe_data_offset(self.section_lists)
-        # Fix: Move VMP Data and Stack to high memory (10MB+) to avoid conflicts with original Stack/Heap
-        # Original Stack/Heap is likely around 64KB-1MB.
-        # 10MB is safe and within default 16MB memory.
-
+        # Retain the historical bytecode base. This is not isolation from the
+        # application's memory; the private frame arena is placed after it.
         vmp_base_addr = 10 * 1024 * 1024 # 10MB
         # vmp_base_addr = self.obfuscator.can_safe_mem
         vmp_data_offset = vmp_base_addr
 
-        # Reserve space for VMP Data (will be updated as we encode)
-        # We'll put Stack AFTER VMP Data.
-        # But we need SP init value NOW.
-        # Let's assume VMP Data is < 1MB.
-        # So put Stack at 11MB.
-        sp_start_addr = vmp_base_addr + (1 * 1024 * 1024) # 11MB
+        # Final frame arena is placed after the complete bytecode payload.
+        # Initial values are patched once all functions have been encoded.
+        sp_start_addr = 0
 
         sp_global_idx = len(self.analyzer.global_types)
 
@@ -198,7 +194,13 @@ class JiexStart:
         }
         self.globals.append(new_global)
         self.analyzer.global_types[sp_global_idx] = 'i32'
-        
+        stack_floor_idx = sp_global_idx + 1
+        stack_floor_global = {'index': len(self.globals), 'type': 0x7F,
+                              'type_name': 'i32', 'mutability': 0, 'init_val': 0}
+        self.globals.append(stack_floor_global)
+        self.analyzer.global_types[stack_floor_idx] = 'i32'
+        self.codec.vmp_stack_floor_global_idx = stack_floor_idx
+
         # Re-encode Global Section immediately
         encoded_globals = self.codec.encode_global_section(self.globals)
         global_sec = next((s for s in self.section_lists if s['section_id'] == 6), None)
@@ -352,6 +354,16 @@ class JiexStart:
             vmp_data_offset += len(mycodeshuz) * 4
             target_func['code'] = codeoffun
             self.protected_function_indices.append(global_idx)
+        self.vmp_frame_sizes = getattr(wasmVmp, 'frame_sizes', {})
+        self.vmp_stack_floor = (vmp_data_offset + 15) & ~15
+        self.vmp_stack_capacity = max(1024 * 1024, getattr(wasmVmp, 'max_frame_size', 1024))
+        sp_start_addr = self.vmp_stack_floor + self.vmp_stack_capacity
+        if sp_start_addr > 0x7FFFFFFF:
+            raise ValueError('VMP bytecode and frame arena exceed supported address range')
+        self.vmp_stack_top = sp_start_addr
+        new_global['init_val'] = sp_start_addr
+        stack_floor_global['init_val'] = self.vmp_stack_floor
+        next(s for s in self.section_lists if s['section_id'] == 6)['data'] = self.codec.encode_global_section(self.globals)
         newfunction = wasmVmp.over()
 
         # [VMP Injection] Append the VMP Interpreter Function to the module
@@ -385,27 +397,39 @@ class JiexStart:
             internal_idx = heap_base_idx - num_imported_globals
 
             if 0 <= internal_idx < len(self.globals):
-                print(f"-> Updating __heap_base (Global {heap_base_idx}) to {vmp_data_offset}")
-                # Update init_val
-                # We need to re-encode the global section later, so updating the dict is enough if we handle it.
-                # But wait, self.globals entries have 'init_val' or 'init_raw'.
-                # We should update 'init_val' and remove 'init_raw' to force re-encoding.
-                self.globals[internal_idx]['init_val'] = vmp_data_offset
+                heap_global = self.globals[internal_idx]
+                raw = heap_global.get('init_raw')
+                if heap_global['type'] != 0x7F:
+                    raise ValueError('Unsupported WASM non-i32 __heap_base')
+                if raw is not None:
+                    if not raw or raw[0] != 0x41:
+                        raise ValueError('Unsupported WASM nonconstant __heap_base initializer')
+                    original_heap, consumed = read_leb128_signed(raw, 1)
+                    if consumed + 1 != len(raw):
+                        raise ValueError('Unsupported WASM nonconstant __heap_base initializer')
+                    original_heap &= 0xFFFFFFFF
+                else:
+                    original_heap = heap_global.get('init_val', 0)
+                heap_bits = max(sp_start_addr, original_heap)
+                heap_global['init_val'] = heap_bits if heap_bits < 0x80000000 else heap_bits - 0x100000000
+                print(f"-> Updating __heap_base (Global {heap_base_idx}) to {heap_global['init_val']}")
                 if 'init_raw' in self.globals[internal_idx]:
                     del self.globals[internal_idx]['init_raw']
             else:
                 print(f"WARN: __heap_base (Global {heap_base_idx}) is imported or invalid?")
 
 
+        # Include both the final arena bounds and any adjusted heap marker.
+        next(s for s in self.section_lists if s['section_id'] == 6)['data'] = self.codec.encode_global_section(self.globals)
+
         # 2. Obfuscation
         self.obfuscator.params = {} # Reset or init params if used
 
-        stack_size = 1024 * 1024 * 1 # 1MB Stack
         if not any(s['section_id'] == 5 for s in self.section_lists) and not any(i['kind'] == 2 for i in self.imports):
-            pages = (sp_start_addr + stack_size + 65535) // 65536
+            pages = (sp_start_addr + 65535) // 65536
             self.section_lists.append({'section_id': 5, 'data': bytes([1, 0]) + bytes(write_leb128_unsigned(pages))})
             self.section_lists.sort(key=lambda s: self._section_order(s['section_id']))
-        self.codec.ensure_memory_size(self.section_lists, sp_start_addr + stack_size)
+        self.codec.ensure_memory_size(self.section_lists, sp_start_addr)
         #
         segment_configs = []
         for section_info in self.section_lists:

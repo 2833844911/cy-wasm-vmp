@@ -1,0 +1,7574 @@
+{
+  "passed": true,
+  "fixtures": 195,
+  "builds": 585,
+  "checks": 3405,
+  "validators": [
+    "WABT",
+    "V8"
+  ],
+  "environment": {
+    "node": "v24.19.0",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "records": [
+    {
+      "name": "i32.add",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0021427089999999996,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.add",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0016353750000000014,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.add",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.001678291999999998,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.sub",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0015573340000000005,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.sub",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0015236659999999964,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.sub",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.001544166999999999,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.mul",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0015090000000000034,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.mul",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0015500420000000015,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.mul",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0015229589999999973,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.div_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 587,
+      "seconds": 0.0014729579999999964,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.div_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 591,
+      "seconds": 0.001464791,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.div_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 591,
+      "seconds": 0.0014957919999999958,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.div_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 587,
+      "seconds": 0.0016092090000000003,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.div_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 591,
+      "seconds": 0.001483458,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.div_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 591,
+      "seconds": 0.0015249170000000006,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.rem_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 587,
+      "seconds": 0.001446625,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.rem_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 591,
+      "seconds": 0.0014418329999999965,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.rem_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 591,
+      "seconds": 0.001466209000000003,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.rem_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 587,
+      "seconds": 0.001455917000000001,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.rem_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 591,
+      "seconds": 0.001476375000000002,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.rem_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 591,
+      "seconds": 0.001454625000000001,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.and",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0014539579999999983,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.and",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.001895332999999999,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.and",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014394999999999963,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.or",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.001449416000000002,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.or",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0015253340000000032,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.or",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014818749999999936,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.xor",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0014932080000000097,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.xor",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014642910000000064,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.xor",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014624999999999916,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.shl",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.00144962500000001,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.shl",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014793339999999988,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.shl",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014326250000000068,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.shr_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.001421167000000001,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.shr_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014487080000000069,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.shr_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014147500000000063,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.shr_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.001448625000000009,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.shr_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014305000000000012,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.shr_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014238749999999911,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.rotl",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0015285409999999944,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.rotl",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.00146362500000001,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.rotl",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.001473791000000002,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.rotr",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0014440829999999988,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.rotr",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014729170000000041,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.rotr",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.001413290999999997,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.eq",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.001429249999999993,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.eq",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014464170000000054,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.eq",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.001435167000000001,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.ne",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0018929589999999996,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.ne",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014302080000000023,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.ne",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014415830000000102,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.lt_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0014802919999999942,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.lt_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.001440542000000003,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.lt_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014638339999999972,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.lt_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0014234579999999886,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.lt_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0013997500000000052,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.lt_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014330830000000017,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.gt_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.001416500000000001,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.gt_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014495419999999981,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.gt_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014528749999999924,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.gt_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0014527500000000027,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.gt_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014093749999999905,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.gt_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014088750000000039,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.le_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0014347919999999903,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.le_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.001396833,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.le_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014586659999999974,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.le_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0014344999999999913,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.le_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.001409125000000011,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.le_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014405000000000112,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.ge_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0014128330000000022,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.ge_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014159170000000165,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.ge_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014225419999999989,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.ge_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0014929579999999887,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.ge_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.001464708000000009,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.ge_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.001425624999999986,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.clz",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 532,
+      "seconds": 0.0018102919999999911,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.clz",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 551,
+      "seconds": 0.0014575410000000066,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.clz",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 549,
+      "seconds": 0.0014565829999999835,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.ctz",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 532,
+      "seconds": 0.0014022090000000154,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.ctz",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 551,
+      "seconds": 0.0014335840000000155,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.ctz",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 549,
+      "seconds": 0.001431167000000011,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.popcnt",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 532,
+      "seconds": 0.0014049999999999896,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.popcnt",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 551,
+      "seconds": 0.0014409999999999978,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.popcnt",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 549,
+      "seconds": 0.0014062079999999921,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.eqz",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 519,
+      "seconds": 0.0013802919999999774,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.eqz",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 538,
+      "seconds": 0.0014179589999999964,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.eqz",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 536,
+      "seconds": 0.001395333999999998,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.add",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 623,
+      "seconds": 0.001537458999999991,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.add",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 627,
+      "seconds": 0.0014397089999999835,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.add",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 627,
+      "seconds": 0.0014924169999999959,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.sub",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 623,
+      "seconds": 0.0014356670000000016,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.sub",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 627,
+      "seconds": 0.0014583340000000056,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.sub",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 627,
+      "seconds": 0.0014491249999999956,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.mul",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 623,
+      "seconds": 0.0014348329999999965,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.mul",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 627,
+      "seconds": 0.001546624999999996,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.mul",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 627,
+      "seconds": 0.001454208999999984,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.div_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 629,
+      "seconds": 0.001472374999999998,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.div_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 633,
+      "seconds": 0.0015027920000000028,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.div_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 633,
+      "seconds": 0.00145516599999998,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.div_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 629,
+      "seconds": 0.0015248750000000089,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.div_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 633,
+      "seconds": 0.0015230420000000022,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.div_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 633,
+      "seconds": 0.0015471249999999825,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.rem_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 629,
+      "seconds": 0.001850207999999992,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.rem_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 633,
+      "seconds": 0.001484832999999991,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.rem_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 633,
+      "seconds": 0.0014839999999999853,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.rem_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 629,
+      "seconds": 0.0014860829999999992,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.rem_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 633,
+      "seconds": 0.001495667000000006,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.rem_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 633,
+      "seconds": 0.001455291999999997,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.and",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 623,
+      "seconds": 0.0014469589999999977,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.and",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 627,
+      "seconds": 0.001456333000000004,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.and",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 627,
+      "seconds": 0.001454707999999999,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.or",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 623,
+      "seconds": 0.00147383299999998,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.or",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 627,
+      "seconds": 0.001457291999999999,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.or",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 627,
+      "seconds": 0.0014695409999999909,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.xor",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 623,
+      "seconds": 0.0014851250000000038,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.xor",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 627,
+      "seconds": 0.0014529580000000042,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.xor",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 627,
+      "seconds": 0.0014980830000000112,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.shl",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 623,
+      "seconds": 0.0014374169999999964,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.shl",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 627,
+      "seconds": 0.0014792919999999932,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.shl",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 627,
+      "seconds": 0.0014934169999999969,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.shr_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 623,
+      "seconds": 0.0014594169999999906,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.shr_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 627,
+      "seconds": 0.0014987919999999988,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.shr_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 627,
+      "seconds": 0.0014556669999999938,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.shr_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 623,
+      "seconds": 0.0014830839999999956,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.shr_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 627,
+      "seconds": 0.0014628750000000024,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.shr_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 627,
+      "seconds": 0.0014491660000000017,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.rotl",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 623,
+      "seconds": 0.0014425839999999968,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.rotl",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 627,
+      "seconds": 0.001431332999999979,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.rotl",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 627,
+      "seconds": 0.0019451659999999982,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.rotr",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 623,
+      "seconds": 0.0014833329999999756,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.rotr",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 627,
+      "seconds": 0.0015620000000000078,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.rotr",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 627,
+      "seconds": 0.0014977079999999865,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.eq",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0015597920000000043,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.eq",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014905420000000114,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.eq",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.001443291999999985,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.ne",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0014727079999999892,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.ne",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014491249999999956,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.ne",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.001504333999999996,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.lt_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0014488749999999884,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.lt_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014280419999999905,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.lt_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014717090000000155,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.lt_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0014169159999999903,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.lt_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014072089999999926,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.lt_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014607500000000107,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.gt_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0014395419999999881,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.gt_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.001471791,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.gt_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014176669999999836,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.gt_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0014965830000000235,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.gt_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.001421624999999982,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.gt_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.001428792000000012,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.le_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0014492090000000069,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.le_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014907919999999908,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.le_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014808330000000147,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.le_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0014314999999999745,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.le_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.001426040999999989,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.le_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.001935708000000036,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.ge_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.001441749999999964,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.ge_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0015049160000000228,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.ge_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.001472958999999996,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.ge_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0014315409999999806,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.ge_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014268749999999941,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.ge_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 585,
+      "seconds": 0.0014215410000000261,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.clz",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 574,
+      "seconds": 0.0014202090000000056,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.clz",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 593,
+      "seconds": 0.0014410839999999814,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.clz",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 591,
+      "seconds": 0.0015114589999999928,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.ctz",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 574,
+      "seconds": 0.0014181249999999923,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.ctz",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 593,
+      "seconds": 0.0014481670000000002,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.ctz",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 591,
+      "seconds": 0.0014418749999999814,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.popcnt",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 574,
+      "seconds": 0.0013938340000000382,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.popcnt",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 593,
+      "seconds": 0.001462999999999992,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.popcnt",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 591,
+      "seconds": 0.0014728749999999846,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.eqz",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 526,
+      "seconds": 0.001394833999999956,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.eqz",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 545,
+      "seconds": 0.0013827499999999882,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.eqz",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 543,
+      "seconds": 0.0013826660000000324,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.add",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 638,
+      "seconds": 0.0015093339999999733,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.add",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 642,
+      "seconds": 0.0014468750000000141,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.add",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 642,
+      "seconds": 0.0015003749999999982,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.sub",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 638,
+      "seconds": 0.001465124999999956,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.sub",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 642,
+      "seconds": 0.0015000000000000013,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.sub",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 642,
+      "seconds": 0.001503000000000032,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.mul",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 638,
+      "seconds": 0.0014624999999999777,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.mul",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 642,
+      "seconds": 0.0019482920000000181,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.mul",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 642,
+      "seconds": 0.0014661670000000182,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.div",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 638,
+      "seconds": 0.0014672079999999976,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.div",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 642,
+      "seconds": 0.0015199170000000373,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.div",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 642,
+      "seconds": 0.0015212920000000074,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.min",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 638,
+      "seconds": 0.0015245000000000397,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.min",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 642,
+      "seconds": 0.0014754160000000072,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.min",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 642,
+      "seconds": 0.0015122919999999707,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.max",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 638,
+      "seconds": 0.0015956659999999956,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.max",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 642,
+      "seconds": 0.0014826250000000152,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.max",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 642,
+      "seconds": 0.0014897079999999785,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.copysign",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 638,
+      "seconds": 0.0014555409999999491,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.copysign",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 642,
+      "seconds": 0.0015130839999999979,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.copysign",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 642,
+      "seconds": 0.0014668749999999786,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.eq",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 593,
+      "seconds": 0.0014717920000000273,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.eq",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 597,
+      "seconds": 0.0014918340000000252,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.eq",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 597,
+      "seconds": 0.0014660000000000228,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.ne",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 593,
+      "seconds": 0.0014815000000000245,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.ne",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 597,
+      "seconds": 0.0014433750000000245,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.ne",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 597,
+      "seconds": 0.0014662919999999802,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.lt",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 593,
+      "seconds": 0.001458082999999999,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.lt",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 597,
+      "seconds": 0.0014670829999999802,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.lt",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 597,
+      "seconds": 0.0014714170000000304,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.gt",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 593,
+      "seconds": 0.0014448330000000342,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.gt",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 597,
+      "seconds": 0.001472917000000018,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.gt",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 597,
+      "seconds": 0.0014250829999999937,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.le",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 593,
+      "seconds": 0.0014474580000000126,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.le",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 597,
+      "seconds": 0.0019363750000000457,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.le",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 597,
+      "seconds": 0.0014299589999999807,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.ge",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 593,
+      "seconds": 0.00146962500000003,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.ge",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 597,
+      "seconds": 0.001515624999999965,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.ge",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 597,
+      "seconds": 0.0014799580000000034,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.abs",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 580,
+      "seconds": 0.0014541249999999728,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.abs",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 599,
+      "seconds": 0.0014313750000000125,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.abs",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 597,
+      "seconds": 0.0014957079999999845,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.neg",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 580,
+      "seconds": 0.00143679200000002,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.neg",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 599,
+      "seconds": 0.0014338340000000227,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.neg",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 597,
+      "seconds": 0.001493582999999965,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.ceil",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 580,
+      "seconds": 0.0014398340000000287,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.ceil",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 599,
+      "seconds": 0.0014779589999999732,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.ceil",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 597,
+      "seconds": 0.0014480000000000048,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.floor",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 580,
+      "seconds": 0.0015008340000000064,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.floor",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 599,
+      "seconds": 0.001443167000000023,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.floor",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 597,
+      "seconds": 0.0014297500000000074,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.trunc",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 580,
+      "seconds": 0.0014783340000000256,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.trunc",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 599,
+      "seconds": 0.0014659169999999833,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.trunc",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 597,
+      "seconds": 0.0014711669999999955,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.nearest",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 580,
+      "seconds": 0.00142962499999999,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.nearest",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 599,
+      "seconds": 0.0014341250000000083,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.nearest",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 597,
+      "seconds": 0.0014458749999999854,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.sqrt",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 580,
+      "seconds": 0.0014466670000000126,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.sqrt",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 599,
+      "seconds": 0.0014592089999999613,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.sqrt",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 597,
+      "seconds": 0.0014252079999999556,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.add",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 650,
+      "seconds": 0.0015317080000000205,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.add",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 654,
+      "seconds": 0.0019102919999999801,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.add",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 654,
+      "seconds": 0.0014622080000000204,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.sub",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 650,
+      "seconds": 0.0015240000000000253,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.sub",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 654,
+      "seconds": 0.0014934169999999969,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.sub",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 654,
+      "seconds": 0.0015032919999999894,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.mul",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 650,
+      "seconds": 0.0014504169999999816,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.mul",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 654,
+      "seconds": 0.0014600000000000168,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.mul",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 654,
+      "seconds": 0.0014592499999999675,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.div",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 650,
+      "seconds": 0.0014465830000000013,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.div",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 654,
+      "seconds": 0.0015036669999999863,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.div",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 654,
+      "seconds": 0.0015149159999999773,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.min",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 650,
+      "seconds": 0.001515582999999987,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.min",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 654,
+      "seconds": 0.001491375000000017,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.min",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 654,
+      "seconds": 0.0014888330000000227,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.max",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 650,
+      "seconds": 0.001507042000000014,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.max",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 654,
+      "seconds": 0.0014588329999999927,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.max",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 654,
+      "seconds": 0.0015486249999999702,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.copysign",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 650,
+      "seconds": 0.0014726660000000114,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.copysign",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 654,
+      "seconds": 0.0014888330000000227,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.copysign",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 654,
+      "seconds": 0.0014982080000000009,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.eq",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 601,
+      "seconds": 0.0014662500000000023,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.eq",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 605,
+      "seconds": 0.0015021249999999653,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.eq",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 605,
+      "seconds": 0.0014562499999999923,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.ne",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 601,
+      "seconds": 0.0014566670000000226,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.ne",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 605,
+      "seconds": 0.0014755420000000519,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.ne",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 605,
+      "seconds": 0.001457374999999983,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.lt",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 601,
+      "seconds": 0.0019509580000000026,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.lt",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 605,
+      "seconds": 0.0014500000000000068,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.lt",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 605,
+      "seconds": 0.0014438330000000055,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.gt",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 601,
+      "seconds": 0.0014682499999999488,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.gt",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 605,
+      "seconds": 0.0014647080000000368,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.gt",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 605,
+      "seconds": 0.0014528329999999867,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.le",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 601,
+      "seconds": 0.0015552910000000142,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.le",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 605,
+      "seconds": 0.0015236250000000284,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.le",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 605,
+      "seconds": 0.0014506670000000166,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.ge",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 601,
+      "seconds": 0.0014247500000000302,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.ge",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 605,
+      "seconds": 0.0015076250000000124,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.ge",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 605,
+      "seconds": 0.0014402500000000318,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.abs",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 588,
+      "seconds": 0.0014441660000000245,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.abs",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 607,
+      "seconds": 0.001419833000000037,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.abs",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 605,
+      "seconds": 0.0014148330000000042,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.neg",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 588,
+      "seconds": 0.0014165000000000427,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.neg",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 607,
+      "seconds": 0.0014186669999999846,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.neg",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 605,
+      "seconds": 0.0015169170000000065,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.ceil",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 588,
+      "seconds": 0.0014393340000000143,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.ceil",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 607,
+      "seconds": 0.0015004169999999761,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.ceil",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 605,
+      "seconds": 0.0014434580000000086,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.floor",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 588,
+      "seconds": 0.0014534999999999965,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.floor",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 607,
+      "seconds": 0.0014514159999999832,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.floor",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 605,
+      "seconds": 0.0014322090000000176,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.trunc",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 588,
+      "seconds": 0.0014751669999999995,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.trunc",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 607,
+      "seconds": 0.001448082999999989,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.trunc",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 605,
+      "seconds": 0.0014828330000000167,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.nearest",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 588,
+      "seconds": 0.0018384590000000145,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.nearest",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 607,
+      "seconds": 0.0014367919999999645,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.nearest",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 605,
+      "seconds": 0.00146099999999999,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.sqrt",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 588,
+      "seconds": 0.0014315420000000079,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.sqrt",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 607,
+      "seconds": 0.0014655829999999925,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.sqrt",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 605,
+      "seconds": 0.0014558330000000175,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.wrap_i64",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 532,
+      "seconds": 0.0014034579999999686,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.wrap_i64",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 551,
+      "seconds": 0.0014149999999999996,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.wrap_i64",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 549,
+      "seconds": 0.0014015409999999506,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.extend_i32_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 574,
+      "seconds": 0.0014543330000000299,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.extend_i32_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 593,
+      "seconds": 0.0014704580000000078,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.extend_i32_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 591,
+      "seconds": 0.0014756670000000138,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.extend_i32_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 574,
+      "seconds": 0.0014494170000000084,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.extend_i32_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 593,
+      "seconds": 0.0016019170000000083,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.extend_i32_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 591,
+      "seconds": 0.001491708000000036,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.extend8_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 532,
+      "seconds": 0.0014015840000000113,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.extend8_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 551,
+      "seconds": 0.0014279999999999848,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.extend8_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 549,
+      "seconds": 0.0014342079999999924,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.extend16_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 532,
+      "seconds": 0.0014511249999999976,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.extend16_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 551,
+      "seconds": 0.001428082999999969,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.extend16_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 549,
+      "seconds": 0.00141150000000001,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.extend8_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 574,
+      "seconds": 0.0014515829999999785,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.extend8_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 593,
+      "seconds": 0.0014267909999999828,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.extend8_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 591,
+      "seconds": 0.001422667000000044,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.extend16_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 574,
+      "seconds": 0.001455291999999997,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.extend16_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 593,
+      "seconds": 0.0014446660000000389,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.extend16_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 591,
+      "seconds": 0.002241082999999977,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.extend32_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 574,
+      "seconds": 0.0014903330000000103,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.extend32_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 593,
+      "seconds": 0.0014228330000000122,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.extend32_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 591,
+      "seconds": 0.0014216669999999598,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.demote_f64",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 584,
+      "seconds": 0.0014187499999999686,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.demote_f64",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 603,
+      "seconds": 0.0014803330000000003,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.demote_f64",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 601,
+      "seconds": 0.0014220830000000184,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.promote_f32",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 584,
+      "seconds": 0.0014110830000000352,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.promote_f32",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 603,
+      "seconds": 0.0013977499999999754,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.promote_f32",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 601,
+      "seconds": 0.0013835840000000488,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.reinterpret_f32",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 535,
+      "seconds": 0.001606083999999952,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.reinterpret_f32",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 554,
+      "seconds": 0.0014092499999999175,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.reinterpret_f32",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 552,
+      "seconds": 0.0014357080000000355,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.reinterpret_f64",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.001412208999999942,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.reinterpret_f64",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 600,
+      "seconds": 0.0014026249999999907,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.reinterpret_f64",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 598,
+      "seconds": 0.0014055000000000595,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.reinterpret_i32",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 577,
+      "seconds": 0.0013843330000000709,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.reinterpret_i32",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 596,
+      "seconds": 0.0015502500000000863,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.reinterpret_i32",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 594,
+      "seconds": 0.001455166999999924,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.reinterpret_i64",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0014123749999999102,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.reinterpret_i64",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 600,
+      "seconds": 0.0014303749999999837,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.reinterpret_i64",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 598,
+      "seconds": 0.001485625000000046,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.trunc_f32_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 535,
+      "seconds": 0.0014742500000000103,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.trunc_f32_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 554,
+      "seconds": 0.0014280420000000182,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.trunc_f32_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 552,
+      "seconds": 0.0014476249999999524,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.trunc_sat_f32_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 536,
+      "seconds": 0.0014126250000000562,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.trunc_sat_f32_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 555,
+      "seconds": 0.001391665999999958,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.trunc_sat_f32_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 553,
+      "seconds": 0.00196579100000005,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.trunc_f32_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 535,
+      "seconds": 0.001425125000000027,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.trunc_f32_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 554,
+      "seconds": 0.0014530830000000217,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.trunc_f32_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 552,
+      "seconds": 0.0014814169999999294,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.trunc_sat_f32_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 536,
+      "seconds": 0.001429125000000031,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.trunc_sat_f32_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 555,
+      "seconds": 0.0015928330000000157,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.trunc_sat_f32_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 553,
+      "seconds": 0.001482666999999993,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.trunc_f64_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 539,
+      "seconds": 0.001475250000000039,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.trunc_f64_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 558,
+      "seconds": 0.0014515420000000834,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.trunc_f64_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 556,
+      "seconds": 0.001439832999999946,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.trunc_sat_f64_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 540,
+      "seconds": 0.0014314579999999966,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.trunc_sat_f64_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 559,
+      "seconds": 0.0014009999999999856,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.trunc_sat_f64_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 557,
+      "seconds": 0.001445041999999952,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.trunc_f64_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 539,
+      "seconds": 0.001378041000000052,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.trunc_f64_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 558,
+      "seconds": 0.0014426250000000307,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.trunc_f64_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 556,
+      "seconds": 0.0014139590000000757,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.trunc_sat_f64_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 540,
+      "seconds": 0.0013877089999999592,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.trunc_sat_f64_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 559,
+      "seconds": 0.0016402500000000098,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.trunc_sat_f64_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 557,
+      "seconds": 0.0014508750000000736,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.trunc_f32_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 577,
+      "seconds": 0.0014713339999999908,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.trunc_f32_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 596,
+      "seconds": 0.0014511659999999482,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.trunc_f32_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 594,
+      "seconds": 0.0014395419999999604,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.trunc_sat_f32_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 578,
+      "seconds": 0.001443250000000007,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.trunc_sat_f32_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 597,
+      "seconds": 0.0014385829999999933,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.trunc_sat_f32_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 595,
+      "seconds": 0.0015089580000000602,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.trunc_f32_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 577,
+      "seconds": 0.0014103330000000414,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.trunc_f32_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 596,
+      "seconds": 0.0014546659999999934,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.trunc_f32_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 594,
+      "seconds": 0.0018658750000000168,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.trunc_sat_f32_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 578,
+      "seconds": 0.0015719579999999844,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.trunc_sat_f32_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 597,
+      "seconds": 0.001483582999999955,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.trunc_sat_f32_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 595,
+      "seconds": 0.0015040410000000115,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.trunc_f64_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0014837079999999725,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.trunc_f64_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 600,
+      "seconds": 0.001427832999999934,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.trunc_f64_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 598,
+      "seconds": 0.0014135830000000515,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.trunc_sat_f64_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 582,
+      "seconds": 0.0014255830000000635,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.trunc_sat_f64_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 601,
+      "seconds": 0.001421374999999947,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.trunc_sat_f64_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 599,
+      "seconds": 0.0014362920000000612,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.trunc_f64_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0014427080000000148,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.trunc_f64_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 600,
+      "seconds": 0.0014319580000000665,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.trunc_f64_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 598,
+      "seconds": 0.0015542090000000286,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.trunc_sat_f64_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 582,
+      "seconds": 0.0014408340000000575,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.trunc_sat_f64_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 601,
+      "seconds": 0.0014693340000000443,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.trunc_sat_f64_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 599,
+      "seconds": 0.0014227500000000282,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.convert_i32_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 577,
+      "seconds": 0.0014941249999999018,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.convert_i32_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 596,
+      "seconds": 0.001416541999999965,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.convert_i32_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 594,
+      "seconds": 0.0014210000000000056,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.convert_i32_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 577,
+      "seconds": 0.0014607910000000723,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.convert_i32_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 596,
+      "seconds": 0.0014138750000000089,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.convert_i32_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 594,
+      "seconds": 0.0014680000000000248,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.convert_i64_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 577,
+      "seconds": 0.0014085000000000347,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.convert_i64_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 596,
+      "seconds": 0.0014219589999999727,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.convert_i64_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 594,
+      "seconds": 0.0015296660000000406,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.convert_i64_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 577,
+      "seconds": 0.001429790999999958,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.convert_i64_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 596,
+      "seconds": 0.001965834000000055,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.convert_i64_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 594,
+      "seconds": 0.0014622920000000317,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.convert_i32_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0014575829999999845,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.convert_i32_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 600,
+      "seconds": 0.0014448750000000121,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.convert_i32_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 598,
+      "seconds": 0.0014688750000000361,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.convert_i32_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0014616669999999443,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.convert_i32_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 600,
+      "seconds": 0.0014064999999999772,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.convert_i32_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 598,
+      "seconds": 0.0014387089999999825,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.convert_i64_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.00139149999999999,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.convert_i64_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 600,
+      "seconds": 0.0015462080000000489,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.convert_i64_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 598,
+      "seconds": 0.0014578330000000195,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.convert_i64_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 581,
+      "seconds": 0.0014593339999999788,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.convert_i64_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 600,
+      "seconds": 0.0014758750000000154,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.convert_i64_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 598,
+      "seconds": 0.0014413329999999336,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.load",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 612,
+      "seconds": 0.0014493330000000526,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.load",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 604,
+      "seconds": 0.0014545409999999759,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.load",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 603,
+      "seconds": 0.0014349160000000083,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.load8_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 604,
+      "seconds": 0.0015141659999999835,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.load8_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 596,
+      "seconds": 0.0014707499999999651,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.load8_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 595,
+      "seconds": 0.0014853329999999776,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.load8_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 604,
+      "seconds": 0.0017289999999999806,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.load8_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 596,
+      "seconds": 0.0014717920000000273,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.load8_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 595,
+      "seconds": 0.0014591250000000056,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.load16_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 604,
+      "seconds": 0.001457291999999999,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.load16_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 596,
+      "seconds": 0.0014730829999999306,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.load16_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 595,
+      "seconds": 0.0014230419999999855,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.load16_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 604,
+      "seconds": 0.001421124999999912,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.load16_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 596,
+      "seconds": 0.001910999999999996,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.load16_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 595,
+      "seconds": 0.0014377499999999044,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.select",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 633,
+      "seconds": 0.0015045830000000038,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.select",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 624,
+      "seconds": 0.0014405840000000225,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.select",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 634,
+      "seconds": 0.0015744170000000501,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.load",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 661,
+      "seconds": 0.0015312920000000174,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.load",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 653,
+      "seconds": 0.0014977919999999978,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.load",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 652,
+      "seconds": 0.0015132500000000215,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.load8_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 646,
+      "seconds": 0.001505042000000012,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.load8_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 638,
+      "seconds": 0.0015317080000000205,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.load8_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 637,
+      "seconds": 0.001510334000000002,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.load8_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 646,
+      "seconds": 0.0015005829999999998,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.load8_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 638,
+      "seconds": 0.0014897919999999898,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.load8_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 637,
+      "seconds": 0.0014785830000000333,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.load16_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 646,
+      "seconds": 0.0015088750000000761,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.load16_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 638,
+      "seconds": 0.0016062919999999536,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.load16_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 637,
+      "seconds": 0.0015117499999999229,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.load16_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 646,
+      "seconds": 0.0015258329999999765,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.load16_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 638,
+      "seconds": 0.0015056659999999056,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.load16_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 637,
+      "seconds": 0.0015452910000000042,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.load32_s",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 646,
+      "seconds": 0.0015012079999999761,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.load32_s",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 638,
+      "seconds": 0.0015213329999999026,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.load32_s",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 637,
+      "seconds": 0.0015296670000000123,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.load32_u",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 646,
+      "seconds": 0.001477041999999984,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.load32_u",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 638,
+      "seconds": 0.0015153750000000965,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.load32_u",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 637,
+      "seconds": 0.0014755410000000246,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.select",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 675,
+      "seconds": 0.0022272920000000473,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.select",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 666,
+      "seconds": 0.0015236670000000618,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.select",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 676,
+      "seconds": 0.0015060000000000073,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.load",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 652,
+      "seconds": 0.0015572090000000038,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.load",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 644,
+      "seconds": 0.0015122499999999928,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.load",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 643,
+      "seconds": 0.0014892499999999975,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.select",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 684,
+      "seconds": 0.0015113340000000308,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.select",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 675,
+      "seconds": 0.0014825419999999756,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.select",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 685,
+      "seconds": 0.001515500000000003,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.load",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 660,
+      "seconds": 0.0014718340000000607,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.load",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 652,
+      "seconds": 0.001516209000000046,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.load",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 651,
+      "seconds": 0.001551916000000042,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.select",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 696,
+      "seconds": 0.0015673749999999265,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.select",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 687,
+      "seconds": 0.001502667000000013,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.select",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 697,
+      "seconds": 0.001530916999999965,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.typed_select",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 635,
+      "seconds": 0.0015137920000000138,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.typed_select",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 626,
+      "seconds": 0.0014670420000000295,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i32.typed_select",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 636,
+      "seconds": 0.0015490000000000226,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.typed_select",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 677,
+      "seconds": 0.0014885420000000371,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.typed_select",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 668,
+      "seconds": 0.0014817919999999818,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "i64.typed_select",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 678,
+      "seconds": 0.001485041999999992,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.typed_select",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 686,
+      "seconds": 0.0014663329999999863,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.typed_select",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 677,
+      "seconds": 0.0017175830000000225,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f32.typed_select",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 687,
+      "seconds": 0.0014930000000000776,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.typed_select",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 698,
+      "seconds": 0.0015246669999999796,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.typed_select",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 689,
+      "seconds": 0.001508541999999946,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "f64.typed_select",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 699,
+      "seconds": 0.0014841669999999807,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "br_if_function",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 570,
+      "seconds": 0.0019124169999999996,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "br_if_function",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 562,
+      "seconds": 0.0014108330000000002,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "br_if_function",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 561,
+      "seconds": 0.001476459000000041,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "br_function_stack_cleanup",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 398,
+      "seconds": 0.001354540999999987,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "br_function_stack_cleanup",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 373,
+      "seconds": 0.0013335839999999433,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "br_function_stack_cleanup",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 404,
+      "seconds": 0.0013603330000000469,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "block_result",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 636,
+      "seconds": 0.0015741249999999818,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "block_result",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 638,
+      "seconds": 0.001518916999999953,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "block_result",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 645,
+      "seconds": 0.0014430830000000672,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "block_stack_cleanup",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 521,
+      "seconds": 0.0014239169999999968,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "block_stack_cleanup",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 515,
+      "seconds": 0.0015107500000000051,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "block_stack_cleanup",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 522,
+      "seconds": 0.0014283750000000373,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "if_result",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 615,
+      "seconds": 0.001481292000000023,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "if_result",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 604,
+      "seconds": 0.0014456669999999283,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "if_result",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 601,
+      "seconds": 0.0014881669999999847,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "br_table",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 899,
+      "seconds": 0.001789708000000001,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "br_table",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 896,
+      "seconds": 0.0018017919999999688,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "br_table",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 924,
+      "seconds": 0.00200920800000004,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "br_table_value",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 734,
+      "seconds": 0.0016073340000000158,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "br_table_value",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 742,
+      "seconds": 0.0016285409999999834,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "br_table_value",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 741,
+      "seconds": 0.001611250000000064,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "call_import",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 546,
+      "seconds": 0.0015263330000000463,
+      "protectedFunctions": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "call_import",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 565,
+      "seconds": 0.001410583999999937,
+      "protectedFunctions": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "call_import",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 563,
+      "seconds": 0.0014907080000000628,
+      "protectedFunctions": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "call_indirect",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 671,
+      "seconds": 0.0015957500000000069,
+      "protectedFunctions": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "call_indirect",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 673,
+      "seconds": 0.001542999999999961,
+      "protectedFunctions": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "call_indirect",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 680,
+      "seconds": 0.0021112920000000424,
+      "protectedFunctions": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "multi_value",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 580,
+      "seconds": 0.0015714160000001032,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "multi_value",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 564,
+      "seconds": 0.0014360409999999435,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "multi_value",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 587,
+      "seconds": 0.0014087500000000697,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "mixed_call",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 842,
+      "seconds": 0.0016864170000000511,
+      "protectedFunctions": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "mixed_call",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 838,
+      "seconds": 0.0017066660000000233,
+      "protectedFunctions": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "mixed_call",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 834,
+      "seconds": 0.001643249999999985,
+      "protectedFunctions": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "memory_fill_copy",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 688,
+      "seconds": 0.0016742080000000659,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "memory_fill_copy",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 700,
+      "seconds": 0.0015442500000000248,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "memory_fill_copy",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 694,
+      "seconds": 0.0015592079999999786,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "memory_grow",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 533,
+      "seconds": 0.0013867090000000415,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "memory_grow",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 552,
+      "seconds": 0.0014252080000000111,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "memory_grow",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 550,
+      "seconds": 0.001435749999999958,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "memory_oob",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 542,
+      "seconds": 0.0013815409999999861,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "memory_oob",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 561,
+      "seconds": 0.0014029160000000873,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "memory_oob",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 559,
+      "seconds": 0.0014186250000000067,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "unreachable",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 362,
+      "seconds": 0.001349625000000021,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "unreachable",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 381,
+      "seconds": 0.0012932500000000235,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "unreachable",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 387,
+      "seconds": 0.0013010840000000634,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "no_global",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 538,
+      "seconds": 0.0014364169999999676,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "no_global",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 555,
+      "seconds": 0.001401708000000057,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "no_global",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 545,
+      "seconds": 0.0015538330000000045,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "no_memory",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 533,
+      "seconds": 0.0014275420000000594,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "no_memory",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 550,
+      "seconds": 0.001547833000000054,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "no_memory",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 540,
+      "seconds": 0.0014488339999999544,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "single_function",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 484,
+      "seconds": 0.0013301250000000708,
+      "protectedFunctions": [
+        0
+      ]
+    },
+    {
+      "name": "single_function",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 511,
+      "seconds": 0.001959665999999971,
+      "protectedFunctions": [
+        0
+      ]
+    },
+    {
+      "name": "single_function",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 497,
+      "seconds": 0.0013513750000000435,
+      "protectedFunctions": [
+        0
+      ]
+    },
+    {
+      "name": "start_data",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 650,
+      "seconds": 0.0015475419999999573,
+      "protectedFunctions": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "start_data",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 647,
+      "seconds": 0.001535249999999988,
+      "protectedFunctions": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "start_data",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 648,
+      "seconds": 0.0015207080000000373,
+      "protectedFunctions": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "passive_data",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 531,
+      "seconds": 0.001465624999999915,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "passive_data",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 519,
+      "seconds": 0.0014228750000000456,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "passive_data",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 532,
+      "seconds": 0.0014762919999999902,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "imported_global",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 391,
+      "seconds": 0.0014158749999999554,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "imported_global",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 410,
+      "seconds": 0.001307500000000017,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "imported_global",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 416,
+      "seconds": 0.001357457999999978,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "global_immediate_0b_i32",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 378,
+      "seconds": 0.0012782500000000363,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "global_immediate_0b_i32",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 397,
+      "seconds": 0.001367000000000007,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "global_immediate_0b_i32",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 403,
+      "seconds": 0.001293957999999984,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "global_immediate_0b_i64",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 424,
+      "seconds": 0.001325042000000054,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "global_immediate_0b_i64",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 443,
+      "seconds": 0.0013461249999999758,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "global_immediate_0b_i64",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 449,
+      "seconds": 0.0013801250000000653,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "global_immediate_0b_f32",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 430,
+      "seconds": 0.0013853329999999886,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "global_immediate_0b_f32",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 449,
+      "seconds": 0.0015075840000000618,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "global_immediate_0b_f32",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 455,
+      "seconds": 0.0018953750000000325,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "global_immediate_0b_f64",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 438,
+      "seconds": 0.002631249999999974,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "global_immediate_0b_f64",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 457,
+      "seconds": 0.0014840829999999139,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "global_immediate_0b_f64",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 463,
+      "seconds": 0.0015648750000000211,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "global_init_index_11",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 489,
+      "seconds": 0.0017220000000000013,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "global_init_index_11",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 508,
+      "seconds": 0.001662666999999951,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "global_init_index_11",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 514,
+      "seconds": 0.0014461249999999648,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "reject_dynamic_heap_marker",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": true,
+      "passed": true,
+      "rejection": "ValueError('Unsupported WASM nonconstant __heap_base initializer')"
+    },
+    {
+      "name": "reject_dynamic_heap_marker",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": true,
+      "passed": true,
+      "rejection": "ValueError('Unsupported WASM nonconstant __heap_base initializer')"
+    },
+    {
+      "name": "reject_dynamic_heap_marker",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": true,
+      "passed": true,
+      "rejection": "ValueError('Unsupported WASM nonconstant __heap_base initializer')"
+    },
+    {
+      "name": "imported_global_active_data",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 634,
+      "seconds": 0.001697124999999966,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "imported_global_active_data",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 628,
+      "seconds": 0.0015561250000000193,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "imported_global_active_data",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 632,
+      "seconds": 0.001516874999999973,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "imported_memory_active_data",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 533,
+      "seconds": 0.0015253339999999893,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "imported_memory_active_data",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 523,
+      "seconds": 0.0014161670000000237,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "imported_memory_active_data",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 532,
+      "seconds": 0.0014819590000000327,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "block_type_64",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 607,
+      "seconds": 0.0014396249999999444,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "block_type_64",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 615,
+      "seconds": 0.0015377500000000044,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "block_type_64",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 613,
+      "seconds": 0.0015958749999999133,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "block_type_128",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 803,
+      "seconds": 0.0016323330000000968,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "block_type_128",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 811,
+      "seconds": 0.0015640410000000715,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "block_type_128",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 809,
+      "seconds": 0.0015033750000000845,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "loop_stack_cleanup",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 754,
+      "seconds": 0.0017067089999999174,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "loop_stack_cleanup",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 753,
+      "seconds": 0.0016539590000000937,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "loop_stack_cleanup",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 753,
+      "seconds": 0.0015952080000000146,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "branch_stack_cleanup",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 521,
+      "seconds": 0.0014269579999999227,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "branch_stack_cleanup",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 515,
+      "seconds": 0.0013853329999999886,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "branch_stack_cleanup",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 522,
+      "seconds": 0.0014076669999999458,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "block_params_multi_results",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 701,
+      "seconds": 0.0015325409999999984,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "block_params_multi_results",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 701,
+      "seconds": 0.0015594159999999802,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "block_params_multi_results",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 686,
+      "seconds": 0.0016086669999999526,
+      "protectedFunctions": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "empty_selection",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 68,
+      "seconds": 0.00015925000000005518,
+      "protectedFunctions": []
+    },
+    {
+      "name": "empty_selection",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 68,
+      "seconds": 0.0001307500000000683,
+      "protectedFunctions": []
+    },
+    {
+      "name": "empty_selection",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": false,
+      "passed": true,
+      "bytes": 68,
+      "seconds": 0.00011574999999997004,
+      "protectedFunctions": []
+    },
+    {
+      "name": "reject_simd",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": true,
+      "passed": true,
+      "rejection": "ValueError('Unsupported WASM opcode 0xfd in function 0 at byte 0')"
+    },
+    {
+      "name": "reject_simd",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": true,
+      "passed": true,
+      "rejection": "ValueError('Unsupported WASM opcode 0xfd in function 0 at byte 0')"
+    },
+    {
+      "name": "reject_simd",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": true,
+      "passed": true,
+      "rejection": "ValueError('Unsupported WASM opcode 0xfd in function 0 at byte 0')"
+    },
+    {
+      "name": "reject_references",
+      "seed": 20261109,
+      "factor": 1,
+      "expectReject": true,
+      "passed": true,
+      "rejection": "ValueError('Unsupported WASM opcode 0xd0 in function 0 at byte 0')"
+    },
+    {
+      "name": "reject_references",
+      "seed": 20261110,
+      "factor": 1,
+      "expectReject": true,
+      "passed": true,
+      "rejection": "ValueError('Unsupported WASM opcode 0xd0 in function 0 at byte 0')"
+    },
+    {
+      "name": "reject_references",
+      "seed": 20261111,
+      "factor": 3,
+      "expectReject": true,
+      "passed": true,
+      "rejection": "ValueError('Unsupported WASM opcode 0xd0 in function 0 at byte 0')"
+    }
+  ]
+}

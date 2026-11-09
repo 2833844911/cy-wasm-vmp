@@ -3,6 +3,10 @@
 [中文](README.md) | **English**
 
 A powerful WebAssembly binary obfuscation and protection tool that safeguards WASM code through virtualization, control flow flattening, and data encryption techniques.
+## Sized frames and handler sharing
+
+Typed peak operand-stack sizing replaces fixed 1024-byte frames; checked arena allocation prevents caller-frame and bytecode overwrites within valid compiled programs. Stable module-wide sharing merges equivalent generic handlers while retaining configurable variants. Protected output size drops about 34% for Base64 and 16% for MD5 at the same protection scope; MD5 runtime is broadly unchanged. See [regressions and resource limits](bench/verification_frames/README.md), including post-trap instance disposal and the remaining memory-semantics limitations.
+
 ## Binary syntax verification
 
 76 official syntax suites, 1119 valid input modules, 2238 builds: all 2022 successful outputs pass WABT and V8, while 216 builds explicitly reject unsupported features. No invalid output remains in this corpus. Fixed start-function indexing with non-function imports and accidental deletion of global-initializer operand bytes. See the [syntax report and limits](bench/verification_syntax/README.md). Valid syntax does not establish runtime equivalence.

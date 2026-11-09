@@ -28,6 +28,8 @@ jobs:
           python3 bench/test_if_else.py
           node bench/test_compatibility.mjs /tmp/compatibility.json
           node bench/test_base64.mjs /tmp/base64.json
+          node bench/test_stack_frames.mjs /tmp/stack-frames.json
+          node bench/test_handler_sharing.mjs /tmp/handler-sharing.json
       - name: Rebuild MD5 with three seeds
         run: |
           python3 bench/protect_optimized.py --output-dir /tmp/vmp-md5

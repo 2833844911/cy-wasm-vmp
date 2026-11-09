@@ -1,0 +1,1088 @@
+{
+  "passed": true,
+  "source": {
+    "repository": "https://github.com/WebAssembly/testsuite",
+    "commit": "92a3d806c7d70f5b63f125e6155b8d76304509f1"
+  },
+  "scope": "Differential module/invoke commands only; invalid/malformed module assertions, register/linking and stack exhaustion are not conformance-tested.",
+  "suites": [
+    "i32",
+    "i64",
+    "f32",
+    "f64",
+    "conversions",
+    "local_get",
+    "local_set",
+    "unwind",
+    "return",
+    "func",
+    "int_exprs",
+    "float_exprs",
+    "endianness",
+    "store"
+  ],
+  "modules": 132,
+  "validatedModules": 132,
+  "rejectedModules": 0,
+  "behaviorFailures": 0,
+  "checks": 7592,
+  "intake": [],
+  "records": [
+    {
+      "name": "i32_0",
+      "suite": "i32",
+      "calls": 374,
+      "checks": 374,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "i64_0",
+      "suite": "i64",
+      "calls": 384,
+      "checks": 384,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "f32_0",
+      "suite": "f32",
+      "calls": 2500,
+      "checks": 2500,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "f64_0",
+      "suite": "f64",
+      "calls": 2500,
+      "checks": 2500,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "conversions_0",
+      "suite": "conversions",
+      "calls": 593,
+      "checks": 593,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "local_get_0",
+      "suite": "local_get",
+      "calls": 19,
+      "checks": 19,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "local_set_0",
+      "suite": "local_set",
+      "calls": 19,
+      "checks": 19,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "unwind_0",
+      "suite": "unwind",
+      "calls": 49,
+      "checks": 49,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "return_0",
+      "suite": "return",
+      "calls": 63,
+      "checks": 63,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "func_0",
+      "suite": "func",
+      "calls": 89,
+      "checks": 89,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "func_1",
+      "suite": "func",
+      "calls": 0,
+      "checks": 0,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "func_2",
+      "suite": "func",
+      "calls": 3,
+      "checks": 3,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "func_3",
+      "suite": "func",
+      "calls": 4,
+      "checks": 4,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "int_exprs_0",
+      "suite": "int_exprs",
+      "calls": 4,
+      "checks": 4,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "int_exprs_1",
+      "suite": "int_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "int_exprs_2",
+      "suite": "int_exprs",
+      "calls": 1,
+      "checks": 1,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "int_exprs_3",
+      "suite": "int_exprs",
+      "calls": 4,
+      "checks": 4,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "int_exprs_4",
+      "suite": "int_exprs",
+      "calls": 4,
+      "checks": 4,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "int_exprs_5",
+      "suite": "int_exprs",
+      "calls": 4,
+      "checks": 4,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "int_exprs_6",
+      "suite": "int_exprs",
+      "calls": 4,
+      "checks": 4,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "int_exprs_7",
+      "suite": "int_exprs",
+      "calls": 4,
+      "checks": 4,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "int_exprs_8",
+      "suite": "int_exprs",
+      "calls": 4,
+      "checks": 4,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "int_exprs_9",
+      "suite": "int_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "int_exprs_10",
+      "suite": "int_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "int_exprs_11",
+      "suite": "int_exprs",
+      "calls": 4,
+      "checks": 4,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "int_exprs_12",
+      "suite": "int_exprs",
+      "calls": 8,
+      "checks": 8,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "int_exprs_13",
+      "suite": "int_exprs",
+      "calls": 8,
+      "checks": 8,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "int_exprs_14",
+      "suite": "int_exprs",
+      "calls": 8,
+      "checks": 8,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "int_exprs_15",
+      "suite": "int_exprs",
+      "calls": 8,
+      "checks": 8,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "int_exprs_16",
+      "suite": "int_exprs",
+      "calls": 8,
+      "checks": 8,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "int_exprs_17",
+      "suite": "int_exprs",
+      "calls": 8,
+      "checks": 8,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "int_exprs_18",
+      "suite": "int_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_0",
+      "suite": "float_exprs",
+      "calls": 5,
+      "checks": 5,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_1",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_2",
+      "suite": "float_exprs",
+      "calls": 4,
+      "checks": 4,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_3",
+      "suite": "float_exprs",
+      "calls": 4,
+      "checks": 4,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_4",
+      "suite": "float_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_5",
+      "suite": "float_exprs",
+      "calls": 8,
+      "checks": 8,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_6",
+      "suite": "float_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_7",
+      "suite": "float_exprs",
+      "calls": 8,
+      "checks": 8,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_8",
+      "suite": "float_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_9",
+      "suite": "float_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_10",
+      "suite": "float_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_11",
+      "suite": "float_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_12",
+      "suite": "float_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_13",
+      "suite": "float_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_14",
+      "suite": "float_exprs",
+      "calls": 4,
+      "checks": 4,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_15",
+      "suite": "float_exprs",
+      "calls": 8,
+      "checks": 8,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_16",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_17",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_18",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_19",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_20",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_21",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_22",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_23",
+      "suite": "float_exprs",
+      "calls": 16,
+      "checks": 16,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_24",
+      "suite": "float_exprs",
+      "calls": 16,
+      "checks": 16,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_25",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_26",
+      "suite": "float_exprs",
+      "calls": 5,
+      "checks": 5,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_27",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_28",
+      "suite": "float_exprs",
+      "calls": 5,
+      "checks": 5,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_29",
+      "suite": "float_exprs",
+      "calls": 12,
+      "checks": 12,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_30",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_31",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_32",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_33",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_34",
+      "suite": "float_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_35",
+      "suite": "float_exprs",
+      "calls": 5,
+      "checks": 5,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_36",
+      "suite": "float_exprs",
+      "calls": 13,
+      "checks": 13,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_37",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_38",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_39",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_40",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_41",
+      "suite": "float_exprs",
+      "calls": 32,
+      "checks": 32,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_42",
+      "suite": "float_exprs",
+      "calls": 13,
+      "checks": 13,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_43",
+      "suite": "float_exprs",
+      "calls": 13,
+      "checks": 13,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_44",
+      "suite": "float_exprs",
+      "calls": 32,
+      "checks": 32,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_45",
+      "suite": "float_exprs",
+      "calls": 32,
+      "checks": 32,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_46",
+      "suite": "float_exprs",
+      "calls": 32,
+      "checks": 32,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_47",
+      "suite": "float_exprs",
+      "calls": 32,
+      "checks": 32,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_48",
+      "suite": "float_exprs",
+      "calls": 32,
+      "checks": 32,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_49",
+      "suite": "float_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_50",
+      "suite": "float_exprs",
+      "calls": 1,
+      "checks": 1,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_51",
+      "suite": "float_exprs",
+      "calls": 1,
+      "checks": 1,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_52",
+      "suite": "float_exprs",
+      "calls": 1,
+      "checks": 1,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_53",
+      "suite": "float_exprs",
+      "calls": 1,
+      "checks": 1,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_54",
+      "suite": "float_exprs",
+      "calls": 1,
+      "checks": 1,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_55",
+      "suite": "float_exprs",
+      "calls": 3,
+      "checks": 3,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_56",
+      "suite": "float_exprs",
+      "calls": 1,
+      "checks": 1,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_57",
+      "suite": "float_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_58",
+      "suite": "float_exprs",
+      "calls": 18,
+      "checks": 18,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_59",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_60",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_61",
+      "suite": "float_exprs",
+      "calls": 5,
+      "checks": 5,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_62",
+      "suite": "float_exprs",
+      "calls": 5,
+      "checks": 5,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_63",
+      "suite": "float_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_64",
+      "suite": "float_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_65",
+      "suite": "float_exprs",
+      "calls": 8,
+      "checks": 8,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_66",
+      "suite": "float_exprs",
+      "calls": 8,
+      "checks": 8,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_67",
+      "suite": "float_exprs",
+      "calls": 8,
+      "checks": 8,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_68",
+      "suite": "float_exprs",
+      "calls": 8,
+      "checks": 8,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_69",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_70",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_71",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_72",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_73",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_74",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_75",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_76",
+      "suite": "float_exprs",
+      "calls": 10,
+      "checks": 10,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_77",
+      "suite": "float_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_78",
+      "suite": "float_exprs",
+      "calls": 13,
+      "checks": 13,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_79",
+      "suite": "float_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_80",
+      "suite": "float_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_81",
+      "suite": "float_exprs",
+      "calls": 14,
+      "checks": 14,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_82",
+      "suite": "float_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_83",
+      "suite": "float_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_84",
+      "suite": "float_exprs",
+      "calls": 4,
+      "checks": 4,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_85",
+      "suite": "float_exprs",
+      "calls": 8,
+      "checks": 8,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_86",
+      "suite": "float_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_87",
+      "suite": "float_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_88",
+      "suite": "float_exprs",
+      "calls": 8,
+      "checks": 8,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_89",
+      "suite": "float_exprs",
+      "calls": 33,
+      "checks": 33,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_90",
+      "suite": "float_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_91",
+      "suite": "float_exprs",
+      "calls": 6,
+      "checks": 6,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_92",
+      "suite": "float_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_93",
+      "suite": "float_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_94",
+      "suite": "float_exprs",
+      "calls": 12,
+      "checks": 12,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_95",
+      "suite": "float_exprs",
+      "calls": 1,
+      "checks": 1,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_96",
+      "suite": "float_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "float_exprs_97",
+      "suite": "float_exprs",
+      "calls": 2,
+      "checks": 2,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "endianness_0",
+      "suite": "endianness",
+      "calls": 68,
+      "checks": 68,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "store_0",
+      "suite": "store",
+      "calls": 9,
+      "checks": 9,
+      "failures": [],
+      "passed": true
+    }
+  ]
+}

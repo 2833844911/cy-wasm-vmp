@@ -28,6 +28,10 @@ for job in jobs:
             assert all(repr(processor.function_codes[i]['code']) != before[i] for i in expected), 'Selected function was not protected'
         results.append({'name': job['name'], 'seed': job['seed'], 'passed': True,
                         'protectedFunctions': processor.protected_function_indices,
+                        'frameSizes': getattr(processor, 'vmp_frame_sizes', {}),
+                        'stackFloor': getattr(processor, 'vmp_stack_floor', None),
+                        'stackCapacity': getattr(processor, 'vmp_stack_capacity', None),
+                        'stackTop': getattr(processor, 'vmp_stack_top', None),
                         'seconds': time.perf_counter() - started})
     except Exception as exc:
         results.append({'name': job['name'], 'seed': job['seed'], 'passed': False,

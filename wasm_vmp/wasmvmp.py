@@ -1,6 +1,7 @@
 from operator import index
 
 from .analyzer import WasmAnalyzer
+from .stack_frames import operand_frame_bytes
 from .utils import (
     add_instr, pack_op, write_leb128_unsigned, write_leb128_signed,
     read_leb128_unsigned, read_leb128_signed, get_opcode_name
@@ -9,6 +10,7 @@ import random
 from .block_definitions import define_instruction_blocks
 from .control_flow_flattener import build_bst_dispatch
 from .dispatch import build_table_dispatch, build_local_dispatch
+from .handler_dedup import HandlerDeduplicator
 from .opaque_utils import generate_obfuscated_constant, generate_always_true_check, generate_fake_vmp_block
 
 off = 0
@@ -44,6 +46,10 @@ class WasmVMP:
         self.vmp_fun['signature']['params'].append('i32')
         self.return_idx = self.bytecode_offset_idx +1
         self.vmp_fun['signature']['params'].append('i32')
+        self.frame_size_idx = len(self.vmp_fun['signature']['params'])
+        self.vmp_fun['signature']['params'].append('i32')
+        self.max_frame_size = 16
+        self.frame_sizes = {}
         len_cans = len(self.vmp_fun['signature']['params'])
 
 
@@ -194,22 +200,32 @@ class WasmVMP:
 
 
 
-        # [Stack Allocation]
-        # [Stack Allocation]
+        # Frames grow down; each function passes its typed operand-stack peak.
         if self.sp_global_idx is not None:
-            # duizhangmem = global.get(sp) - 1024
-            new_code.append(add_instr(0x23, pack_op(self.sp_global_idx)))
-            new_code.append(add_instr(0x22, pack_op(self.saved_sp)))  # local.tee saved_sp (Save Original SP)
-            
-            new_code.append(add_instr(0x41, pack_op(1024)))
-            new_code.append(add_instr(0x6B))  # i32.sub
-            new_code.append(add_instr(0x22, pack_op(duizhangmem)))  # local.tee duizhangmem
-            
-            new_code.append(add_instr(0x24, pack_op(self.sp_global_idx)))  # global.set sp (Update Global SP to New SP)
+            floor_idx = getattr(self.codec, 'vmp_stack_floor_global_idx', None)
+            new_code.extend([
+                add_instr(0x23, pack_op(self.sp_global_idx)),
+                add_instr(0x21, pack_op(self.saved_sp)),
+            ])
+            if floor_idx is not None:
+                # Check before subtraction or mutation, so unsigned underflow
+                # cannot put a frame into bytecode or another caller's frame.
+                new_code.extend([
+                    add_instr(0x20, pack_op(self.saved_sp)),
+                    add_instr(0x23, pack_op(floor_idx)),
+                    add_instr(0x20, pack_op(self.frame_size_idx)),
+                    add_instr(0x6A), add_instr(0x49),
+                    add_instr(0x04, 0x40), add_instr(0x00), add_instr(0x0B),
+                ])
+            new_code.extend([
+                add_instr(0x20, pack_op(self.saved_sp)),
+                add_instr(0x20, pack_op(self.frame_size_idx)),
+                add_instr(0x6B), add_instr(0x22, pack_op(duizhangmem)),
+                add_instr(0x24, pack_op(self.sp_global_idx)),
+            ])
         else:
-            # Fallback
-            new_code.append(add_instr(0x41, pack_op(1024 * 6)))  # 0x41 i32.const 内存地址
-            new_code.append(add_instr(0x21, pack_op(duizhangmem)))  # 0x21 local.set local
+            new_code.append(add_instr(0x41, pack_op(1024 * 6)))
+            new_code.append(add_instr(0x21, pack_op(duizhangmem)))
 
         new_code.append(add_instr(0x41, pack_op(0)))  # 0x41 i32.const idx
         new_code.append(add_instr(0x21, pack_op(duizhangmem_idx)))  # 0x21 local.set local
@@ -350,6 +366,8 @@ class WasmVMP:
         jc_par = len(target_func['signature']['params'])
         this_fun.append(add_instr(0x41, pack_op(bytecode_offset)))
         this_fun.append('return') # 本来是return
+        frame_size_instruction = add_instr(0x41, pack_op(0))
+        this_fun.append(frame_size_instruction)
         this_fun.append(add_instr(0x10, pack_op(self.codec.imported_func_count + self.vmp_fun['index'])))
 
         locals_params = {'i32': 0, 'i64': 0, 'f32': 0, 'f64': 0}
@@ -520,6 +538,10 @@ class WasmVMP:
         # print(target_func['signature']['params'])
         self.wasmAst = self.analyzer.analyze_wasm_ast(code_list, locals_types=locals_types,
                                                       initial_stack=initial_stack, locals_yingshe=locals_yingshe)
+        frame_size = operand_frame_bytes(self.wasmAst, target_func['signature']['results'])
+        self.frame_sizes[self.codec.imported_func_count + target_func['index']] = frame_size
+        self.max_frame_size = max(self.max_frame_size, frame_size)
+        frame_size_instruction[:] = add_instr(0x41, pack_op(frame_size))
 
 
         this_fun.append(add_instr(0x0B))
@@ -1033,6 +1055,9 @@ class WasmVMP:
                         self.putongcodeInfo[key] = [this_instr_id]
                     else:
                         self.putongcodeInfo[key].append(this_instr_id)
+                    if not hasattr(self, 'generic_handler_dedup'):
+                        self.generic_handler_dedup = HandlerDeduplicator(self.instruction_expansion_factor)
+                    self.generic_handler_dedup.register(key, this_instr_id)
 
                     # 5. 处理返回值
                     # 5. 处理返回值 (Result Handling)
@@ -1211,29 +1236,11 @@ class WasmVMP:
         for instruction, target_id in branch_fixups:
             instruction[2][0]['val'] = id_to_mem_idx[target_id] * 4
 
-        # 把一样的指令合并
-        zbhebing = {}
-        # needdel = [] # Unused
-        
-        # for k, v in self.putongcodeInfo.items():
-        #     # [Instruction Expansion]
-        #     # Instead of merging ALL into one (old logic), we keep up to 'instruction_expansion_factor' distinct blocks.
-        #     # Example: If factor=5 and we have 10 identical instructions (IDs), we keep 5 separate blocks
-        #     # and distribute the 10 usages among these 5 randomly.
-        #
-        #     # 1. Shuffle to ensure we don't just keep the first ones by control flow order
-        #     shuffled_ids = list(v)
-        #     random.shuffle(shuffled_ids)
-        #
-        #     # 2. Select Keepers
-        #     count_to_keep = max(1, min(len(shuffled_ids), self.instruction_expansion_factor))
-        #     keepers = shuffled_ids[:count_to_keep]
-        #     discards = shuffled_ids[count_to_keep:]
-        #
-        #     # 3. Map Discards to Keepers
-        #     for d in discards:
-        #         target = random.choice(keepers)
-        #         zbhebing[d] = target
+        # Equivalent generic instructions still occupy one bytecode word each,
+        # so aliasing handlers preserves every previously calculated branch
+        # offset. Representatives remain stable across all module functions.
+        dedup = getattr(self, 'generic_handler_dedup', None)
+        zbhebing = dedup.aliases if dedup is not None else {}
 
 
         # --- Pass 2: Generate Bytecode using Mappings ---

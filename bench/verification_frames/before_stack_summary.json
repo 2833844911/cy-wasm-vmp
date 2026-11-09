@@ -1,0 +1,301 @@
+{
+  "fixtures": 20,
+  "builds": 60,
+  "failedBuilds": 42,
+  "failures": [
+    {
+      "name": "child_i32_257",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n0 !== 7\n"
+    },
+    {
+      "name": "child_i32_257",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n0 !== 7\n"
+    },
+    {
+      "name": "child_i32_257",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n0 !== 7\n"
+    },
+    {
+      "name": "child_i32_300",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n0 !== 7\n"
+    },
+    {
+      "name": "child_i32_300",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n0 !== 7\n"
+    },
+    {
+      "name": "child_i32_300",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n0 !== 7\n"
+    },
+    {
+      "name": "child_i32_2048",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n0 !== 7\n"
+    },
+    {
+      "name": "child_i32_2048",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n0 !== 7\n"
+    },
+    {
+      "name": "child_i32_2048",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n0 !== 7\n"
+    },
+    {
+      "name": "child_i64_129",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ 0n\n- 1234567890123n\n"
+    },
+    {
+      "name": "child_i64_129",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ 0n\n- 1234567890123n\n"
+    },
+    {
+      "name": "child_i64_129",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ 0n\n- 1234567890123n\n"
+    },
+    {
+      "name": "child_i64_300",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ 0n\n- 1234567890123n\n"
+    },
+    {
+      "name": "child_i64_300",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ 0n\n- 1234567890123n\n"
+    },
+    {
+      "name": "child_i64_300",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ 0n\n- 1234567890123n\n"
+    },
+    {
+      "name": "child_i64_1024",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ 0n\n- 1234567890123n\n"
+    },
+    {
+      "name": "child_i64_1024",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ 0n\n- 1234567890123n\n"
+    },
+    {
+      "name": "child_i64_1024",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ 0n\n- 1234567890123n\n"
+    },
+    {
+      "name": "child_f32_257",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n0 !== 7.25\n"
+    },
+    {
+      "name": "child_f32_257",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n0 !== 7.25\n"
+    },
+    {
+      "name": "child_f32_257",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n0 !== 7.25\n"
+    },
+    {
+      "name": "child_f32_300",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n0 !== 7.25\n"
+    },
+    {
+      "name": "child_f32_300",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n0 !== 7.25\n"
+    },
+    {
+      "name": "child_f32_300",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n0 !== 7.25\n"
+    },
+    {
+      "name": "child_f64_129",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n0 !== -9.5\n"
+    },
+    {
+      "name": "child_f64_129",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n0 !== -9.5\n"
+    },
+    {
+      "name": "child_f64_129",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n0 !== -9.5\n"
+    },
+    {
+      "name": "child_f64_300",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n0 !== -9.5\n"
+    },
+    {
+      "name": "child_f64_300",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n0 !== -9.5\n"
+    },
+    {
+      "name": "child_f64_300",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n0 !== -9.5\n"
+    },
+    {
+      "name": "mixed_multivalue_call",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n+   0,\n+   0n,\n+   0,\n+   0\n-   7,\n-   9876543210123n,\n-   -2.25,\n-   19.5\n  ]\n"
+    },
+    {
+      "name": "mixed_multivalue_call",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n+   0,\n+   0n,\n+   0,\n+   0\n-   7,\n-   9876543210123n,\n-   -2.25,\n-   19.5\n  ]\n"
+    },
+    {
+      "name": "mixed_multivalue_call",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n+   0,\n+   0n,\n+   0,\n+   0\n-   7,\n-   9876543210123n,\n-   -2.25,\n-   19.5\n  ]\n"
+    },
+    {
+      "name": "deep_caller_live_values",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n0 !== 7\n"
+    },
+    {
+      "name": "deep_caller_live_values",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n0 !== 7\n"
+    },
+    {
+      "name": "deep_caller_live_values",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n0 !== 7\n"
+    },
+    {
+      "name": "recursive_deep_stack",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n8 !== 15\n"
+    },
+    {
+      "name": "recursive_deep_stack",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n8 !== 15\n"
+    },
+    {
+      "name": "recursive_deep_stack",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n8 !== 15\n"
+    },
+    {
+      "name": "branch_peak_stack",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n0 !== 7\n"
+    },
+    {
+      "name": "branch_peak_stack",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n0 !== 7\n"
+    },
+    {
+      "name": "branch_peak_stack",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n\n0 !== 7\n"
+    }
+  ]
+}

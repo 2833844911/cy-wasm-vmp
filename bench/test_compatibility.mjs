@@ -94,6 +94,9 @@ for(const [kind,value] of [['i32','11'],['i64','11'],['f32','0x1p-105'],['f64','
 add('global_init_index_11', '(func (export "run") (result i32) global.get 12)', [[]],
     {global:false,support:Array.from({length:12},(_,i)=>`(import "env" "g" (global $g${i} i32))`).join(' ')+ ' (global i32 (global.get $g11))'});
 
+add('reject_dynamic_heap_marker', '(func (export "run") (result i32) i32.const 7)', [[]],
+    {global:false,expectReject:true,support:'(import "env" "g" (global $base i32)) (global (export "__heap_base") i32 (global.get $base))'});
+
 // Non-function imports must not shift the injected start function index.
 add('imported_global_active_data', '(func (export "run") (result i32) i32.const 0 i32.load global.get 0 i32.xor)', [[]],
     {support:'(import "env" "g" (global i32)) (data (i32.const 0) "abcd")'});

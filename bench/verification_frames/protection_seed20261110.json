@@ -1,0 +1,31 @@
+{
+  "repository": "2833844911/cy-wasm-vmp",
+  "base_commit": "ff0d110c7ec2dbeb63ecb11f3780731f3357fc1e",
+  "random_seed": 20261110,
+  "settings": {
+    "not_jeb": true,
+    "selected_functions": null,
+    "instruction_expansion_factor": 1
+  },
+  "local_changes": "Typed dynamic frames, bounded frame arena, stable module-wide generic handler sharing.",
+  "python_compatibility": "Unused symbol import removed from the library; no shim required.",
+  "protected_function_indices": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "frame_sizes": {
+    "0": 16,
+    "1": 16,
+    "2": 16,
+    "3": 16
+  },
+  "stack_floor": 10487776,
+  "stack_capacity": 1048576,
+  "note": "All original functions, including the final accessor, are protected.",
+  "protection_seconds": 0.0065825829999999995,
+  "baseline_bytes": 1152,
+  "protected_bytes": 4452,
+  "protected_sha256": "c1fabc2f39b2f7de67f9f47df7aaecf7104ab541d765a15327ffd0cd0d6210a8"
+}

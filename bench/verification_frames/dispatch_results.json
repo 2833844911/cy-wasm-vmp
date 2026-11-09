@@ -1,0 +1,47 @@
+{
+  "engine": "current project source",
+  "passed": true,
+  "passedSupportedScope": true,
+  "knownPreexistingFailureCount": 0,
+  "suites": [
+    {
+      "suite": "i32_control_memory_calls",
+      "passed": true,
+      "checks": 1368,
+      "failures": [],
+      "passedSupportedScope": true,
+      "knownPreexistingFailureCount": 0,
+      "protectionBytes": 2643
+    },
+    {
+      "suite": "i64",
+      "passed": true,
+      "checks": 240,
+      "failures": [],
+      "passedSupportedScope": true,
+      "knownPreexistingFailureCount": 0,
+      "protectionBytes": 1175
+    },
+    {
+      "suite": "f32",
+      "passed": true,
+      "checks": 240,
+      "failures": [],
+      "passedSupportedScope": true,
+      "knownPreexistingFailureCount": 0,
+      "protectionBytes": 1186
+    },
+    {
+      "suite": "f64",
+      "passed": true,
+      "checks": 240,
+      "failures": [],
+      "passedSupportedScope": true,
+      "knownPreexistingFailureCount": 0,
+      "protectionBytes": 1147
+    }
+  ],
+  "checks": 2088,
+  "scope": "Source-built control flow, direct/recursive calls, memory/global operations, i64/f32/f64 typed values, repeated calls. Not exhaustive for all WASM features.",
+  "historicalIssue": "Implicit-function br_if failed in the pre-v2 baseline. Current source must pass all checks; only explicit --allow-known-baseline-failures permits that historical failure."
+}

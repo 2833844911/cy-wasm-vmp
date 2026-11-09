@@ -1,0 +1,1092 @@
+{
+  "generatedAt": "2026-11-09T05:57:36.900Z",
+  "protectionBefore": {
+    "revision": "ff0d110c7ec2dbeb63ecb11f3780731f3357fc1e",
+    "settings": {
+      "selected_functions": [
+        0,
+        1,
+        2
+      ],
+      "not_jeb": true
+    }
+  },
+  "protectionOptimized": {
+    "revision": "frame/dedup source",
+    "settings": {
+      "selected_functions": [
+        0,
+        1,
+        2
+      ],
+      "not_jeb": true
+    }
+  },
+  "fixture": "Portable loop-based MD5 explicitly encoded as WASM by build_md5.py; md5.c is a source reference, not the compiler used. This benchmark does not cover arbitrary compiler outputs or all MD5 implementations.",
+  "environment": {
+    "node": "v24.19.0",
+    "v8": "13.6.233.17-node.51",
+    "platform": "darwin",
+    "arch": "arm64",
+    "osRelease": "25.6.0",
+    "cpu": "Apple M5",
+    "logicalCpus": 10
+  },
+  "scope": "Same freestanding WASM MD5: native, previous correctness-fixed VMP, optimized VMP. Repeated hashing of a prefilled input buffer, no host crypto, copying, or hexadecimal conversion in timed loop. Includes JavaScript-to-WASM function-call overhead. Node crypto is a correctness oracle only.",
+  "methodology": {
+    "targetMs": 120,
+    "samplesPerCase": 7,
+    "statistic": "median of per-batch microseconds/hash",
+    "order": "all six permutations of three variants, plus first permutation repeated",
+    "warmup": "at least 80 ms per variant/workload, then adaptive calibration",
+    "firstLoadCaveat": "Single observed in-process compile/instantiate duration per artifact; these numbers are not robust cold-start benchmarks and may be affected by runtime caches."
+  },
+  "artifacts": [
+    {
+      "name": "native_wasm",
+      "path": "/Users/ckp/Documents/Codex/2026-11-09/github-plugin-github-openai-curated-remote/work/cy-wasm-vmp/bench/md5.wasm",
+      "sizeBytes": 1152,
+      "sha256": "af6a5fd591919cabc96544f74b6662cae685e51331c3f66457c92295ba6a22e4",
+      "firstLoad": {
+        "compileMs": 0.15145899999999912,
+        "instantiateMs": 0.046041999999999916
+      }
+    },
+    {
+      "name": "correctness_fixed_vmp",
+      "path": "/Users/ckp/Documents/Codex/2026-11-09/github-plugin-github-openai-curated-remote/work/cy-wasm-vmp/bench/verification_frames/md5_baseline.wasm",
+      "sizeBytes": 5257,
+      "sha256": "847a82da654d563a63168ced6fa3658f0118e522842b06f6aec9cceb4d911fc1",
+      "firstLoad": {
+        "compileMs": 0.06875000000000142,
+        "instantiateMs": 0.43895900000000054
+      }
+    },
+    {
+      "name": "optimized_vmp",
+      "path": "/Users/ckp/Documents/Codex/2026-11-09/github-plugin-github-openai-curated-remote/work/cy-wasm-vmp/bench/verification_frames/md5_optimized.wasm",
+      "sizeBytes": 4413,
+      "sha256": "4244b3d54f29db937d3a65ef97275b47d281820123e5be07da295a55dbba2e97",
+      "firstLoad": {
+        "compileMs": 1.3790840000000024,
+        "instantiateMs": 0.07429099999999522
+      }
+    }
+  ],
+  "correctness": {
+    "passed": true,
+    "moduleHashChecks": 132,
+    "rfcVectors": 7,
+    "deterministicLengths": [
+      0,
+      1,
+      2,
+      3,
+      7,
+      15,
+      16,
+      31,
+      32,
+      54,
+      55,
+      56,
+      57,
+      63,
+      64,
+      65,
+      119,
+      120,
+      127,
+      128,
+      129,
+      255,
+      256,
+      257,
+      1023,
+      1024,
+      1025,
+      16384,
+      65535,
+      65536,
+      65,
+      56,
+      0,
+      3
+    ],
+    "utf8Cases": 3,
+    "oracle": "node:crypto MD5 plus RFC 1321 known results",
+    "scopeLimit": "Finite test set, not a proof of equivalence."
+  },
+  "cases": [
+    {
+      "label": "abc (3 B)",
+      "inputBytes": 3,
+      "expectedMd5": "900150983cd24fb0d6963f7d28e17f72",
+      "variants": [
+        {
+          "name": "native_wasm",
+          "iterations": 904462,
+          "warmIterations": 439691,
+          "samples": [
+            {
+              "round": 0,
+              "position": 0,
+              "iterations": 904462,
+              "elapsedMs": 118.32070800000008,
+              "usPerHash": 0.1308188823853297
+            },
+            {
+              "round": 1,
+              "position": 2,
+              "iterations": 904462,
+              "elapsedMs": 114.52408300000013,
+              "usPerHash": 0.12662122123428085
+            },
+            {
+              "round": 2,
+              "position": 2,
+              "iterations": 904462,
+              "elapsedMs": 117.48337500000002,
+              "usPerHash": 0.12989310219777064
+            },
+            {
+              "round": 3,
+              "position": 0,
+              "iterations": 904462,
+              "elapsedMs": 115.57408399999986,
+              "usPerHash": 0.12778213346718806
+            },
+            {
+              "round": 4,
+              "position": 1,
+              "iterations": 904462,
+              "elapsedMs": 115.43991600000004,
+              "usPerHash": 0.12763379334897434
+            },
+            {
+              "round": 5,
+              "position": 1,
+              "iterations": 904462,
+              "elapsedMs": 116.54308399999991,
+              "usPerHash": 0.12885348859321885
+            },
+            {
+              "round": 6,
+              "position": 0,
+              "iterations": 904462,
+              "elapsedMs": 114.66462499999989,
+              "usPerHash": 0.1267766086358519
+            }
+          ],
+          "medianUsPerHash": 0.12778213346718806,
+          "minUsPerHash": 0.12662122123428085,
+          "maxUsPerHash": 0.1308188823853297,
+          "hashesPerSecond": 7825820.189931172,
+          "bytesPerSecond": 23477460.569793515
+        },
+        {
+          "name": "correctness_fixed_vmp",
+          "iterations": 22504,
+          "warmIterations": 14495,
+          "samples": [
+            {
+              "round": 0,
+              "position": 1,
+              "iterations": 22504,
+              "elapsedMs": 116.24958400000003,
+              "usPerHash": 5.1657298258087465
+            },
+            {
+              "round": 1,
+              "position": 1,
+              "iterations": 22504,
+              "elapsedMs": 124.46366699999999,
+              "usPerHash": 5.530735291503732
+            },
+            {
+              "round": 2,
+              "position": 0,
+              "iterations": 22504,
+              "elapsedMs": 121.21862499999997,
+              "usPerHash": 5.386536837895484
+            },
+            {
+              "round": 3,
+              "position": 2,
+              "iterations": 22504,
+              "elapsedMs": 121.69841700000006,
+              "usPerHash": 5.407857136509068
+            },
+            {
+              "round": 4,
+              "position": 2,
+              "iterations": 22504,
+              "elapsedMs": 122.36291600000004,
+              "usPerHash": 5.437385175968719
+            },
+            {
+              "round": 5,
+              "position": 0,
+              "iterations": 22504,
+              "elapsedMs": 122.78495799999973,
+              "usPerHash": 5.456139264130809
+            },
+            {
+              "round": 6,
+              "position": 1,
+              "iterations": 22504,
+              "elapsedMs": 120.16070899999977,
+              "usPerHash": 5.339526706363303
+            }
+          ],
+          "medianUsPerHash": 5.407857136509068,
+          "minUsPerHash": 5.1657298258087465,
+          "maxUsPerHash": 5.530735291503732,
+          "hashesPerSecond": 184916.12754502788,
+          "bytesPerSecond": 554748.3826350836
+        },
+        {
+          "name": "optimized_vmp",
+          "iterations": 21507,
+          "warmIterations": 14723,
+          "samples": [
+            {
+              "round": 0,
+              "position": 2,
+              "iterations": 21507,
+              "elapsedMs": 115.93287499999997,
+              "usPerHash": 5.390471706886129
+            },
+            {
+              "round": 1,
+              "position": 0,
+              "iterations": 21507,
+              "elapsedMs": 118.61020899999994,
+              "usPerHash": 5.514958339145392
+            },
+            {
+              "round": 2,
+              "position": 1,
+              "iterations": 21507,
+              "elapsedMs": 113.54308300000002,
+              "usPerHash": 5.2793547682150015
+            },
+            {
+              "round": 3,
+              "position": 1,
+              "iterations": 21507,
+              "elapsedMs": 113.2499170000001,
+              "usPerHash": 5.265723578369838
+            },
+            {
+              "round": 4,
+              "position": 0,
+              "iterations": 21507,
+              "elapsedMs": 115.29541699999982,
+              "usPerHash": 5.360832147672842
+            },
+            {
+              "round": 5,
+              "position": 2,
+              "iterations": 21507,
+              "elapsedMs": 115.30633399999988,
+              "usPerHash": 5.361339749848881
+            },
+            {
+              "round": 6,
+              "position": 2,
+              "iterations": 21507,
+              "elapsedMs": 112.58166699999992,
+              "usPerHash": 5.234652299251403
+            }
+          ],
+          "medianUsPerHash": 5.360832147672842,
+          "minUsPerHash": 5.234652299251403,
+          "maxUsPerHash": 5.514958339145392,
+          "hashesPerSecond": 186538.20385592632,
+          "bytesPerSecond": 559614.611567779
+        }
+      ],
+      "speedupVsPreviousVmp": 1.0087719569538545,
+      "previousSlowdownVsNative": 42.32091756315604,
+      "optimizedSlowdownVsNative": 41.95290845609021,
+      "retainedThroughputPercent": 2.383624966184751
+    },
+    {
+      "label": "32 B",
+      "inputBytes": 32,
+      "expectedMd5": "6a859e6a90b3ac33272aae1c9051c043",
+      "variants": [
+        {
+          "name": "native_wasm",
+          "iterations": 893889,
+          "warmIterations": 445184,
+          "samples": [
+            {
+              "round": 0,
+              "position": 0,
+              "iterations": 893889,
+              "elapsedMs": 124.44075000000021,
+              "usPerHash": 0.13921275460375976
+            },
+            {
+              "round": 1,
+              "position": 2,
+              "iterations": 893889,
+              "elapsedMs": 118.70804199999975,
+              "usPerHash": 0.13279953327538402
+            },
+            {
+              "round": 2,
+              "position": 2,
+              "iterations": 893889,
+              "elapsedMs": 117.47062499999993,
+              "usPerHash": 0.13141522605155664
+            },
+            {
+              "round": 3,
+              "position": 0,
+              "iterations": 893889,
+              "elapsedMs": 119.13587499999994,
+              "usPerHash": 0.1332781531040207
+            },
+            {
+              "round": 4,
+              "position": 1,
+              "iterations": 893889,
+              "elapsedMs": 118.05870799999957,
+              "usPerHash": 0.13207311869818242
+            },
+            {
+              "round": 5,
+              "position": 1,
+              "iterations": 893889,
+              "elapsedMs": 119.38608300000033,
+              "usPerHash": 0.13355806257823996
+            },
+            {
+              "round": 6,
+              "position": 0,
+              "iterations": 893889,
+              "elapsedMs": 120.24837500000012,
+              "usPerHash": 0.13452271478897282
+            }
+          ],
+          "medianUsPerHash": 0.1332781531040207,
+          "minUsPerHash": 0.13141522605155664,
+          "maxUsPerHash": 0.13921275460375976,
+          "hashesPerSecond": 7503105.172980014,
+          "bytesPerSecond": 240099365.53536046
+        },
+        {
+          "name": "correctness_fixed_vmp",
+          "iterations": 19654,
+          "warmIterations": 13812,
+          "samples": [
+            {
+              "round": 0,
+              "position": 1,
+              "iterations": 19654,
+              "elapsedMs": 126.61666699999978,
+              "usPerHash": 6.4422848783962445
+            },
+            {
+              "round": 1,
+              "position": 1,
+              "iterations": 19654,
+              "elapsedMs": 112.6411250000001,
+              "usPerHash": 5.7312061158034036
+            },
+            {
+              "round": 2,
+              "position": 0,
+              "iterations": 19654,
+              "elapsedMs": 112.59345800000028,
+              "usPerHash": 5.728780807978033
+            },
+            {
+              "round": 3,
+              "position": 2,
+              "iterations": 19654,
+              "elapsedMs": 109.47883300000012,
+              "usPerHash": 5.570307978019748
+            },
+            {
+              "round": 4,
+              "position": 2,
+              "iterations": 19654,
+              "elapsedMs": 114.12545800000044,
+              "usPerHash": 5.806729317187363
+            },
+            {
+              "round": 5,
+              "position": 0,
+              "iterations": 19654,
+              "elapsedMs": 112.08295899999939,
+              "usPerHash": 5.7028065024931
+            },
+            {
+              "round": 6,
+              "position": 1,
+              "iterations": 19654,
+              "elapsedMs": 121.26737500000036,
+              "usPerHash": 6.170111682100353
+            }
+          ],
+          "medianUsPerHash": 5.7312061158034036,
+          "minUsPerHash": 5.570307978019748,
+          "maxUsPerHash": 6.4422848783962445,
+          "hashesPerSecond": 174483.34256249646,
+          "bytesPerSecond": 5583466.961999887
+        },
+        {
+          "name": "optimized_vmp",
+          "iterations": 18140,
+          "warmIterations": 12932,
+          "samples": [
+            {
+              "round": 0,
+              "position": 2,
+              "iterations": 18140,
+              "elapsedMs": 122.06645900000012,
+              "usPerHash": 6.729132249173104
+            },
+            {
+              "round": 1,
+              "position": 0,
+              "iterations": 18140,
+              "elapsedMs": 110.19849999999997,
+              "usPerHash": 6.074889746416757
+            },
+            {
+              "round": 2,
+              "position": 1,
+              "iterations": 18140,
+              "elapsedMs": 104.99583299999995,
+              "usPerHash": 5.78808340683572
+            },
+            {
+              "round": 3,
+              "position": 1,
+              "iterations": 18140,
+              "elapsedMs": 105.15995799999928,
+              "usPerHash": 5.797131091510435
+            },
+            {
+              "round": 4,
+              "position": 0,
+              "iterations": 18140,
+              "elapsedMs": 107.0903330000001,
+              "usPerHash": 5.903546471885342
+            },
+            {
+              "round": 5,
+              "position": 2,
+              "iterations": 18140,
+              "elapsedMs": 107.18633399999999,
+              "usPerHash": 5.908838699007717
+            },
+            {
+              "round": 6,
+              "position": 2,
+              "iterations": 18140,
+              "elapsedMs": 112.08466599999974,
+              "usPerHash": 6.1788680264608455
+            }
+          ],
+          "medianUsPerHash": 5.908838699007717,
+          "minUsPerHash": 5.78808340683572,
+          "maxUsPerHash": 6.729132249173104,
+          "hashesPerSecond": 169237.99259707867,
+          "bytesPerSecond": 5415615.7631065175
+        }
+      ],
+      "speedupVsPreviousVmp": 0.9699378181986684,
+      "previousSlowdownVsNative": 43.00184225489921,
+      "optimizedSlowdownVsNative": 44.3346382088293,
+      "retainedThroughputPercent": 2.2555727088370574
+    },
+    {
+      "label": "64 B",
+      "inputBytes": 64,
+      "expectedMd5": "ff944dbecedf4704f54af7b51aa6aba7",
+      "variants": [
+        {
+          "name": "native_wasm",
+          "iterations": 484319,
+          "warmIterations": 292906,
+          "samples": [
+            {
+              "round": 0,
+              "position": 0,
+              "iterations": 484319,
+              "elapsedMs": 107.82574999999997,
+              "usPerHash": 0.22263373933296024
+            },
+            {
+              "round": 1,
+              "position": 2,
+              "iterations": 484319,
+              "elapsedMs": 105.44404200000008,
+              "usPerHash": 0.21771609620931673
+            },
+            {
+              "round": 2,
+              "position": 2,
+              "iterations": 484319,
+              "elapsedMs": 105.76558300000033,
+              "usPerHash": 0.21837999954575463
+            },
+            {
+              "round": 3,
+              "position": 0,
+              "iterations": 484319,
+              "elapsedMs": 105.57566600000064,
+              "usPerHash": 0.21798786750055363
+            },
+            {
+              "round": 4,
+              "position": 1,
+              "iterations": 484319,
+              "elapsedMs": 105.98600000000079,
+              "usPerHash": 0.21883510661361785
+            },
+            {
+              "round": 5,
+              "position": 1,
+              "iterations": 484319,
+              "elapsedMs": 104.69845799999985,
+              "usPerHash": 0.21617664803569514
+            },
+            {
+              "round": 6,
+              "position": 0,
+              "iterations": 484319,
+              "elapsedMs": 104.61304199999995,
+              "usPerHash": 0.21600028493616802
+            }
+          ],
+          "medianUsPerHash": 0.21798786750055363,
+          "minUsPerHash": 0.21600028493616802,
+          "maxUsPerHash": 0.22263373933296024,
+          "hashesPerSecond": 4587411.26956279,
+          "bytesPerSecond": 293594321.2520186
+        },
+        {
+          "name": "correctness_fixed_vmp",
+          "iterations": 11009,
+          "warmIterations": 7355,
+          "samples": [
+            {
+              "round": 0,
+              "position": 1,
+              "iterations": 11009,
+              "elapsedMs": 106.45399999999972,
+              "usPerHash": 9.669724770642176
+            },
+            {
+              "round": 1,
+              "position": 1,
+              "iterations": 11009,
+              "elapsedMs": 109.36141700000007,
+              "usPerHash": 9.933819329639393
+            },
+            {
+              "round": 2,
+              "position": 0,
+              "iterations": 11009,
+              "elapsedMs": 105.99420800000007,
+              "usPerHash": 9.627959669361438
+            },
+            {
+              "round": 3,
+              "position": 2,
+              "iterations": 11009,
+              "elapsedMs": 106.08616600000005,
+              "usPerHash": 9.636312653283682
+            },
+            {
+              "round": 4,
+              "position": 2,
+              "iterations": 11009,
+              "elapsedMs": 104.67866700000013,
+              "usPerHash": 9.508462803161063
+            },
+            {
+              "round": 5,
+              "position": 0,
+              "iterations": 11009,
+              "elapsedMs": 105.35858399999961,
+              "usPerHash": 9.570222908529349
+            },
+            {
+              "round": 6,
+              "position": 1,
+              "iterations": 11009,
+              "elapsedMs": 105.74399999999969,
+              "usPerHash": 9.605232082841283
+            }
+          ],
+          "medianUsPerHash": 9.627959669361438,
+          "minUsPerHash": 9.508462803161063,
+          "maxUsPerHash": 9.933819329639393,
+          "hashesPerSecond": 103864.16586083641,
+          "bytesPerSecond": 6647306.61509353
+        },
+        {
+          "name": "optimized_vmp",
+          "iterations": 12341,
+          "warmIterations": 7537,
+          "samples": [
+            {
+              "round": 0,
+              "position": 2,
+              "iterations": 12341,
+              "elapsedMs": 114.9716670000007,
+              "usPerHash": 9.316235880398729
+            },
+            {
+              "round": 1,
+              "position": 0,
+              "iterations": 12341,
+              "elapsedMs": 114.7413749999996,
+              "usPerHash": 9.297575155984086
+            },
+            {
+              "round": 2,
+              "position": 1,
+              "iterations": 12341,
+              "elapsedMs": 113.82025000000067,
+              "usPerHash": 9.222935742646516
+            },
+            {
+              "round": 3,
+              "position": 1,
+              "iterations": 12341,
+              "elapsedMs": 114.83100000000013,
+              "usPerHash": 9.304837533425179
+            },
+            {
+              "round": 4,
+              "position": 0,
+              "iterations": 12341,
+              "elapsedMs": 114.23404200000004,
+              "usPerHash": 9.256465602463336
+            },
+            {
+              "round": 5,
+              "position": 2,
+              "iterations": 12341,
+              "elapsedMs": 113.74620799999957,
+              "usPerHash": 9.216936066769271
+            },
+            {
+              "round": 6,
+              "position": 2,
+              "iterations": 12341,
+              "elapsedMs": 113.39745799999946,
+              "usPerHash": 9.188676606433795
+            }
+          ],
+          "medianUsPerHash": 9.256465602463336,
+          "minUsPerHash": 9.188676606433795,
+          "maxUsPerHash": 9.316235880398729,
+          "hashesPerSecond": 108032.59504728018,
+          "bytesPerSecond": 6914086.083025931
+        }
+      ],
+      "speedupVsPreviousVmp": 1.0401334680916698,
+      "previousSlowdownVsNative": 44.1674106901247,
+      "optimizedSlowdownVsNative": 42.46321462106063,
+      "retainedThroughputPercent": 2.3549795014907478
+    },
+    {
+      "label": "1024 B",
+      "inputBytes": 1024,
+      "expectedMd5": "bba3843316706566f16162797ea243c5",
+      "variants": [
+        {
+          "name": "native_wasm",
+          "iterations": 61035,
+          "warmIterations": 40215,
+          "samples": [
+            {
+              "round": 0,
+              "position": 0,
+              "iterations": 61035,
+              "elapsedMs": 120.23891700000058,
+              "usPerHash": 1.9699994593266255
+            },
+            {
+              "round": 1,
+              "position": 2,
+              "iterations": 61035,
+              "elapsedMs": 120.21216699999968,
+              "usPerHash": 1.9695611862046314
+            },
+            {
+              "round": 2,
+              "position": 2,
+              "iterations": 61035,
+              "elapsedMs": 120.06633299999885,
+              "usPerHash": 1.9671718358318808
+            },
+            {
+              "round": 3,
+              "position": 0,
+              "iterations": 61035,
+              "elapsedMs": 120.73362500000076,
+              "usPerHash": 1.9781047759482389
+            },
+            {
+              "round": 4,
+              "position": 1,
+              "iterations": 61035,
+              "elapsedMs": 122.17449999999917,
+              "usPerHash": 2.0017121323830454
+            },
+            {
+              "round": 5,
+              "position": 1,
+              "iterations": 61035,
+              "elapsedMs": 122.93658300000061,
+              "usPerHash": 2.0141981322192284
+            },
+            {
+              "round": 6,
+              "position": 0,
+              "iterations": 61035,
+              "elapsedMs": 122.27541699999892,
+              "usPerHash": 2.0033655607438177
+            }
+          ],
+          "medianUsPerHash": 1.9781047759482389,
+          "minUsPerHash": 1.9671718358318808,
+          "maxUsPerHash": 2.0141981322192284,
+          "hashesPerSecond": 505534.3944158027,
+          "bytesPerSecond": 517667219.88178194
+        },
+        {
+          "name": "correctness_fixed_vmp",
+          "iterations": 1690,
+          "warmIterations": 1069,
+          "samples": [
+            {
+              "round": 0,
+              "position": 1,
+              "iterations": 1690,
+              "elapsedMs": 123.8730830000004,
+              "usPerHash": 73.29768224852096
+            },
+            {
+              "round": 1,
+              "position": 1,
+              "iterations": 1690,
+              "elapsedMs": 126.06304199999977,
+              "usPerHash": 74.59351597633122
+            },
+            {
+              "round": 2,
+              "position": 0,
+              "iterations": 1690,
+              "elapsedMs": 126.94079099999908,
+              "usPerHash": 75.11289408283969
+            },
+            {
+              "round": 3,
+              "position": 2,
+              "iterations": 1690,
+              "elapsedMs": 127.0528749999994,
+              "usPerHash": 75.17921597633101
+            },
+            {
+              "round": 4,
+              "position": 2,
+              "iterations": 1690,
+              "elapsedMs": 128.88075000000026,
+              "usPerHash": 76.2607988165682
+            },
+            {
+              "round": 5,
+              "position": 0,
+              "iterations": 1690,
+              "elapsedMs": 127.26108300000124,
+              "usPerHash": 75.30241597633209
+            },
+            {
+              "round": 6,
+              "position": 1,
+              "iterations": 1690,
+              "elapsedMs": 130.21566599999824,
+              "usPerHash": 77.05068994082735
+            }
+          ],
+          "medianUsPerHash": 75.17921597633101,
+          "minUsPerHash": 73.29768224852096,
+          "maxUsPerHash": 77.05068994082735,
+          "hashesPerSecond": 13301.548666254172,
+          "bytesPerSecond": 13620785.834244272
+        },
+        {
+          "name": "optimized_vmp",
+          "iterations": 1660,
+          "warmIterations": 1117,
+          "samples": [
+            {
+              "round": 0,
+              "position": 2,
+              "iterations": 1660,
+              "elapsedMs": 119.39629199999945,
+              "usPerHash": 71.9254771084334
+            },
+            {
+              "round": 1,
+              "position": 0,
+              "iterations": 1660,
+              "elapsedMs": 119.71216599999934,
+              "usPerHash": 72.11576265060201
+            },
+            {
+              "round": 2,
+              "position": 1,
+              "iterations": 1660,
+              "elapsedMs": 119.44062500000109,
+              "usPerHash": 71.95218373494042
+            },
+            {
+              "round": 3,
+              "position": 1,
+              "iterations": 1660,
+              "elapsedMs": 119.29887500000041,
+              "usPerHash": 71.86679216867495
+            },
+            {
+              "round": 4,
+              "position": 0,
+              "iterations": 1660,
+              "elapsedMs": 119.56391599999915,
+              "usPerHash": 72.02645542168624
+            },
+            {
+              "round": 5,
+              "position": 2,
+              "iterations": 1660,
+              "elapsedMs": 120.94912499999919,
+              "usPerHash": 72.86091867469831
+            },
+            {
+              "round": 6,
+              "position": 2,
+              "iterations": 1660,
+              "elapsedMs": 121.95200000000114,
+              "usPerHash": 73.46506024096453
+            }
+          ],
+          "medianUsPerHash": 72.02645542168624,
+          "minUsPerHash": 71.86679216867495,
+          "maxUsPerHash": 73.46506024096453,
+          "hashesPerSecond": 13883.787479828043,
+          "bytesPerSecond": 14216998.379343916
+        }
+      ],
+      "speedupVsPreviousVmp": 1.0437722575154729,
+      "previousSlowdownVsNative": 38.00567942124933,
+      "optimizedSlowdownVsNative": 36.41185052351896,
+      "retainedThroughputPercent": 2.7463586322098212
+    },
+    {
+      "label": "16384 B",
+      "inputBytes": 16384,
+      "expectedMd5": "91ae9f6234a1113674cefe62709981c3",
+      "variants": [
+        {
+          "name": "native_wasm",
+          "iterations": 3790,
+          "warmIterations": 2345,
+          "samples": [
+            {
+              "round": 0,
+              "position": 0,
+              "iterations": 3790,
+              "elapsedMs": 121.56879099999969,
+              "usPerHash": 32.07619815303422
+            },
+            {
+              "round": 1,
+              "position": 2,
+              "iterations": 3790,
+              "elapsedMs": 117.1591669999998,
+              "usPerHash": 30.9127089709762
+            },
+            {
+              "round": 2,
+              "position": 2,
+              "iterations": 3790,
+              "elapsedMs": 115.88850000000093,
+              "usPerHash": 30.57744063324563
+            },
+            {
+              "round": 3,
+              "position": 0,
+              "iterations": 3790,
+              "elapsedMs": 122.29816700000083,
+              "usPerHash": 32.268645646438216
+            },
+            {
+              "round": 4,
+              "position": 1,
+              "iterations": 3790,
+              "elapsedMs": 114.02029200000106,
+              "usPerHash": 30.084509762533262
+            },
+            {
+              "round": 5,
+              "position": 1,
+              "iterations": 3790,
+              "elapsedMs": 126.15012500000012,
+              "usPerHash": 33.28499340369396
+            },
+            {
+              "round": 6,
+              "position": 0,
+              "iterations": 3790,
+              "elapsedMs": 113.75795800000014,
+              "usPerHash": 30.015292348284998
+            }
+          ],
+          "medianUsPerHash": 30.9127089709762,
+          "minUsPerHash": 30.015292348284998,
+          "maxUsPerHash": 33.28499340369396,
+          "hashesPerSecond": 32349.154548017625,
+          "bytesPerSecond": 530008548.11472076
+        },
+        {
+          "name": "correctness_fixed_vmp",
+          "iterations": 105,
+          "warmIterations": 68,
+          "samples": [
+            {
+              "round": 0,
+              "position": 1,
+              "iterations": 105,
+              "elapsedMs": 124.54712500000096,
+              "usPerHash": 1186.1630952381045
+            },
+            {
+              "round": 1,
+              "position": 1,
+              "iterations": 105,
+              "elapsedMs": 120.19616700000006,
+              "usPerHash": 1144.7254000000005
+            },
+            {
+              "round": 2,
+              "position": 0,
+              "iterations": 105,
+              "elapsedMs": 120.09141699999964,
+              "usPerHash": 1143.7277809523775
+            },
+            {
+              "round": 3,
+              "position": 2,
+              "iterations": 105,
+              "elapsedMs": 114.89116699999977,
+              "usPerHash": 1094.2015904761884
+            },
+            {
+              "round": 4,
+              "position": 2,
+              "iterations": 105,
+              "elapsedMs": 115.62020799999846,
+              "usPerHash": 1101.1448380952233
+            },
+            {
+              "round": 5,
+              "position": 0,
+              "iterations": 105,
+              "elapsedMs": 114.40429199999926,
+              "usPerHash": 1089.5646857142788
+            },
+            {
+              "round": 6,
+              "position": 1,
+              "iterations": 105,
+              "elapsedMs": 118.38583300000028,
+              "usPerHash": 1127.4841238095264
+            }
+          ],
+          "medianUsPerHash": 1127.4841238095264,
+          "minUsPerHash": 1089.5646857142788,
+          "maxUsPerHash": 1186.1630952381045,
+          "hashesPerSecond": 886.9304488485524,
+          "bytesPerSecond": 14531468.473934682
+        },
+        {
+          "name": "optimized_vmp",
+          "iterations": 111,
+          "warmIterations": 72,
+          "samples": [
+            {
+              "round": 0,
+              "position": 2,
+              "iterations": 111,
+              "elapsedMs": 126.93970799999988,
+              "usPerHash": 1143.600972972972
+            },
+            {
+              "round": 1,
+              "position": 0,
+              "iterations": 111,
+              "elapsedMs": 122.2262920000012,
+              "usPerHash": 1101.1377657657765
+            },
+            {
+              "round": 2,
+              "position": 1,
+              "iterations": 111,
+              "elapsedMs": 177.40441699999974,
+              "usPerHash": 1598.2379909909885
+            },
+            {
+              "round": 3,
+              "position": 1,
+              "iterations": 111,
+              "elapsedMs": 121.8675830000011,
+              "usPerHash": 1097.9061531531631
+            },
+            {
+              "round": 4,
+              "position": 0,
+              "iterations": 111,
+              "elapsedMs": 118.73204199999964,
+              "usPerHash": 1069.6580360360329
+            },
+            {
+              "round": 5,
+              "position": 2,
+              "iterations": 111,
+              "elapsedMs": 118.91754099999889,
+              "usPerHash": 1071.3291981981881
+            },
+            {
+              "round": 6,
+              "position": 2,
+              "iterations": 111,
+              "elapsedMs": 119.04937500000051,
+              "usPerHash": 1072.5168918918964
+            }
+          ],
+          "medianUsPerHash": 1097.9061531531631,
+          "minUsPerHash": 1069.6580360360329,
+          "maxUsPerHash": 1598.2379909909885,
+          "hashesPerSecond": 910.8246612226567,
+          "bytesPerSecond": 14922951.249472007
+        }
+      ],
+      "speedupVsPreviousVmp": 1.0269403451027357,
+      "previousSlowdownVsNative": 36.47315817155061,
+      "optimizedSlowdownVsNative": 35.51633582757118,
+      "retainedThroughputPercent": 2.8156057675963977
+    }
+  ]
+}
