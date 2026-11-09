@@ -94,8 +94,8 @@ for(const [kind,value] of [['i32','11'],['i64','11'],['f32','0x1p-105'],['f64','
 add('global_init_index_11', '(func (export "run") (result i32) global.get 12)', [[]],
     {global:false,support:Array.from({length:12},(_,i)=>`(import "env" "g" (global $g${i} i32))`).join(' ')+ ' (global i32 (global.get $g11))'});
 
-add('reject_dynamic_heap_marker', '(func (export "run") (result i32) i32.const 7)', [[]],
-    {global:false,expectReject:true,support:'(import "env" "g" (global $base i32)) (global (export "__heap_base") i32 (global.get $base))'});
+add('dynamic_heap_marker', '(func (export "run") (result i32) i32.const 7)', [[]],
+    {global:false,support:'(import "env" "g" (global $base i32)) (global (export "__heap_base") i32 (global.get $base))'});
 
 // Non-function imports must not shift the injected start function index.
 add('imported_global_active_data', '(func (export "run") (result i32) i32.const 0 i32.load global.get 0 i32.xor)', [[]],
@@ -127,14 +127,14 @@ function outcome(e, args) {
 }
 function load(bytes) {
   assert(WebAssembly.validate(bytes), 'V8 rejected binary');
-  const decoded = wabt.readWasm(Uint8Array.from(bytes), {readDebugNames:false});
-  try { decoded.validate(); } finally { decoded.destroy(); }
+  const decoded = wabt.readWasm(Uint8Array.from(bytes), {readDebugNames:false,multi_memory:true});
+  try { decoded.validate({multi_memory:true}); } finally { decoded.destroy(); }
   return new WebAssembly.Instance(new WebAssembly.Module(bytes),imports()).exports;
 }
 try {
   for (const f of fixtures) {
     const input=path.join(dir,`${f.name}.wasm`);
-    const m=wabt.parseWat(f.name,f.wat); m.resolveNames(); m.validate();
+    const m=wabt.parseWat(f.name,f.wat); m.resolveNames(); m.validate({multi_memory:true});
     fs.writeFileSync(input,Buffer.from(m.toBinary({}).buffer)); m.destroy();
     const original=load(fs.readFileSync(input));
     // Expectations come from the independent original engine, never protected bytes.

@@ -3,6 +3,12 @@
 [中文](README.md) | **English**
 
 A powerful WebAssembly binary obfuscation and protection tool that safeguards WASM code through virtualization, control flow flattening, and data encryption techniques.
+## Private VMP memory and semantic fixes
+
+The previous **10 application-memory behavior differences are resolved**. Bytecode and frames use an unexported private memory; application limits, imports/exports and heap markers remain intact. The expanded strict official subset passes 168 modules / 8352 comparisons. See the [memory regression report](bench/verification_memory/README.md).
+
+Outputs with application memory require a **multi-memory-capable runtime**; Node.js 24/V8 is verified. Post-trap instance reinitialization remains necessary. The sections below record earlier revisions.
+
 ## Sized frames and handler sharing
 
 Typed peak operand-stack sizing replaces fixed 1024-byte frames; checked arena allocation prevents caller-frame and bytecode overwrites within valid compiled programs. Stable module-wide sharing merges equivalent generic handlers while retaining configurable variants. Protected output size drops about 34% for Base64 and 16% for MD5 at the same protection scope; MD5 runtime is broadly unchanged. See [regressions and resource limits](bench/verification_frames/README.md), including post-trap instance disposal and the remaining memory-semantics limitations.

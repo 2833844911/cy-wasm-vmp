@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "totalHashChecks": 378,
+  "records": [
+    {
+      "name": "md5_vmp_optimized.wasm",
+      "sha256": "8b1e434b86fe353d20f7d478112a6973fdb1445d5c44819969ecb6994c87945a",
+      "hashChecks": 126,
+      "passed": true
+    },
+    {
+      "name": "md5_vmp_seed20261110.wasm",
+      "sha256": "94644492d3da230bb7d7d91efe3a3388160d621f6540e612714d789603968a17",
+      "hashChecks": 126,
+      "passed": true
+    },
+    {
+      "name": "md5_vmp_seed20261111.wasm",
+      "sha256": "b96da4029aa106c53a8a26287aeab16a1a8b0af01368cd20c1c03953afa6984e",
+      "hashChecks": 126,
+      "passed": true
+    }
+  ]
+}

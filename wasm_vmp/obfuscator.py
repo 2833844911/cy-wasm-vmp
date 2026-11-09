@@ -24,76 +24,57 @@ class WasmObfuscator:
         return keyword_count >= 3
 
     def obfuscate_data_section(self, section_info, xor_key):
-        print(f"\n{'=' * 20} Starting Data Obfuscation {'=' * 20}")
-        payload = bytearray(section_info['data'])
-        offset = 0
-        segment_configs = []
+        """Encrypt one disjoint constant-offset segment, otherwise preserve bytes.
 
-        count, read_len = read_leb128_unsigned(payload, offset)
-        offset += read_len
-        print(f"-> Found {count} data segments")
-
-        for i in range(count):
-            if offset >= len(payload): break
-            mode = payload[offset]
-            offset += 1
-            mem_offset_val = 0
-            is_active = False
-
-            if mode == 0:  # Active
-                is_active = True
-                if payload[offset] == 0x41:  # i32.const
-                    offset += 1
-                    val, val_len = read_leb128_signed(payload, offset)
-                    mem_offset_val = val
-                    offset += val_len
-                    if payload[offset] == 0x0B: offset += 1
-                    else: is_active = False
-                else: is_active = False
-
-            elif mode == 1:
-                is_active = False
-
-            elif mode == 2:
-                is_active = True
-                _, mem_idx_len = read_leb128_unsigned(payload, offset)
-                offset += mem_idx_len
-                if payload[offset] == 0x41:
-                    offset += 1
-                    val, val_len = read_leb128_signed(payload, offset)
-                    mem_offset_val = val
-                    offset += val_len
-                    offset += 1
-                else: is_active = False
-
-            data_size, size_len = read_leb128_unsigned(payload, offset)
-            offset += size_len
-            
-            segment_data = payload[offset:offset + data_size]
-
-            if is_active and data_size > 0:
-                current_key = xor_key & 0xFF
-                for j in range(data_size):
-                    # 1. XOR
-                    payload[offset + j] ^= current_key
-                    # 2. Add 7
-                    payload[offset + j] = (payload[offset + j] + 7) & 0xFF
-                    # 3. Update Key
-                    current_key = (current_key + 14) & 0xFF
-
-                segment_configs.append({
-                    'start': offset,
-                    'len': data_size,
-                    'mem_offset': mem_offset_val
-                })
-                break # Only encrypt one supported segment for now
-            else:
-                if is_active:
-                    print(f"   [Obfuscator] Empty or skipped Segment {i}")
-
-            offset += data_size
-
-        return bytes(payload), segment_configs
+        Overlapping segments are applied in order by the engine. Decrypting an
+        earlier encrypted range after a later segment overwrites it changes the
+        application data, so every active range must be known and disjoint.
+        """
+        original = bytes(section_info['data'])
+        count, offset = read_leb128_unsigned(original, 0)
+        ranges = []
+        for _ in range(count):
+            mode, length = read_leb128_unsigned(original, offset)
+            offset += length
+            active = mode in (0, 2)
+            if mode == 2:
+                memory_index, length = read_leb128_unsigned(original, offset)
+                offset += length
+                if memory_index != 0:
+                    return original, []
+            elif mode not in (0, 1):
+                return original, []
+            address = None
+            if active:
+                if offset >= len(original) or original[offset] != 0x41:
+                    return original, []  # Imported global / extended initializer.
+                address, length = read_leb128_signed(original, offset + 1)
+                offset += 1 + length
+                if offset >= len(original) or original[offset] != 0x0B:
+                    return original, []
+                offset += 1
+                address &= 0xFFFFFFFF
+            size, length = read_leb128_unsigned(original, offset)
+            offset += length
+            if offset + size > len(original):
+                raise ValueError('Truncated WASM data segment')
+            if active and address + size > 0x7FFFFFFF:
+                return original, []  # Keep high unsigned addresses verbatim.
+            if active and size:
+                ranges.append((address, address + size, offset, size))
+            offset += size
+        ordered = sorted(ranges)
+        if any(left[1] > right[0] for left, right in zip(ordered, ordered[1:])):
+            return original, []
+        if not ranges:
+            return original, []
+        start, _, position, size = ranges[0]
+        payload = bytearray(original)
+        key = xor_key & 0xFF
+        for index in range(size):
+            payload[position + index] = ((payload[position + index] ^ key) + 7) & 0xFF
+            key = (key + 14) & 0xFF
+        return bytes(payload), [{'start': position, 'len': size, 'mem_offset': start}]
 
     def kozhilc(self, code, jbbl):
         code_len = len(code)

@@ -3,7 +3,7 @@ from .consts import WASM_MAGIC, WASM_VERSION
 from .codec import WasmCodec
 from .analyzer import WasmAnalyzer
 from .obfuscator import WasmObfuscator
-from .utils import write_leb128_unsigned, write_leb128_signed, read_leb128_unsigned, read_leb128_signed
+from .utils import write_leb128_unsigned, write_leb128_signed, read_leb128_unsigned
 from .wasmvmp import WasmVMP
 from .preprocessor import preprocess_br_table
 import random
@@ -170,11 +170,15 @@ class JiexStart:
         # ==============
 
         # 1.5 Inject Global SP (Stack Pointer) for VMP
-        self.obfuscator.can_safe_mem = self.codec.find_safe_data_offset(self.section_lists)
-        # Retain the historical bytecode base. This is not isolation from the
-        # application's memory; the private frame arena is placed after it.
-        vmp_base_addr = 10 * 1024 * 1024 # 10MB
-        # vmp_base_addr = self.obfuscator.can_safe_mem
+        # Append one non-exported memory; original memory indices, limits and
+        # heap/data locations remain unchanged. Only generated VMP accesses
+        # address this memory. Source multi-memory inputs are still rejected.
+        original_memories = sum(i['kind'] == 2 for i in self.imports)
+        original_memories += sum(read_leb128_unsigned(s['data'], 0)[0]
+                                 for s in self.section_lists if s['section_id'] == 5)
+        self.vmp_memory_index = original_memories
+        self.codec.vmp_memory_idx = self.vmp_memory_index
+        vmp_base_addr = 0
         vmp_data_offset = vmp_base_addr
 
         # Final frame arena is placed after the complete bytecode payload.
@@ -384,56 +388,24 @@ class JiexStart:
         if func_sec:
              func_sec['data'] = self.codec.encode_function_section(self.functions)
 
-        # [Fix] Update __heap_base to avoid heap corruption
-        # Find export named '__heap_base'
-        heap_base_export = next((e for e in self.exports if e['name'] == '__heap_base'), None)
-        if heap_base_export and heap_base_export['kind'] == 3: # EXTERNAL_GLOBAL
-            heap_base_idx = heap_base_export['export_index']
-            # Find the global
-            # Note: export_index is the global index in the module (imports + internals)
-            # self.globals only contains internal globals.
-            # We need to map global index to internal global index.
-            num_imported_globals = len([i for i in self.imports if i['kind'] == 3])
-            internal_idx = heap_base_idx - num_imported_globals
-
-            if 0 <= internal_idx < len(self.globals):
-                heap_global = self.globals[internal_idx]
-                raw = heap_global.get('init_raw')
-                if heap_global['type'] != 0x7F:
-                    raise ValueError('Unsupported WASM non-i32 __heap_base')
-                if raw is not None:
-                    if not raw or raw[0] != 0x41:
-                        raise ValueError('Unsupported WASM nonconstant __heap_base initializer')
-                    original_heap, consumed = read_leb128_signed(raw, 1)
-                    if consumed + 1 != len(raw):
-                        raise ValueError('Unsupported WASM nonconstant __heap_base initializer')
-                    original_heap &= 0xFFFFFFFF
-                else:
-                    original_heap = heap_global.get('init_val', 0)
-                heap_bits = max(sp_start_addr, original_heap)
-                heap_global['init_val'] = heap_bits if heap_bits < 0x80000000 else heap_bits - 0x100000000
-                print(f"-> Updating __heap_base (Global {heap_base_idx}) to {heap_global['init_val']}")
-                if 'init_raw' in self.globals[internal_idx]:
-                    del self.globals[internal_idx]['init_raw']
-            else:
-                print(f"WARN: __heap_base (Global {heap_base_idx}) is imported or invalid?")
-
-
-        # Include both the final arena bounds and any adjusted heap marker.
-        next(s for s in self.section_lists if s['section_id'] == 6)['data'] = self.codec.encode_global_section(self.globals)
-
-        # 2. Obfuscation
-        self.obfuscator.params = {} # Reset or init params if used
-
-        if not any(s['section_id'] == 5 for s in self.section_lists) and not any(i['kind'] == 2 for i in self.imports):
-            pages = (sp_start_addr + 65535) // 65536
-            self.section_lists.append({'section_id': 5, 'data': bytes([1, 0]) + bytes(write_leb128_unsigned(pages))})
-            self.section_lists.sort(key=lambda s: self._section_order(s['section_id']))
-        self.codec.ensure_memory_size(self.section_lists, sp_start_addr)
-        #
+        # Do not relocate __heap_base or expand application memory. The VMP
+        # bytecode and bounded frame arena occupy their own memory instance.
+        pages = (sp_start_addr + 65535) // 65536
+        private_limits = bytes([1]) + write_leb128_unsigned(pages) + write_leb128_unsigned(pages)
+        memory_section = next((s for s in self.section_lists if s['section_id'] == 5), None)
+        if memory_section is None:
+            self.section_lists.append({'section_id': 5, 'data': bytes([1]) + private_limits})
+            self.section_lists.sort(key=lambda section: self._section_order(section['section_id']))
+        else:
+            count, length = read_leb128_unsigned(memory_section['data'], 0)
+            memory_section['data'] = write_leb128_unsigned(count + 1) + memory_section['data'][length:] + private_limits
+        self.obfuscator.params = {}
         segment_configs = []
         for section_info in self.section_lists:
-            if section_info['section_id'] == 11:
+            if section_info['section_id'] == 11 and not any(i['kind'] == 2 for i in self.imports):
+                # Imported memory is host-visible even if instantiation fails.
+                # Keep its initializers byte-for-byte rather than exposing an
+                # encrypted intermediate state before a failing later segment.
                 print(f"-> Processing DATA Section (Obfuscation)")
                 new_data, configs = self.obfuscator.obfuscate_data_section(section_info, CONF_KEY)
                 section_info['data'] = new_data
@@ -483,7 +455,8 @@ class JiexStart:
             # [Index: 0 (Active), OffsetExpr: (i32.const ADDR), Size: LEB128, Data: bytes]
 
             vm_seg_raw = bytearray()
-            vm_seg_raw.append(0) # Mode 0: Active
+            vm_seg_raw.extend(write_leb128_unsigned(2)) # Active with explicit memory index
+            vm_seg_raw.extend(write_leb128_unsigned(self.vmp_memory_index))
             vm_seg_raw.extend(write_leb128_unsigned(0x41)) # i32.const
             vm_seg_raw.extend(write_leb128_signed(vmp_base_addr))
             vm_seg_raw.append(0x0B) # end

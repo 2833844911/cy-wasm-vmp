@@ -10,7 +10,7 @@ const wabt=await wabtFactory();
 const source=process.argv[2];
 if(!source) throw Error('Usage: node bench/test_spec.mjs /path/to/WebAssembly/testsuite [report.json] [suite,...]');
 const suites=(process.argv[4] || 'i32,i64,f32,f64,conversions,select,local_get,local_set,local_tee,call,if,loop,block,br,br_if,br_table,call_indirect,unwind,return,func,int_exprs,float_exprs,endianness,load,store,align').split(',');
-function compile(text) {const m=wabt.parseWat('spec.wat',text);try{m.resolveNames();m.validate();return Buffer.from(m.toBinary({}).buffer);}finally{m.destroy();}}
+function compile(text) {const m=wabt.parseWat('spec.wat',text);try{m.resolveNames();m.validate({multi_memory:true});return Buffer.from(m.toBinary({}).buffer);}finally{m.destroy();}}
 const constantCache=new Map();
 function constant(c) {const key=wat(c);if(!constantCache.has(key)){const type=c[0].split('.')[0];const bytes=compile(`(module (func (export "v") (result ${type}) ${key}))`);constantCache.set(key,new WebAssembly.Instance(new WebAssembly.Module(bytes)).exports.v());}return constantCache.get(key);}
 function outcome(e,call) {try{return {value:e[call.name](...call.args)};}catch(error){if(error instanceof WebAssembly.RuntimeError)return {trap:true};throw error;}}
@@ -53,7 +53,7 @@ try {
   else try {
    const bytes=fs.readFileSync(f.output);
    // Both validators are required before invoking protected code.
-   const m=new WebAssembly.Module(bytes);const w=wabt.readWasm(Uint8Array.from(bytes), {readDebugNames:false});try{w.validate();}finally{w.destroy();}
+   const m=new WebAssembly.Module(bytes);const w=wabt.readWasm(Uint8Array.from(bytes), {readDebugNames:false,multi_memory:true});try{w.validate({multi_memory:true});}finally{w.destroy();}
    const e=new WebAssembly.Instance(m,{}).exports;
    for(const c of f.calls){try{assert.deepStrictEqual(outcome(e,c),c.expected);checks++;r.checks++;}catch(error){r.failures.push({export:c.name,args:c.args.map(String),error:String(error)});}}
   }catch(error){r.error=String(error);}

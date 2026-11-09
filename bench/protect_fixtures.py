@@ -29,6 +29,7 @@ for job in jobs:
         results.append({'name': job['name'], 'seed': job['seed'], 'passed': True,
                         'protectedFunctions': processor.protected_function_indices,
                         'frameSizes': getattr(processor, 'vmp_frame_sizes', {}),
+                        'memoryIndex': getattr(processor, 'vmp_memory_index', None),
                         'stackFloor': getattr(processor, 'vmp_stack_floor', None),
                         'stackCapacity': getattr(processor, 'vmp_stack_capacity', None),
                         'stackTop': getattr(processor, 'vmp_stack_top', None),

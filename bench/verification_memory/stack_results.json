@@ -1,0 +1,1144 @@
+{
+  "passed": true,
+  "fixtures": 27,
+  "builds": 81,
+  "checks": 297,
+  "arenaTrapChecks": 9,
+  "validators": [
+    "WABT",
+    "V8"
+  ],
+  "environment": {
+    "node": "v24.19.0",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "scope": "Typed operand stacks at and beyond the old 1024-byte frame, mixed/multi-value calls, recursive calls, branch peaks and repeated invocations. Expected values come from independent original WASM execution. Bounded-arena exhaustion checks are separately counted and intentionally expect a protected runtime trap; high-depth original execution is not claimed to complete within native engine limits.",
+  "records": [
+    {
+      "name": "child_i32_255",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1024,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 3490
+    },
+    {
+      "name": "child_i32_255",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1024,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 3475
+    },
+    {
+      "name": "child_i32_255",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1024,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 3538
+    },
+    {
+      "name": "child_i32_256",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1024,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 3491
+    },
+    {
+      "name": "child_i32_256",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1024,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 3498
+    },
+    {
+      "name": "child_i32_256",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1024,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 3549
+    },
+    {
+      "name": "child_i32_257",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1040,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 3485
+    },
+    {
+      "name": "child_i32_257",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1040,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 3510
+    },
+    {
+      "name": "child_i32_257",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1040,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 3555
+    },
+    {
+      "name": "child_i32_300",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1200,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 4025
+    },
+    {
+      "name": "child_i32_300",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1200,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 4007
+    },
+    {
+      "name": "child_i32_300",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1200,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 4072
+    },
+    {
+      "name": "child_i32_2048",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 8192,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 24992
+    },
+    {
+      "name": "child_i32_2048",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 8192,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 25001
+    },
+    {
+      "name": "child_i32_2048",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 8192,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 25061
+    },
+    {
+      "name": "child_i32_4097",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 16400,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 49581
+    },
+    {
+      "name": "child_i32_4097",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 16400,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 49596
+    },
+    {
+      "name": "child_i32_4097",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 16400,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 49645
+    },
+    {
+      "name": "child_i64_127",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1024,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 1470
+    },
+    {
+      "name": "child_i64_127",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1024,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 1469
+    },
+    {
+      "name": "child_i64_127",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1024,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 1565
+    },
+    {
+      "name": "child_i64_128",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1024,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 1453
+    },
+    {
+      "name": "child_i64_128",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1024,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 1466
+    },
+    {
+      "name": "child_i64_128",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1024,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 1562
+    },
+    {
+      "name": "child_i64_129",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1040,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 1481
+    },
+    {
+      "name": "child_i64_129",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1040,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 1478
+    },
+    {
+      "name": "child_i64_129",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1040,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 1572
+    },
+    {
+      "name": "child_i64_300",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 2400,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 2849
+    },
+    {
+      "name": "child_i64_300",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 2400,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 2831
+    },
+    {
+      "name": "child_i64_300",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 2400,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 2951
+    },
+    {
+      "name": "child_i64_1024",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 8192,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 8650
+    },
+    {
+      "name": "child_i64_1024",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 8192,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 8649
+    },
+    {
+      "name": "child_i64_1024",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 8192,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 8736
+    },
+    {
+      "name": "child_i64_2049",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 16400,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 16849
+    },
+    {
+      "name": "child_i64_2049",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 16400,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 16850
+    },
+    {
+      "name": "child_i64_2049",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 16400,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 16944
+    },
+    {
+      "name": "child_f32_255",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1024,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 2487
+    },
+    {
+      "name": "child_f32_255",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1024,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 2474
+    },
+    {
+      "name": "child_f32_255",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1024,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 2599
+    },
+    {
+      "name": "child_f32_257",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1040,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 2511
+    },
+    {
+      "name": "child_f32_257",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1040,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 2505
+    },
+    {
+      "name": "child_f32_257",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1040,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 2613
+    },
+    {
+      "name": "child_f32_300",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1200,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 2850
+    },
+    {
+      "name": "child_f32_300",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1200,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 2832
+    },
+    {
+      "name": "child_f32_300",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1200,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 2958
+    },
+    {
+      "name": "child_f64_127",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1024,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 1479
+    },
+    {
+      "name": "child_f64_127",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1024,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 1478
+    },
+    {
+      "name": "child_f64_127",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1024,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 1588
+    },
+    {
+      "name": "child_f64_129",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1040,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 1490
+    },
+    {
+      "name": "child_f64_129",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1040,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 1487
+    },
+    {
+      "name": "child_f64_129",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1040,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 1595
+    },
+    {
+      "name": "child_f64_300",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 2400,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 2858
+    },
+    {
+      "name": "child_f64_300",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 2400,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 2840
+    },
+    {
+      "name": "child_f64_300",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 2400,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 2974
+    },
+    {
+      "name": "mixed_multivalue_call",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 2400,
+        "1": 48
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 4546
+    },
+    {
+      "name": "mixed_multivalue_call",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 2400,
+        "1": 48
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 4546
+    },
+    {
+      "name": "mixed_multivalue_call",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 2400,
+        "1": 48
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 4916
+    },
+    {
+      "name": "large_multivalue_call_results",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1200,
+        "1": 1216
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 18073
+    },
+    {
+      "name": "large_multivalue_call_results",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1200,
+        "1": 1216
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 18068
+    },
+    {
+      "name": "large_multivalue_call_results",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1200,
+        "1": 1216
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 18133
+    },
+    {
+      "name": "deep_caller_live_values",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 2400,
+        "1": 1616
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 7696
+    },
+    {
+      "name": "deep_caller_live_values",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 2400,
+        "1": 1616
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 7689
+    },
+    {
+      "name": "deep_caller_live_values",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 2400,
+        "1": 1616
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 7844
+    },
+    {
+      "name": "recursive_deep_stack",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1216,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 4491
+    },
+    {
+      "name": "recursive_deep_stack",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1216,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 4496
+    },
+    {
+      "name": "recursive_deep_stack",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1216,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 4592
+    },
+    {
+      "name": "branch_peak_stack",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1440,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 5779
+    },
+    {
+      "name": "branch_peak_stack",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1440,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 5781
+    },
+    {
+      "name": "branch_peak_stack",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 1440,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 5931
+    },
+    {
+      "name": "recursive_arena_exhaustion",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "expectedTrap": true,
+      "frameSizes": {
+        "0": 16400,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 50056
+    },
+    {
+      "name": "recursive_arena_exhaustion",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "expectedTrap": true,
+      "frameSizes": {
+        "0": 16400,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 50060
+    },
+    {
+      "name": "recursive_arena_exhaustion",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "expectedTrap": true,
+      "frameSizes": {
+        "0": 16400,
+        "1": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 50145
+    },
+    {
+      "name": "heap_marker_1024",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 359
+    },
+    {
+      "name": "heap_marker_1024",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 330
+    },
+    {
+      "name": "heap_marker_1024",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 343
+    },
+    {
+      "name": "heap_marker_33554432",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 361
+    },
+    {
+      "name": "heap_marker_33554432",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 332
+    },
+    {
+      "name": "heap_marker_33554432",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 345
+    },
+    {
+      "name": "heap_marker_4294967295",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 358
+    },
+    {
+      "name": "heap_marker_4294967295",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 329
+    },
+    {
+      "name": "heap_marker_4294967295",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "expectedTrap": false,
+      "frameSizes": {
+        "0": 16
+      },
+      "stackCapacity": 1048576,
+      "passed": true,
+      "outputBytes": 342
+    }
+  ]
+}

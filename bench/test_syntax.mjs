@@ -26,13 +26,13 @@ function compile(node){
  const quote=node.indexOf('quote');
  const text=quote>=0?Buffer.concat(node.slice(quote+1).map(stringBytes)).toString('utf8'):wat(node);
  const m=wabt.parseWat('syntax.wat',text);
- try{m.resolveNames();m.validate();return Buffer.from(m.toBinary({}).buffer);}finally{m.destroy();}
+ try{m.resolveNames();m.validate({multi_memory:true});return Buffer.from(m.toBinary({}).buffer);}finally{m.destroy();}
 }
 function validate(bytes){
  // Record both independently even if the first one fails.
  let v8,wabtError;
  try{new WebAssembly.Module(bytes);}catch(error){v8=String(error);}
- try{const m=wabt.readWasm(Uint8Array.from(bytes),{readDebugNames:false});try{m.validate();}finally{m.destroy();}}catch(error){wabtError=String(error);}
+ try{const m=wabt.readWasm(Uint8Array.from(bytes),{readDebugNames:false,multi_memory:true});try{m.validate({multi_memory:true});}finally{m.destroy();}}catch(error){wabtError=String(error);}
  return {v8:v8||null,wabt:wabtError||null};
 }
 const dir=fs.mkdtempSync(path.join(os.tmpdir(),'wasm_syntax_'));

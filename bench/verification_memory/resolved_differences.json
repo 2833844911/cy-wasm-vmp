@@ -1,0 +1,130 @@
+{
+  "beforeBaseline": "63fca0b256ed0d325a75854c74f3790e951f8125",
+  "beforeBehaviorFailures": 10,
+  "afterBehaviorFailures": 0,
+  "modules": [
+    {
+      "module": "local_tee_0",
+      "beforeFailures": 1,
+      "afterFailures": 0,
+      "beforeChecks": 54,
+      "afterChecks": 55,
+      "cases": [
+        {
+          "export": "as-memory.grow-size",
+          "args": [
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "call_0",
+      "beforeFailures": 1,
+      "afterFailures": 0,
+      "beforeChecks": 69,
+      "afterChecks": 70,
+      "cases": [
+        {
+          "export": "as-memory.grow-value",
+          "args": []
+        }
+      ]
+    },
+    {
+      "module": "if_0",
+      "beforeFailures": 2,
+      "afterFailures": 0,
+      "beforeChecks": 122,
+      "afterChecks": 124,
+      "cases": [
+        {
+          "export": "as-memory.grow-value",
+          "args": [
+            "0"
+          ]
+        },
+        {
+          "export": "as-memory.grow-value",
+          "args": [
+            "1"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "loop_0",
+      "beforeFailures": 1,
+      "afterFailures": 0,
+      "beforeChecks": 77,
+      "afterChecks": 78,
+      "cases": [
+        {
+          "export": "as-memory.grow-value",
+          "args": []
+        }
+      ]
+    },
+    {
+      "module": "block_0",
+      "beforeFailures": 1,
+      "afterFailures": 0,
+      "beforeChecks": 51,
+      "afterChecks": 52,
+      "cases": [
+        {
+          "export": "as-memory.grow-value",
+          "args": []
+        }
+      ]
+    },
+    {
+      "module": "call_indirect_0",
+      "beforeFailures": 1,
+      "afterFailures": 0,
+      "beforeChecks": 119,
+      "afterChecks": 120,
+      "cases": [
+        {
+          "export": "as-memory.grow-value",
+          "args": []
+        }
+      ]
+    },
+    {
+      "module": "load_0",
+      "beforeFailures": 1,
+      "afterFailures": 0,
+      "beforeChecks": 36,
+      "afterChecks": 37,
+      "cases": [
+        {
+          "export": "as-memory.grow-size",
+          "args": []
+        }
+      ]
+    },
+    {
+      "module": "align_24",
+      "beforeFailures": 2,
+      "afterFailures": 0,
+      "beforeChecks": 0,
+      "afterChecks": 2,
+      "cases": [
+        {
+          "export": "store",
+          "args": [
+            "65532",
+            "-1"
+          ]
+        },
+        {
+          "export": "load",
+          "args": [
+            "65532"
+          ]
+        }
+      ]
+    }
+  ]
+}

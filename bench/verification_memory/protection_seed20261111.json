@@ -1,0 +1,32 @@
+{
+  "repository": "2833844911/cy-wasm-vmp",
+  "base_commit": "63fca0b256ed0d325a75854c74f3790e951f8125",
+  "random_seed": 20261111,
+  "settings": {
+    "not_jeb": true,
+    "selected_functions": null,
+    "instruction_expansion_factor": 1
+  },
+  "local_changes": "Unexported private VMP memory; unchanged application memory/heap bounds; native load offsets.",
+  "python_compatibility": "Unused symbol import removed from the library; no shim required.",
+  "protected_function_indices": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "frame_sizes": {
+    "0": 16,
+    "1": 16,
+    "2": 16,
+    "3": 16
+  },
+  "private_memory_index": 1,
+  "stack_floor": 1952,
+  "stack_capacity": 1048576,
+  "note": "All original functions, including the final accessor, are protected.",
+  "protection_seconds": 0.007299750000000001,
+  "baseline_bytes": 1152,
+  "protected_bytes": 4597,
+  "protected_sha256": "b96da4029aa106c53a8a26287aeab16a1a8b0af01368cd20c1c03953afa6984e"
+}

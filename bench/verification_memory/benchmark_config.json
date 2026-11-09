@@ -1,0 +1,27 @@
+{
+  "before": "verification_memory/md5_baseline.wasm",
+  "after": "verification_memory/md5_optimized.wasm",
+  "output": "verification_memory/runtime_results.json",
+  "protectionBefore": {
+    "revision": "63fca0b256ed0d325a75854c74f3790e951f8125",
+    "settings": {
+      "selected_functions": [
+        0,
+        1,
+        2
+      ],
+      "not_jeb": true
+    }
+  },
+  "protectionOptimized": {
+    "revision": "frame/dedup source",
+    "settings": {
+      "selected_functions": [
+        0,
+        1,
+        2
+      ],
+      "not_jeb": true
+    }
+  }
+}

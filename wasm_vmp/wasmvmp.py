@@ -274,7 +274,6 @@ class WasmVMP:
             'i64.and': i64_and_code_idx, 'i64.or': i64_or_code_idx, 'i64.xor': i64_xor_code_idx,
             'i64.shl': i64_shl_code_idx, 'i64.shr_s': i64_shr_s_code_idx, 'i64.shr_u': i64_shr_u_code_idx,
             'i64.rotl': i64_rotl_code_idx, 'i64.rotr': i64_rotr_code_idx,
-            'i64.load': i64_load_code_idx
         }
         self.i64_load_code_idx = i64_load_code_idx
         self.return_type = {}
@@ -305,6 +304,11 @@ class WasmVMP:
     def encode(self, target_func=None, initial_stack=[],bytecode_offset=0):
         target_func = target_func
         code_list = target_func['code']
+        # Original application accesses retain their original memory index.
+        # Generated stack/bytecode accesses are tagged separately in over().
+        for instruction in code_list:
+            if 0x28 <= instruction[1] <= 0x3E and len(instruction) == 4:
+                instruction.append({'memory_index': 0})
 
         this_fun = []
 
@@ -779,13 +783,6 @@ class WasmVMP:
                     all_code_list.append("i32.ge_u")
                     f_idx_e = next_instr_id
 
-                # Memory Load
-                elif code['name'] == 'i32.load':
-                    all_code_list.append("i32.load")
-                    # operands[0] is align, operands[1] is offset
-                    all_code_list.append("x-" + str(code['operands'][1]['val']))
-                    f_idx_e = next_instr_id
-
                 # =================================================
                 # i64 Instructions
                 # =================================================
@@ -851,11 +848,6 @@ class WasmVMP:
                     f_idx_e = next_instr_id
                 elif code['name'] == 'i64.rotr':
                     all_code_list.append("i64.rotr")
-                    f_idx_e = next_instr_id
-
-                elif code['name'] == 'i64.load':
-                    all_code_list.append("i64.load")
-                    all_code_list.append("x-" + str(code['operands'][1]['val']))
                     f_idx_e = next_instr_id
 
                 elif code['name'] == 'block':
@@ -1511,5 +1503,9 @@ class WasmVMP:
         type_idx = self.codec.add_type(self.vmp_fun['signature']['params'], self.vmp_fun['signature']['results'])
         self.vmp_fun['type_index'] = type_idx
 
+        private_memory = getattr(self.codec, 'vmp_memory_idx', 0)
+        for instruction in new_code:
+            if 0x28 <= instruction[1] <= 0x3E and len(instruction) == 4:
+                instruction.append({'memory_index': private_memory})
         self.vmp_fun['code'] = new_code
         return self.vmp_fun

@@ -1,0 +1,18 @@
+{
+  "wasm_vmp/__init__.py": "5c651e724ff3362480798eeb03d57e429a11723fef9e823563d799c8643084a3",
+  "wasm_vmp/analyzer.py": "4a92371328dc8043cc39eae3dba707ec4d57349fc2aaacd39ac988b2422c22bf",
+  "wasm_vmp/block_definitions.py": "41ad8bffe17d6d334e5a8499ae68b2d970478392ba517052e1d08da9052b0a3d",
+  "wasm_vmp/codec.py": "4595f5e48ea148e38eda1c23373db3d65f5e0b3995b14b7b9e57bb69cadd7fa9",
+  "wasm_vmp/consts.py": "339dad7ddbbf627a2f90d8ff21637f1db9d1446eb92995499af8c5dbf2a94c48",
+  "wasm_vmp/control_flow_flattener.py": "2060ca7880407f6f4dd339cfdc8a74798586d08572e126462463c7316e10908e",
+  "wasm_vmp/core.py": "032b7c9a40fa08c0ae137dc239803a0b4742841fdb91912be55e140c3d4798ce",
+  "wasm_vmp/dispatch.py": "36a8d4a43066c5d17dc338e1b99d9ebeac2458928179607f225d0a6f25baead2",
+  "wasm_vmp/handler_dedup.py": "1ed1616adcc179b09cec1a5b00f8b7f8bf2f37d72c362dc165c5fda90418639d",
+  "wasm_vmp/instructions_expander.py": "13866cbbdbf506897f2af6efd35ca15d15b5ba58596a698870a27f2f79b8a911",
+  "wasm_vmp/obfuscator.py": "a749511d8683c7579cba7342792a862475e4cbe2b0cce37e06bfe63c80a8637f",
+  "wasm_vmp/opaque_utils.py": "83b06abb74b43dd35f0767a8bc6fcaee7da86586d7a3af697cbb7f91a321aaba",
+  "wasm_vmp/preprocessor.py": "97e015d62b45132ad26e7570ffafa16016cfad6781f536063ac774ef5028ee76",
+  "wasm_vmp/stack_frames.py": "b886c6562d521f45fa362039f1bd7204149261f916aebbf75549a922b456e34f",
+  "wasm_vmp/utils.py": "f4f3fd341eb10453fca19edb30c9f8f79f4ff921ec5eca961397c20e0e47af9c",
+  "wasm_vmp/wasmvmp.py": "26eef9a506eedfd6fba80d57dfcb8b4d7642226f2589a8edfe4e62d20db2a89a"
+}

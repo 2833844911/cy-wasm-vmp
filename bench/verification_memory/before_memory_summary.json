@@ -1,0 +1,448 @@
+{
+  "fixtures": 23,
+  "builds": 69,
+  "failedBuilds": 63,
+  "failures": [
+    {
+      "name": "size_grow_old_pages_and_max",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "size_grow_old_pages_and_max",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "size_grow_old_pages_and_max",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "zero_minimum_maximum",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n\n11599872 !== 0\n"
+    },
+    {
+      "name": "zero_minimum_maximum",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n\n11599872 !== 0\n"
+    },
+    {
+      "name": "zero_minimum_maximum",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n\n11599872 !== 0\n"
+    },
+    {
+      "name": "zero_minimum_grow",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n\n11599872 !== 0\n"
+    },
+    {
+      "name": "zero_minimum_grow",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n\n11599872 !== 0\n"
+    },
+    {
+      "name": "zero_minimum_grow",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n\n11599872 !== 0\n"
+    },
+    {
+      "name": "boundary_i32_load8_u",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "boundary_i32_load8_u",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "boundary_i32_load8_u",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "boundary_i32_load16_u",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "boundary_i32_load16_u",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "boundary_i32_load16_u",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "boundary_i32_load",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "boundary_i32_load",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "boundary_i32_load",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "boundary_i64_load",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "boundary_i64_load",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "boundary_i64_load",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "boundary_f32_load",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "boundary_f32_load",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "boundary_f32_load",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "boundary_f64_load",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "boundary_f64_load",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "boundary_f64_load",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "effective_address_offset_bounds",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "effective_address_offset_bounds",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "effective_address_offset_bounds",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "memory_fill_bounds",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "memory_fill_bounds",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "memory_fill_bounds",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "memory_copy_bounds",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "memory_copy_bounds",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "memory_copy_bounds",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "memory_copy_overlap",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "memory_copy_overlap",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "memory_copy_overlap",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "passive_memory_init_bounds",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "passive_memory_init_bounds",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "passive_memory_init_bounds",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "passive_drop_state",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "passive_drop_state",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "passive_drop_state",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "active_data_and_protected_start",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "active_data_and_protected_start",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "active_data_and_protected_start",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "active_segment_end_exact",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "active_segment_end_exact",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "active_segment_end_exact",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Application memory size changed\n+ actual - expected\n\n+ 11599872\n- 65536\n"
+    },
+    {
+      "name": "imported_memory_limits_1",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "LinkError: WebAssembly.Instance(): Import #0 \"env\" \"memory\": memory import has 1 pages which is smaller than the declared initial of 177"
+    },
+    {
+      "name": "imported_memory_limits_1",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "LinkError: WebAssembly.Instance(): Import #0 \"env\" \"memory\": memory import has 1 pages which is smaller than the declared initial of 177"
+    },
+    {
+      "name": "imported_memory_limits_1",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "LinkError: WebAssembly.Instance(): Import #0 \"env\" \"memory\": memory import has 1 pages which is smaller than the declared initial of 177"
+    },
+    {
+      "name": "imported_memory_limits_2",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "LinkError: WebAssembly.Instance(): Import #0 \"env\" \"memory\": memory import has 1 pages which is smaller than the declared initial of 177"
+    },
+    {
+      "name": "imported_memory_limits_2",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "LinkError: WebAssembly.Instance(): Import #0 \"env\" \"memory\": memory import has 1 pages which is smaller than the declared initial of 177"
+    },
+    {
+      "name": "imported_memory_limits_2",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "LinkError: WebAssembly.Instance(): Import #0 \"env\" \"memory\": memory import has 1 pages which is smaller than the declared initial of 177"
+    },
+    {
+      "name": "imported_memory_data_and_start",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "LinkError: WebAssembly.Instance(): Import #1 \"env\" \"memory\": memory import has 1 pages which is smaller than the declared initial of 177"
+    },
+    {
+      "name": "imported_memory_data_and_start",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "LinkError: WebAssembly.Instance(): Import #1 \"env\" \"memory\": memory import has 1 pages which is smaller than the declared initial of 177"
+    },
+    {
+      "name": "imported_memory_data_and_start",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "LinkError: WebAssembly.Instance(): Import #1 \"env\" \"memory\": memory import has 1 pages which is smaller than the declared initial of 177"
+    },
+    {
+      "name": "business_data_at_old_vmp_base",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Memory bytes differ at 10485760\n+ actual - expected\n\n  Uint8Array(32) [\n+   152,\n+   138,\n+   120,\n+   118,\n+   100,\n+   82,\n+   32,\n+   62,\n+   40,\n-   65,\n-   80,\n-   80,\n-   68,\n-   65,\n-   84,\n-   65,\n-   33,\n    0,\n    0,\n    0,\n    0,\n    0,\n    0,\n    0,\n+   49,\n    0,\n    0,\n    0,\n+   4,\n    0,\n    0,\n    0,\n    0,\n    0,\n+   160,\n    0,\n+   12,\n    0,\n    0,\n    0,\n-   0,\n-   0,\n-   0,\n-   0,\n-   0\n  ]\n"
+    },
+    {
+      "name": "business_data_at_old_vmp_base",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "error": "AssertionError [ERR_ASSERTION]: Memory bytes differ at 10485760\n+ actual - expected\n\n  Uint8Array(32) [\n+   118,\n+   127,\n+   109,\n+   91,\n+   73,\n+   71,\n+   85,\n+   35,\n+   38,\n-   65,\n-   80,\n-   80,\n-   68,\n-   65,\n-   84,\n-   65,\n-   33,\n    0,\n    0,\n    0,\n    0,\n    0,\n    0,\n    0,\n+   12,\n    0,\n    0,\n    0,\n+   21,\n    0,\n    0,\n    0,\n    0,\n    0,\n+   160,\n    0,\n+   8,\n    0,\n    0,\n    0,\n-   0,\n-   0,\n-   0,\n-   0,\n-   0\n  ]\n"
+    },
+    {
+      "name": "business_data_at_old_vmp_base",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "error": "AssertionError [ERR_ASSERTION]: Memory bytes differ at 10485760\n+ actual - expected\n\n  Uint8Array(32) [\n+   93,\n+   130,\n+   112,\n+   110,\n+   92,\n+   74,\n+   88,\n+   54,\n+   21,\n-   65,\n-   80,\n-   80,\n-   68,\n-   65,\n-   84,\n-   65,\n-   33,\n    0,\n    0,\n    0,\n    0,\n    0,\n    0,\n    0,\n+   23,\n    0,\n    0,\n    0,\n+   55,\n    0,\n    0,\n    0,\n    0,\n    0,\n+   160,\n    0,\n+   16,\n    0,\n    0,\n    0,\n-   0,\n-   0,\n-   0,\n-   0,\n-   0\n  ]\n"
+    }
+  ]
+}

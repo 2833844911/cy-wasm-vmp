@@ -26,7 +26,7 @@ assert.equal(built.status,0,built.stderr);
 assert(JSON.parse(built.stdout).every(r=>r.passed),built.stdout);
 for(const filename of [original,...jobs.map(j=>j.output)]) {
  const bytes=fs.readFileSync(filename);
- const m=wabt.readWasm(Uint8Array.from(bytes), {readDebugNames:false});try{m.validate();}finally{m.destroy();}
+ const m=wabt.readWasm(Uint8Array.from(bytes), {readDebugNames:false,multi_memory:true});try{m.validate({multi_memory:true});}finally{m.destroy();}
  const api=await factory({wasmBinary:bytes});
  const candidates=Object.keys(api).filter(k=>typeof api[k]==='function'&&!k.startsWith('_'));
  const name=candidates.find(k=>/base64|encode/i.test(k));

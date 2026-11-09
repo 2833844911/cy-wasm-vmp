@@ -341,6 +341,7 @@ class WasmCodec:
                 opcode_name = get_opcode_name(opcode)
                 instr_offset += 1
                 operand_int_list = []
+                memory_index = None
                 if opcode_name.startswith('unknown_') or (opcode >= 0xD0 and opcode != 0xFC):
                     raise ValueError(f"Unsupported WASM opcode 0x{opcode:02x} in function {global_func_index} at byte {start_offset}")
 
@@ -413,6 +414,13 @@ class WasmCodec:
                 elif 0x28 <= opcode <= 0x3E:
                     align, b1 = read_leb128_unsigned(instruction_bytes, instr_offset)
                     instr_offset += b1
+                    # Multi-memory memargs insert a memory index between the
+                    # alignment flags and offset. This also applies to an
+                    # explicitly encoded memory 0 in a single-memory module.
+                    if align & 0x40:
+                        align &= ~0x40
+                        memory_index, index_bytes = read_leb128_unsigned(instruction_bytes, instr_offset)
+                        instr_offset += index_bytes
                     offset_mem, b2 = read_leb128_unsigned(instruction_bytes, instr_offset)
                     instr_offset += b2
                     operand_int_list = [self._pack_operand(align, b1), self._pack_operand(offset_mem, b2)]
@@ -447,7 +455,10 @@ class WasmCodec:
 
                 end_offset = instr_offset
                 raw_bytes = instruction_bytes[start_offset:end_offset]
-                function_code['code'].append([opcode_name, opcode, operand_int_list, raw_bytes])
+                instruction = [opcode_name, opcode, operand_int_list, raw_bytes]
+                if memory_index is not None:
+                    instruction.append({'memory_index': memory_index})
+                function_code['code'].append(instruction)
 
             function_codes.append(function_code)
 
@@ -535,7 +546,14 @@ class WasmCodec:
                 elif 0x28 <= opcode <= 0x3E:
                     val1, len1 = self._extract_operand(operands[0])
                     val2, len2 = self._extract_operand(operands[1])
-                    temp_buf.extend(write_leb128_unsigned(val1, min_bytes=len1))
+                    metadata = instr[4] if len(instr) > 4 else {}
+                    memory_index = metadata.get('memory_index', 0)
+                    if not isinstance(memory_index, int) or memory_index < 0:
+                        raise ValueError('Memory index must be a nonnegative integer')
+                    align = (val1 & ~0x40) | (0x40 if memory_index else 0)
+                    temp_buf.extend(write_leb128_unsigned(align, min_bytes=len1))
+                    if memory_index:
+                        temp_buf.extend(write_leb128_unsigned(memory_index))
                     temp_buf.extend(write_leb128_unsigned(val2, min_bytes=len2))
 
                 elif opcode == 0xFC:

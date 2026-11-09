@@ -27,7 +27,7 @@ try {
   const records=[];let checks=0;
   for(const job of jobs){
     const bytes=fs.readFileSync(job.output);
-    const decoded=wabt.readWasm(Uint8Array.from(bytes),{readDebugNames:false});try{decoded.validate();}finally{decoded.destroy();}
+    const decoded=wabt.readWasm(Uint8Array.from(bytes),{readDebugNames:false,multi_memory:true});try{decoded.validate({multi_memory:true});}finally{decoded.destroy();}
     const actual=new WebAssembly.Instance(new WebAssembly.Module(bytes)).exports;
     for(let i=0;i<64;i++)for(const x of [0,1,-1,-5,-6,7,123456,2147483647,-2147483648]){
       assert.equal(actual[`f${i}`](x),original[`f${i}`](x),`${job.name}: f${i}(${x})`);checks++;

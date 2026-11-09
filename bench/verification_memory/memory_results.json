@@ -1,0 +1,788 @@
+{
+  "passed": true,
+  "fixtures": 32,
+  "builds": 96,
+  "checks": 1548,
+  "stateChecks": 1896,
+  "failedInstantiationChecks": 9,
+  "validators": [
+    "WABT",
+    "V8"
+  ],
+  "environment": {
+    "node": "v24.19.0",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "scope": "Original vs protected application memory sizes, grow results/max, exact-bound loads/stores and bulk memory, imported memory identity/limits, data/start behavior including overlapping segments and failed-instantiation host memory, hidden private memory and old reserved-region collisions. Fresh instances after traps; no post-trap SP recovery claim.",
+  "records": [
+    {
+      "name": "size_grow_old_pages_and_max",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 639
+    },
+    {
+      "name": "size_grow_old_pages_and_max",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 631
+    },
+    {
+      "name": "size_grow_old_pages_and_max",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 634
+    },
+    {
+      "name": "zero_minimum_maximum",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 639
+    },
+    {
+      "name": "zero_minimum_maximum",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 631
+    },
+    {
+      "name": "zero_minimum_maximum",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 634
+    },
+    {
+      "name": "zero_minimum_grow",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 639
+    },
+    {
+      "name": "zero_minimum_grow",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 631
+    },
+    {
+      "name": "zero_minimum_grow",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 634
+    },
+    {
+      "name": "boundary_i32_load8_u",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 601
+    },
+    {
+      "name": "boundary_i32_load8_u",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 604
+    },
+    {
+      "name": "boundary_i32_load8_u",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 589
+    },
+    {
+      "name": "boundary_i32_load16_u",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 601
+    },
+    {
+      "name": "boundary_i32_load16_u",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 604
+    },
+    {
+      "name": "boundary_i32_load16_u",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 589
+    },
+    {
+      "name": "boundary_i32_load",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 601
+    },
+    {
+      "name": "boundary_i32_load",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 604
+    },
+    {
+      "name": "boundary_i32_load",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 589
+    },
+    {
+      "name": "boundary_i64_load",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 601
+    },
+    {
+      "name": "boundary_i64_load",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 604
+    },
+    {
+      "name": "boundary_i64_load",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 589
+    },
+    {
+      "name": "boundary_f32_load",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 607
+    },
+    {
+      "name": "boundary_f32_load",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 610
+    },
+    {
+      "name": "boundary_f32_load",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 595
+    },
+    {
+      "name": "boundary_f64_load",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 615
+    },
+    {
+      "name": "boundary_f64_load",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 618
+    },
+    {
+      "name": "boundary_f64_load",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 603
+    },
+    {
+      "name": "effective_address_offset_bounds",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 616
+    },
+    {
+      "name": "effective_address_offset_bounds",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 594
+    },
+    {
+      "name": "effective_address_offset_bounds",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 618
+    },
+    {
+      "name": "effective_address_overflow_i32",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 469
+    },
+    {
+      "name": "effective_address_overflow_i32",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 472
+    },
+    {
+      "name": "effective_address_overflow_i32",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 469
+    },
+    {
+      "name": "effective_address_overflow_i64",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 469
+    },
+    {
+      "name": "effective_address_overflow_i64",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 472
+    },
+    {
+      "name": "effective_address_overflow_i64",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 469
+    },
+    {
+      "name": "memory_fill_bounds",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 509
+    },
+    {
+      "name": "memory_fill_bounds",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 484
+    },
+    {
+      "name": "memory_fill_bounds",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 509
+    },
+    {
+      "name": "memory_copy_bounds",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 616
+    },
+    {
+      "name": "memory_copy_bounds",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 597
+    },
+    {
+      "name": "memory_copy_bounds",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 622
+    },
+    {
+      "name": "memory_copy_overlap",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 616
+    },
+    {
+      "name": "memory_copy_overlap",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 597
+    },
+    {
+      "name": "memory_copy_overlap",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 622
+    },
+    {
+      "name": "passive_memory_init_bounds",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 584
+    },
+    {
+      "name": "passive_memory_init_bounds",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 575
+    },
+    {
+      "name": "passive_memory_init_bounds",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 585
+    },
+    {
+      "name": "passive_drop_state",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 584
+    },
+    {
+      "name": "passive_drop_state",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 575
+    },
+    {
+      "name": "passive_drop_state",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 585
+    },
+    {
+      "name": "active_data_and_protected_start",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 752
+    },
+    {
+      "name": "active_data_and_protected_start",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 766
+    },
+    {
+      "name": "active_data_and_protected_start",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 858
+    },
+    {
+      "name": "active_data_imported_global_offset",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 585
+    },
+    {
+      "name": "active_data_imported_global_offset",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 588
+    },
+    {
+      "name": "active_data_imported_global_offset",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 612
+    },
+    {
+      "name": "overlapping_active_data_segments",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 657
+    },
+    {
+      "name": "overlapping_active_data_segments",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 657
+    },
+    {
+      "name": "overlapping_active_data_segments",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 697
+    },
+    {
+      "name": "imported_memory_failed_active_initialization",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 369
+    },
+    {
+      "name": "imported_memory_failed_active_initialization",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 340
+    },
+    {
+      "name": "imported_memory_failed_active_initialization",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 353
+    },
+    {
+      "name": "active_segment_end_exact",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 457
+    },
+    {
+      "name": "active_segment_end_exact",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 481
+    },
+    {
+      "name": "active_segment_end_exact",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 490
+    },
+    {
+      "name": "imported_memory_limits_1",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 654
+    },
+    {
+      "name": "imported_memory_limits_1",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 646
+    },
+    {
+      "name": "imported_memory_limits_1",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 649
+    },
+    {
+      "name": "imported_memory_limits_2",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 654
+    },
+    {
+      "name": "imported_memory_limits_2",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 646
+    },
+    {
+      "name": "imported_memory_limits_2",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 649
+    },
+    {
+      "name": "imported_memory_data_and_start",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 881
+    },
+    {
+      "name": "imported_memory_data_and_start",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 886
+    },
+    {
+      "name": "imported_memory_data_and_start",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 923
+    },
+    {
+      "name": "heap_marker_constant_1024",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 344
+    },
+    {
+      "name": "heap_marker_constant_1024",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 315
+    },
+    {
+      "name": "heap_marker_constant_1024",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 328
+    },
+    {
+      "name": "heap_marker_constant_33554432",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 346
+    },
+    {
+      "name": "heap_marker_constant_33554432",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 317
+    },
+    {
+      "name": "heap_marker_constant_33554432",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 330
+    },
+    {
+      "name": "heap_marker_constant_4294967295",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 343
+    },
+    {
+      "name": "heap_marker_constant_4294967295",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 314
+    },
+    {
+      "name": "heap_marker_constant_4294967295",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 327
+    },
+    {
+      "name": "heap_marker_imported_initializer",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 359
+    },
+    {
+      "name": "heap_marker_imported_initializer",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 330
+    },
+    {
+      "name": "heap_marker_imported_initializer",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 343
+    },
+    {
+      "name": "no_application_memory",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 459
+    },
+    {
+      "name": "no_application_memory",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 486
+    },
+    {
+      "name": "no_application_memory",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 472
+    },
+    {
+      "name": "business_data_at_old_vmp_base",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 1158
+    },
+    {
+      "name": "business_data_at_old_vmp_base",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 1150
+    },
+    {
+      "name": "business_data_at_old_vmp_base",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 1159
+    },
+    {
+      "name": "business_write_old_frame_region",
+      "seed": 20261109,
+      "notJeb": false,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 717
+    },
+    {
+      "name": "business_write_old_frame_region",
+      "seed": 20261110,
+      "notJeb": true,
+      "factor": 1,
+      "passed": true,
+      "outputBytes": 724
+    },
+    {
+      "name": "business_write_old_frame_region",
+      "seed": 20261111,
+      "notJeb": true,
+      "factor": 3,
+      "passed": true,
+      "outputBytes": 719
+    }
+  ]
+}

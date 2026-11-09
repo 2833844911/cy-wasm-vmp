@@ -1,5 +1,7 @@
 # 按需栈帧与重复处理器合并（2026-11-09）
 
+> 历史记录：原来的 10 项业务内存差异已在 [独立内存修复](../verification_memory/README.md) 中消除。
+
 基线是完整提交 `ff0d110c7ec2dbeb63ecb11f3780731f3357fc1e`，通过独立工作目录、独立 Python 进程构建，避免把当前 core 与旧解释器混用。环境：macOS arm64、Python 3.9.6、Node.js v24.19.0、WABT 1.0.39。
 
 ## 先修复栈帧

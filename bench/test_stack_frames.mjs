@@ -63,14 +63,14 @@ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'vmp_stack_frames_'));
 const records=[],jobs=[];
 function instance(bytes){
  const module=new WebAssembly.Module(bytes);
- const decoded=wabt.readWasm(Uint8Array.from(bytes),{readDebugNames:false});
- try{decoded.validate();}finally{decoded.destroy();}
+ const decoded=wabt.readWasm(Uint8Array.from(bytes),{readDebugNames:false,multi_memory:true});
+ try{decoded.validate({multi_memory:true});}finally{decoded.destroy();}
  return new WebAssembly.Instance(module).exports;
 }
 try{
  for(const f of fixtures){
   const input=path.join(dir,f.name+'.wasm');
-  const m=wabt.parseWat(f.name,f.wat);m.resolveNames();m.validate();
+  const m=wabt.parseWat(f.name,f.wat);m.resolveNames();m.validate({multi_memory:true});
   fs.writeFileSync(input,Buffer.from(m.toBinary({}).buffer));m.destroy();
   const original=instance(fs.readFileSync(input));
   const expected=f.expectedTrap ? null : f.calls.map(args=>original.run(...args));
@@ -93,11 +93,12 @@ try{
   else try{
    const bytes=fs.readFileSync(r.output);
    const e=instance(bytes);
-   assert(g.stackFloor>10*1024*1024 && g.stackFloor%16===0);
+   assert(g.stackFloor>0 && g.stackFloor%16===0);
+   assert.equal(g.memoryIndex,1);
    assert.equal(g.stackTop,g.stackFloor+g.stackCapacity);
    if(e.__heap_base) {
     const originalHeap=Number(r.name.split('_').at(-1));
-    assert((e.__heap_base.value>>>0)>=g.stackTop && (e.__heap_base.value>>>0)>=originalHeap);
+    assert.equal(e.__heap_base.value>>>0,originalHeap);
    }
    for(const size of Object.values(g.frameSizes))assert(size>=16 && size%16===0 && size<=g.stackCapacity);
    r.frameSizes=g.frameSizes;r.stackCapacity=g.stackCapacity;
@@ -106,10 +107,10 @@ try{
    for(let round=0;round<3;round++)for(let j=0;j<r.calls.length;j++){
     if(r.expectedTrap){
       const fresh=instance(bytes);
-      const bytecode=new Uint8Array(fresh.memory.buffer,10*1024*1024,g.stackFloor-10*1024*1024);
-      const before=bytecode.slice();
+      const businessBytes=new Uint8Array(fresh.memory.buffer);
+      const before=businessBytes.slice();
       assert.throws(()=>fresh.run(...r.calls[j]),WebAssembly.RuntimeError);
-      assert.deepStrictEqual(bytecode,before,'Stack exhaustion changed bytecode');
+      assert.deepStrictEqual(businessBytes,before,'Private stack exhaustion changed business memory');
       arenaTrapChecks++;
     }
     else {assert.deepStrictEqual(e.run(...r.calls[j]),r.expected[j]);checks++;}
