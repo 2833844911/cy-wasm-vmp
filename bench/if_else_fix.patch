@@ -1,0 +1,11 @@
+--- a/wasm_vmp/wasmvmp.py
++++ b/wasm_vmp/wasmvmp.py
+@@ -672,7 +672,7 @@
+                     all_code_list.append("x-"+str(true_branch_start_id)) # 占位 true
+ 
+                     if len(code['else_children']) != 0:
+-                        all_code_list.append("x-"+str(end_merge_id))
++                        all_code_list.append("x-"+str(false_branch_start_id))
+                     else:
+                         all_code_list.append("x-"+str(false_branch_start_id)) # 占位 false
+ 

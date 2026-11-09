@@ -1,0 +1,58 @@
+{
+  "repository": "2833844911/cy-wasm-vmp",
+  "commit": "e998a57301ef37c0453e3e567da137d50450a566",
+  "files": [
+    {
+      "path": "wasm_vmp/__init__.py",
+      "sha": "d9d85ebeaa3a82a2020d993026c65492a06aa9cd"
+    },
+    {
+      "path": "wasm_vmp/analyzer.py",
+      "sha": "ca51ed4c30b3184a374c660bea3fe35b9741482b"
+    },
+    {
+      "path": "wasm_vmp/block_definitions.py",
+      "sha": "f12d2e7900f19a0e737f872086796e321743f5f7"
+    },
+    {
+      "path": "wasm_vmp/codec.py",
+      "sha": "6be24bcd9c4fc6c16a97ce119cfff5a04a3bf370"
+    },
+    {
+      "path": "wasm_vmp/consts.py",
+      "sha": "12db1f3be5aae261be84ab60e4850b8d716cd8c7"
+    },
+    {
+      "path": "wasm_vmp/control_flow_flattener.py",
+      "sha": "428400f3550756a2917601bad338d0ef7890c9c0"
+    },
+    {
+      "path": "wasm_vmp/core.py",
+      "sha": "0a2a3ff5e501179ae559e831675d0d4d5c3553f6"
+    },
+    {
+      "path": "wasm_vmp/instructions_expander.py",
+      "sha": "d6b8c214486df75fe9a642048e18ad44a3830c79"
+    },
+    {
+      "path": "wasm_vmp/obfuscator.py",
+      "sha": "4aff1c4bbd8a14f4905e321d5613e599387f8226"
+    },
+    {
+      "path": "wasm_vmp/opaque_utils.py",
+      "sha": "a22a8a1512f07621ad7d770572d323ac95eda3b4"
+    },
+    {
+      "path": "wasm_vmp/preprocessor.py",
+      "sha": "166ae3975b5fecd57b3df3e80978c9dddf07fd7a"
+    },
+    {
+      "path": "wasm_vmp/utils.py",
+      "sha": "86f1bad6404ed6b0680486749071241a05fc083d"
+    },
+    {
+      "path": "wasm_vmp/wasmvmp.py",
+      "sha": "4c2a1f958bbf822f1c59ddfc7787820273c36078"
+    }
+  ]
+}

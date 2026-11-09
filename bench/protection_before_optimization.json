@@ -1,0 +1,22 @@
+{
+  "repository": "2833844911/cy-wasm-vmp",
+  "commit": "e998a57301ef37c0453e3e567da137d50450a566",
+  "random_seed": 20261109,
+  "settings": {
+    "not_jeb": true,
+    "selected_functions": null,
+    "instruction_expansion_factor": 1
+  },
+  "note": "Unmodified core.py virtualizes all original functions except the final one. The fixture places an accessor last.",
+  "python_compatibility": "Shim supplies the unused symbol.continue_stmt import on Python 3.12.",
+  "local_patch": "bench/if_else_fix.patch fixes the false target of if/else. Performance results use this local source fix; upstream output fails MD5 correctness.",
+  "original_function_count": 4,
+  "protected_function_indices": [
+    0,
+    1,
+    2
+  ],
+  "protection_seconds": 0.63885398299999,
+  "baseline_bytes": 1152,
+  "protected_bytes": 5497
+}

@@ -3,6 +3,10 @@
 **中文** | [English](README_EN.md)
 
 一个强大的 WebAssembly 二进制混淆和保护工具，通过虚拟化、控制流扁平化和数据加密技术来保护 WASM 代码。
+## 2026-11-09 调度优化
+
+已集成 `br_table` 直接分派与 if/else 正确性修复。MD5 示例的测试结果、复现方法及兼容性限制见 [优化说明](bench/README_OPTIMIZATION.md) 和 [独立复核](bench/verification_macos/README.md)。已知函数隐式标签 `br_if` 返回值问题仍存在，完整回归并非全部通过。
+
 ## 在线使用
 https://wasm.tsvmp.com/
 ## 📋 目录

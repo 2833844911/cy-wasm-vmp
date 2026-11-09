@@ -1,0 +1,7 @@
+Correctness passed: 132 module/hash checks.
+abc (3 B): native 0.203 us; before 195.776 us; optimized 19.751 us; speedup 9.91x; slowdown-vs-native 97.48x
+32 B: native 0.215 us; before 209.209 us; optimized 21.543 us; speedup 9.71x; slowdown-vs-native 100.08x
+64 B: native 0.369 us; before 321.808 us; optimized 33.533 us; speedup 9.60x; slowdown-vs-native 90.89x
+1024 B: native 3.136 us; before 2572.027 us; optimized 269.520 us; speedup 9.54x; slowdown-vs-native 85.93x
+16384 B: native 46.703 us; before 39130.561 us; optimized 4023.943 us; speedup 9.72x; slowdown-vs-native 86.16x
+Saved /workspace/scratch/ab1e5584b1cd/cy-wasm-vmp/bench/optimization_results.json

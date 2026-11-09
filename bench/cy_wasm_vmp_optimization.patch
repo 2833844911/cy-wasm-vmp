@@ -1,0 +1,260 @@
+--- a/wasm_vmp/wasmvmp.py
++++ b/wasm_vmp/wasmvmp.py
+@@ -8,6 +8,7 @@
+ import random
+ from .block_definitions import define_instruction_blocks
+ from .control_flow_flattener import build_bst_dispatch
++from .dispatch import build_table_dispatch
+ from .opaque_utils import generate_obfuscated_constant, generate_always_true_check, generate_fake_vmp_block
+ 
+ off = 0
+@@ -304,6 +305,9 @@
+         new_code.append(add_instr(0x21, pack_op(code_memsig_new_addr)))
+ 
+         self.used_blocks = set()
++        self.dispatch_opcodes = {}
++        self.dispatch_opcode_pool = []
++        self.dispatch_opcode_limit = 0
+         self.op_map = {
+             'i32.add': i32_add_code_idx, 'i32.sub': i32_sub_code_idx, 'i32.mul': i32_mul_code_idx,
+             'i32.eq': i32_eq_code_idx,
+@@ -672,7 +676,7 @@
+                     all_code_list.append("x-"+str(true_branch_start_id)) # 占位 true
+ 
+                     if len(code['else_children']) != 0:
+-                        all_code_list.append("x-"+str(end_merge_id))
++                        all_code_list.append("x-"+str(false_branch_start_id))
+                     else:
+                         all_code_list.append("x-"+str(false_branch_start_id)) # 占位 false
+ 
+@@ -1245,6 +1249,21 @@
+         # --- Pass 2: Generate Bytecode using Mappings ---
+ 
+         mycodeshuz = []
++
++        def append_opcode(block_id):
++            if block_id not in self.dispatch_opcodes:
++                # Randomize compact opcode IDs without a table proportional
++                # to the old sparse ID range. At most 63 table entries are
++                # unused, even as additional functions add new handlers.
++                if not self.dispatch_opcode_pool:
++                    start = self.dispatch_opcode_limit
++                    self.dispatch_opcode_limit += 64
++                    self.dispatch_opcode_pool = list(range(start, self.dispatch_opcode_limit))
++                    random.shuffle(self.dispatch_opcode_pool)
++                self.dispatch_opcodes[block_id] = self.dispatch_opcode_pool.pop()
++            mycodeshuz.append(self.dispatch_opcodes[block_id])
++            self.used_blocks.add(block_id)
++
+         idx = -1
+         while True:
+             idx += 1
+@@ -1264,8 +1283,7 @@
+                 continue # Skip emitting code for this ID
+ 
+             if zl == 'if':
+-                mycodeshuz.append(self.if_code_idx)
+-                self.used_blocks.add(self.if_code_idx)
++                append_opcode(self.if_code_idx)
+ 
+                 if_goto = all_code_list[idx+1] # "over" or "x-ID"
+                 if if_goto == 'over':
+@@ -1289,8 +1307,7 @@
+                 idx += 2
+ 
+             elif zl == 'goto':
+-                mycodeshuz.append(self.goto_code_idx)
+-                self.used_blocks.add(self.goto_code_idx)
++                append_opcode(self.goto_code_idx)
+ 
+                 goto = all_code_list[idx + 1]
+                 goto_id = int(goto.split('-')[-1])
+@@ -1303,39 +1320,34 @@
+                 idx +=1
+ 
+             elif zl == 'i32.const':
+-                mycodeshuz.append(self.i32_const_code_idx)
+-                self.used_blocks.add(self.i32_const_code_idx)
++                append_opcode(self.i32_const_code_idx)
+                 goto = all_code_list[idx + 1]
+                 val = int(goto[2:]) # Value, not ID
+                 mycodeshuz.append(val)
+                 idx += 1
+ 
+             elif zl == 'local.get':
+-                mycodeshuz.append(self.local_get_code_idx)
+-                self.used_blocks.add(self.local_get_code_idx)
++                append_opcode(self.local_get_code_idx)
+                 goto = all_code_list[idx + 1]
+                 val = int(goto[2:])
+                 mycodeshuz.append(val)
+                 idx += 1
+             elif zl == 'local.tee':
+-                mycodeshuz.append(self.local_tee_code_idx)
+-                self.used_blocks.add(self.local_tee_code_idx)
++                append_opcode(self.local_tee_code_idx)
+                 goto = all_code_list[idx + 1]
+                 val = int(goto[2:])
+                 mycodeshuz.append(val)
+                 idx += 1
+ 
+             elif zl == 'i32.load':
+-                mycodeshuz.append(self.i32_load_code_idx)
+-                self.used_blocks.add(self.i32_load_code_idx)
++                append_opcode(self.i32_load_code_idx)
+                 goto = all_code_list[idx + 1]
+                 val = int(goto[2:])
+                 mycodeshuz.append(val)
+                 idx += 1
+ 
+             elif zl == 'i64.load':
+-                mycodeshuz.append(self.i64_load_code_idx)
+-                self.used_blocks.add(self.i64_load_code_idx)
++                append_opcode(self.i64_load_code_idx)
+                 goto = all_code_list[idx + 1]
+                 val = int(goto[2:])
+                 mycodeshuz.append(val)
+@@ -1343,8 +1355,7 @@
+ 
+             elif zl in self.op_map:
+                 code_idx = self.op_map[zl]
+-                mycodeshuz.append(code_idx)
+-                self.used_blocks.add(code_idx)
++                append_opcode(code_idx)
+                 idx += 0
+ 
+             else:
+@@ -1352,15 +1363,12 @@
+                 if zl in zbhebing:
+                     zl = zbhebing[zl]
+                 if zl in if_block_list:
+-                    mycodeshuz.append(zl)
+-                    self.used_blocks.add(zl)
++                    append_opcode(zl)
+                 elif zl in self.op_map or zl == self.local_get_code_idx or zl == self.local_tee_code_idx or zl == self.i32_const_code_idx:
+                     # Generic fallback (should be handled by optimization, but safety)
+-                    mycodeshuz.append(self.null_code_idx)
+-                    self.used_blocks.add(self.null_code_idx)
++                    append_opcode(self.null_code_idx)
+                 else:
+-                    mycodeshuz.append(self.null_code_idx)
+-                    self.used_blocks.add(self.null_code_idx)
++                    append_opcode(self.null_code_idx)
+ 
+         return this_fun, mycodeshuz
+ 
+@@ -1450,10 +1458,9 @@
+         for kand, v in if_block_list.items():
+             if_block_list_lists.append(v)
+ 
+-        random.shuffle(if_block_list_lists)
+-        for blk in if_block_list_lists:
+-            for instr in blk:
+-                new_code.append(instr)
++        new_code.extend(build_table_dispatch(
++            if_block_list, self.dispatch_opcodes, self.new_local_idx
++        ))
+ 
+         # ==========================================
+         # 6. 写入最终代码 (BST Dispatch)
+--- /dev/null
++++ b/wasm_vmp/dispatch.py
+@@ -0,0 +1,98 @@
++"""Direct dispatch for the generated instruction interpreter.
++
++Bytecode opcode words use compact randomized module-local IDs; immediate operands and
++bytecode branch offsets retain their existing representation. Handler layout
++is shuffled independently from opcode numbering.
++"""
++import random
++
++from .utils import add_instr, pack_op
++
++
++def _operand_value(operand):
++    return operand['val'] if isinstance(operand, dict) else operand
++
++
++def _handler_body(instructions, loop_depth):
++    """Remove the dispatch guard and relocate external structured branches.
++
++The original wrapper is ``if (pc == id) { body }`` inside the interpreter
++loop. A branch to that wrapper exits the handler; under direct dispatch this
++means starting the next interpreter iteration. Branches to inner labels stay
++unchanged, while branches beyond the old loop keep their original target.
++"""
++    if (len(instructions) < 5 or
++            [item[1] for item in instructions[:4]] != [0x20, 0x41, 0x46, 0x04] or
++            instructions[-1][1] != 0x0B):
++        raise ValueError('Unexpected VMP handler dispatch wrapper')
++
++    body = []
++    nesting = 0
++
++    def relocate(depth):
++        if depth < nesting:
++            return depth
++        # Original depths at this point: wrapper=nesting, loop=nesting+1.
++        if depth <= nesting + 1:
++            return nesting + loop_depth
++        return depth + loop_depth - 1
++
++    for instruction in instructions[4:-1]:
++        opcode = instruction[1]
++        if opcode in (0x0C, 0x0D):
++            depth = _operand_value(instruction[2][0])
++            instruction = add_instr(opcode, pack_op(relocate(depth)))
++        elif opcode == 0x0E:
++            operands = instruction[2]
++            count = _operand_value(operands[0])
++            instruction = add_instr(opcode, [pack_op(count)] + [
++                pack_op(relocate(_operand_value(item))) for item in operands[1:]
++            ])
++        body.append(instruction)
++        if opcode in (0x02, 0x03, 0x04):
++            nesting += 1
++        elif opcode == 0x0B:
++            nesting -= 1
++            if nesting < 0:
++                raise ValueError('Unbalanced VMP handler body')
++    if nesting:
++        raise ValueError('Unbalanced VMP handler body')
++    return body
++
++
++def build_table_dispatch(blocks, opcodes, local_pc_idx):
++    """Emit one ``br_table`` selection per virtual instruction.
++
++The invalid-opcode arm traps instead of falling through into a handler. Every
++normal handler returns directly to the existing interpreter loop.
++"""
++    if set(blocks) != set(opcodes):
++        raise ValueError('Dispatch opcode/handler mismatch')
++    if (len(set(opcodes.values())) != len(opcodes) or
++            any(not isinstance(value, int) or value < 0 for value in opcodes.values())):
++        raise ValueError('Dispatch opcode IDs must be unique nonnegative integers')
++    if not blocks:
++        return [add_instr(0x00)]
++
++    layout = list(blocks)
++    random.shuffle(layout)
++    count = len(layout)
++    positions = {key: position for position, key in enumerate(layout)}
++    # Opcode chunks can contain holes. Route them to the invalid-opcode arm.
++    targets = [count] * (max(opcodes.values()) + 1)
++    for key, opcode in opcodes.items():
++        targets[opcode] = positions[key]
++
++    code = [add_instr(0x02, 0x40)]  # invalid-opcode exit
++    code.extend(add_instr(0x02, 0x40) for _ in layout)
++    code.append(add_instr(0x20, pack_op(local_pc_idx)))
++    code.append(add_instr(0x0E, [pack_op(len(targets))] + [
++        pack_op(target) for target in targets
++    ] + [pack_op(count)]))
++    for position, key in enumerate(layout):
++        code.append(add_instr(0x0B))
++        loop_depth = count - position
++        code.extend(_handler_body(blocks[key], loop_depth))
++        code.append(add_instr(0x0C, pack_op(loop_depth)))
++    code.extend([add_instr(0x0B), add_instr(0x00)])
++    return code

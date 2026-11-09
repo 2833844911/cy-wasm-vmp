@@ -1,0 +1,48 @@
+
+############################################################
+# Start Parsing WASM Module
+############################################################
+[OK] Magic & Version Valid
+-> Processing CODE Section
+-> Analyzer updated with 4 function signatures
+-> Analyzer updated with 1 global variables
+
+############################################################
+# Start Encryption & Rebuilding
+############################################################
+-> Injecting Global SP at index 1 (init: 11534336)
+None
+-> Appending VMP Interpreter Function (Type: 3)
+-> Processing DATA Section (Obfuscation)
+
+==================== Starting Data Obfuscation ====================
+-> Found 1 data segments
+-> Injecting VMP Bytecode Data Segment (Size: 1992 bytes) at 10485760
+
+==================== Injecting Start Routine ====================
+-> New Start Function Index: 5
+-> Creating new Start Section: 5
+
+[SUCCESS] Successfully generated: /workspace/scratch/ab1e5584b1cd/cy-wasm-vmp/bench/md5_vmp_optimized.wasm
+{
+  "repository": "2833844911/cy-wasm-vmp",
+  "base_commit": "e998a57301ef37c0453e3e567da137d50450a566",
+  "random_seed": 20261109,
+  "settings": {
+    "not_jeb": true,
+    "selected_functions": null,
+    "instruction_expansion_factor": 1
+  },
+  "local_changes": "Prior if/else correctness fix plus instruction dispatch optimization; see included patch.",
+  "python_compatibility": "Shim supplies unused symbol.continue_stmt import on Python 3.12.",
+  "protected_function_indices": [
+    0,
+    1,
+    2
+  ],
+  "note": "MD5 compression and hash entry stay virtualized; only the final output_ptr accessor is skipped by existing core.py behavior.",
+  "protection_seconds": 0.4242721709997568,
+  "baseline_bytes": 1152,
+  "protected_bytes": 5277,
+  "protected_sha256": "fa7b2b0cfa9e5756d0f5489c443ba8821c13d403479cb160db3e41c021b7fdf6"
+}

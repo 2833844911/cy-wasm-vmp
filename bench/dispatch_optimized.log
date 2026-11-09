@@ -1,0 +1,313 @@
+{
+  "engine": "current project source",
+  "passed": false,
+  "passedSupportedScope": true,
+  "knownPreexistingFailureCount": 24,
+  "suites": [
+    {
+      "suite": "i32_control_memory_calls",
+      "passed": false,
+      "checks": 1344,
+      "failures": [
+        {
+          "path": "/tmp/wasmvmp_dispatch_1p6tqf4k/i32_control_memory_calls_vmp.wasm",
+          "name": "implicit_if",
+          "args": [
+            "1"
+          ],
+          "actual": "123",
+          "expected": "77",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n123 !== 77\n",
+          "knownPreexisting": true
+        },
+        {
+          "path": "/tmp/wasmvmp_dispatch_1p6tqf4k/i32_control_memory_calls_vmp.wasm",
+          "name": "implicit_if",
+          "args": [
+            "-1"
+          ],
+          "actual": "123",
+          "expected": "77",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n123 !== 77\n",
+          "knownPreexisting": true
+        },
+        {
+          "path": "/tmp/wasmvmp_dispatch_1p6tqf4k/i32_control_memory_calls_vmp.wasm",
+          "name": "implicit_if",
+          "args": [
+            "1"
+          ],
+          "actual": "123",
+          "expected": "77",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n123 !== 77\n",
+          "knownPreexisting": true
+        },
+        {
+          "path": "/tmp/wasmvmp_dispatch_1p6tqf4k/i32_control_memory_calls_vmp.wasm",
+          "name": "implicit_if",
+          "args": [
+            "-1"
+          ],
+          "actual": "123",
+          "expected": "77",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n123 !== 77\n",
+          "knownPreexisting": true
+        },
+        {
+          "path": "/tmp/wasmvmp_dispatch_1p6tqf4k/i32_control_memory_calls_vmp.wasm",
+          "name": "implicit_if",
+          "args": [
+            "1"
+          ],
+          "actual": "123",
+          "expected": "77",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n123 !== 77\n",
+          "knownPreexisting": true
+        },
+        {
+          "path": "/tmp/wasmvmp_dispatch_1p6tqf4k/i32_control_memory_calls_vmp.wasm",
+          "name": "implicit_if",
+          "args": [
+            "-1"
+          ],
+          "actual": "123",
+          "expected": "77",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n123 !== 77\n",
+          "knownPreexisting": true
+        },
+        {
+          "path": "/tmp/wasmvmp_dispatch_1p6tqf4k/i32_control_memory_calls_vmp.wasm",
+          "name": "implicit_if",
+          "args": [
+            "1"
+          ],
+          "actual": "123",
+          "expected": "77",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n123 !== 77\n",
+          "knownPreexisting": true
+        },
+        {
+          "path": "/tmp/wasmvmp_dispatch_1p6tqf4k/i32_control_memory_calls_vmp.wasm",
+          "name": "implicit_if",
+          "args": [
+            "-1"
+          ],
+          "actual": "123",
+          "expected": "77",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n123 !== 77\n",
+          "knownPreexisting": true
+        },
+        {
+          "path": "/tmp/wasmvmp_dispatch_1p6tqf4k/i32_control_memory_calls_vmp.wasm",
+          "name": "implicit_if",
+          "args": [
+            "1"
+          ],
+          "actual": "123",
+          "expected": "77",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n123 !== 77\n",
+          "knownPreexisting": true
+        },
+        {
+          "path": "/tmp/wasmvmp_dispatch_1p6tqf4k/i32_control_memory_calls_vmp.wasm",
+          "name": "implicit_if",
+          "args": [
+            "-1"
+          ],
+          "actual": "123",
+          "expected": "77",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n123 !== 77\n",
+          "knownPreexisting": true
+        },
+        {
+          "path": "/tmp/wasmvmp_dispatch_1p6tqf4k/i32_control_memory_calls_vmp.wasm",
+          "name": "implicit_if",
+          "args": [
+            "1"
+          ],
+          "actual": "123",
+          "expected": "77",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n123 !== 77\n",
+          "knownPreexisting": true
+        },
+        {
+          "path": "/tmp/wasmvmp_dispatch_1p6tqf4k/i32_control_memory_calls_vmp.wasm",
+          "name": "implicit_if",
+          "args": [
+            "-1"
+          ],
+          "actual": "123",
+          "expected": "77",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n123 !== 77\n",
+          "knownPreexisting": true
+        },
+        {
+          "path": "/tmp/wasmvmp_dispatch_1p6tqf4k/i32_control_memory_calls_vmp.wasm",
+          "name": "implicit_if",
+          "args": [
+            "1"
+          ],
+          "actual": "123",
+          "expected": "77",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n123 !== 77\n",
+          "knownPreexisting": true
+        },
+        {
+          "path": "/tmp/wasmvmp_dispatch_1p6tqf4k/i32_control_memory_calls_vmp.wasm",
+          "name": "implicit_if",
+          "args": [
+            "-1"
+          ],
+          "actual": "123",
+          "expected": "77",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n123 !== 77\n",
+          "knownPreexisting": true
+        },
+        {
+          "path": "/tmp/wasmvmp_dispatch_1p6tqf4k/i32_control_memory_calls_vmp.wasm",
+          "name": "implicit_if",
+          "args": [
+            "1"
+          ],
+          "actual": "123",
+          "expected": "77",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n123 !== 77\n",
+          "knownPreexisting": true
+        },
+        {
+          "path": "/tmp/wasmvmp_dispatch_1p6tqf4k/i32_control_memory_calls_vmp.wasm",
+          "name": "implicit_if",
+          "args": [
+            "-1"
+          ],
+          "actual": "123",
+          "expected": "77",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n123 !== 77\n",
+          "knownPreexisting": true
+        },
+        {
+          "path": "/tmp/wasmvmp_dispatch_1p6tqf4k/i32_control_memory_calls_vmp.wasm",
+          "name": "implicit_if",
+          "args": [
+            "1"
+          ],
+          "actual": "123",
+          "expected": "77",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n123 !== 77\n",
+          "knownPreexisting": true
+        },
+        {
+          "path": "/tmp/wasmvmp_dispatch_1p6tqf4k/i32_control_memory_calls_vmp.wasm",
+          "name": "implicit_if",
+          "args": [
+            "-1"
+          ],
+          "actual": "123",
+          "expected": "77",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n123 !== 77\n",
+          "knownPreexisting": true
+        },
+        {
+          "path": "/tmp/wasmvmp_dispatch_1p6tqf4k/i32_control_memory_calls_vmp.wasm",
+          "name": "implicit_if",
+          "args": [
+            "1"
+          ],
+          "actual": "123",
+          "expected": "77",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n123 !== 77\n",
+          "knownPreexisting": true
+        },
+        {
+          "path": "/tmp/wasmvmp_dispatch_1p6tqf4k/i32_control_memory_calls_vmp.wasm",
+          "name": "implicit_if",
+          "args": [
+            "-1"
+          ],
+          "actual": "123",
+          "expected": "77",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n123 !== 77\n",
+          "knownPreexisting": true
+        },
+        {
+          "path": "/tmp/wasmvmp_dispatch_1p6tqf4k/i32_control_memory_calls_vmp.wasm",
+          "name": "implicit_if",
+          "args": [
+            "1"
+          ],
+          "actual": "123",
+          "expected": "77",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n123 !== 77\n",
+          "knownPreexisting": true
+        },
+        {
+          "path": "/tmp/wasmvmp_dispatch_1p6tqf4k/i32_control_memory_calls_vmp.wasm",
+          "name": "implicit_if",
+          "args": [
+            "-1"
+          ],
+          "actual": "123",
+          "expected": "77",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n123 !== 77\n",
+          "knownPreexisting": true
+        },
+        {
+          "path": "/tmp/wasmvmp_dispatch_1p6tqf4k/i32_control_memory_calls_vmp.wasm",
+          "name": "implicit_if",
+          "args": [
+            "1"
+          ],
+          "actual": "123",
+          "expected": "77",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n123 !== 77\n",
+          "knownPreexisting": true
+        },
+        {
+          "path": "/tmp/wasmvmp_dispatch_1p6tqf4k/i32_control_memory_calls_vmp.wasm",
+          "name": "implicit_if",
+          "args": [
+            "-1"
+          ],
+          "actual": "123",
+          "expected": "77",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n123 !== 77\n",
+          "knownPreexisting": true
+        }
+      ],
+      "passedSupportedScope": true,
+      "knownPreexistingFailureCount": 24,
+      "protectionBytes": 2771,
+      "stderr": ""
+    },
+    {
+      "suite": "i64",
+      "passed": true,
+      "checks": 240,
+      "failures": [],
+      "passedSupportedScope": true,
+      "knownPreexistingFailureCount": 0,
+      "protectionBytes": 992
+    },
+    {
+      "suite": "f32",
+      "passed": true,
+      "checks": 240,
+      "failures": [],
+      "passedSupportedScope": true,
+      "knownPreexistingFailureCount": 0,
+      "protectionBytes": 1037
+    },
+    {
+      "suite": "f64",
+      "passed": true,
+      "checks": 240,
+      "failures": [],
+      "passedSupportedScope": true,
+      "knownPreexistingFailureCount": 0,
+      "protectionBytes": 1002
+    }
+  ],
+  "checks": 2064,
+  "scope": "Source-built control flow, direct/recursive calls, memory/global operations, i64/f32/f64 typed values, repeated calls. Not exhaustive for all WASM features.",
+  "knownPreexistingIssue": "br_if to the implicit function label already produces an incorrect result in the preserved corrected baseline. It is retained and classified separately, not treated as a passing correctness test."
+}

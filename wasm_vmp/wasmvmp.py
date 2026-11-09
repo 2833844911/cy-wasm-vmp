@@ -8,6 +8,7 @@ from .utils import (
 import random
 from .block_definitions import define_instruction_blocks
 from .control_flow_flattener import build_bst_dispatch
+from .dispatch import build_table_dispatch
 from .opaque_utils import generate_obfuscated_constant, generate_always_true_check, generate_fake_vmp_block
 
 off = 0
@@ -304,6 +305,9 @@ class WasmVMP:
         new_code.append(add_instr(0x21, pack_op(code_memsig_new_addr)))
 
         self.used_blocks = set()
+        self.dispatch_opcodes = {}
+        self.dispatch_opcode_pool = []
+        self.dispatch_opcode_limit = 0
         self.op_map = {
             'i32.add': i32_add_code_idx, 'i32.sub': i32_sub_code_idx, 'i32.mul': i32_mul_code_idx,
             'i32.eq': i32_eq_code_idx,
@@ -672,7 +676,7 @@ class WasmVMP:
                     all_code_list.append("x-"+str(true_branch_start_id)) # 占位 true
 
                     if len(code['else_children']) != 0:
-                        all_code_list.append("x-"+str(end_merge_id))
+                        all_code_list.append("x-"+str(false_branch_start_id))
                     else:
                         all_code_list.append("x-"+str(false_branch_start_id)) # 占位 false
 
@@ -1245,6 +1249,21 @@ class WasmVMP:
         # --- Pass 2: Generate Bytecode using Mappings ---
 
         mycodeshuz = []
+
+        def append_opcode(block_id):
+            if block_id not in self.dispatch_opcodes:
+                # Randomize compact opcode IDs without a table proportional
+                # to the old sparse ID range. At most 63 table entries are
+                # unused, even as additional functions add new handlers.
+                if not self.dispatch_opcode_pool:
+                    start = self.dispatch_opcode_limit
+                    self.dispatch_opcode_limit += 64
+                    self.dispatch_opcode_pool = list(range(start, self.dispatch_opcode_limit))
+                    random.shuffle(self.dispatch_opcode_pool)
+                self.dispatch_opcodes[block_id] = self.dispatch_opcode_pool.pop()
+            mycodeshuz.append(self.dispatch_opcodes[block_id])
+            self.used_blocks.add(block_id)
+
         idx = -1
         while True:
             idx += 1
@@ -1264,8 +1283,7 @@ class WasmVMP:
                 continue # Skip emitting code for this ID
 
             if zl == 'if':
-                mycodeshuz.append(self.if_code_idx)
-                self.used_blocks.add(self.if_code_idx)
+                append_opcode(self.if_code_idx)
 
                 if_goto = all_code_list[idx+1] # "over" or "x-ID"
                 if if_goto == 'over':
@@ -1289,8 +1307,7 @@ class WasmVMP:
                 idx += 2
 
             elif zl == 'goto':
-                mycodeshuz.append(self.goto_code_idx)
-                self.used_blocks.add(self.goto_code_idx)
+                append_opcode(self.goto_code_idx)
 
                 goto = all_code_list[idx + 1]
                 goto_id = int(goto.split('-')[-1])
@@ -1303,39 +1320,34 @@ class WasmVMP:
                 idx +=1
 
             elif zl == 'i32.const':
-                mycodeshuz.append(self.i32_const_code_idx)
-                self.used_blocks.add(self.i32_const_code_idx)
+                append_opcode(self.i32_const_code_idx)
                 goto = all_code_list[idx + 1]
                 val = int(goto[2:]) # Value, not ID
                 mycodeshuz.append(val)
                 idx += 1
 
             elif zl == 'local.get':
-                mycodeshuz.append(self.local_get_code_idx)
-                self.used_blocks.add(self.local_get_code_idx)
+                append_opcode(self.local_get_code_idx)
                 goto = all_code_list[idx + 1]
                 val = int(goto[2:])
                 mycodeshuz.append(val)
                 idx += 1
             elif zl == 'local.tee':
-                mycodeshuz.append(self.local_tee_code_idx)
-                self.used_blocks.add(self.local_tee_code_idx)
+                append_opcode(self.local_tee_code_idx)
                 goto = all_code_list[idx + 1]
                 val = int(goto[2:])
                 mycodeshuz.append(val)
                 idx += 1
 
             elif zl == 'i32.load':
-                mycodeshuz.append(self.i32_load_code_idx)
-                self.used_blocks.add(self.i32_load_code_idx)
+                append_opcode(self.i32_load_code_idx)
                 goto = all_code_list[idx + 1]
                 val = int(goto[2:])
                 mycodeshuz.append(val)
                 idx += 1
 
             elif zl == 'i64.load':
-                mycodeshuz.append(self.i64_load_code_idx)
-                self.used_blocks.add(self.i64_load_code_idx)
+                append_opcode(self.i64_load_code_idx)
                 goto = all_code_list[idx + 1]
                 val = int(goto[2:])
                 mycodeshuz.append(val)
@@ -1343,8 +1355,7 @@ class WasmVMP:
 
             elif zl in self.op_map:
                 code_idx = self.op_map[zl]
-                mycodeshuz.append(code_idx)
-                self.used_blocks.add(code_idx)
+                append_opcode(code_idx)
                 idx += 0
 
             else:
@@ -1352,15 +1363,12 @@ class WasmVMP:
                 if zl in zbhebing:
                     zl = zbhebing[zl]
                 if zl in if_block_list:
-                    mycodeshuz.append(zl)
-                    self.used_blocks.add(zl)
+                    append_opcode(zl)
                 elif zl in self.op_map or zl == self.local_get_code_idx or zl == self.local_tee_code_idx or zl == self.i32_const_code_idx:
                     # Generic fallback (should be handled by optimization, but safety)
-                    mycodeshuz.append(self.null_code_idx)
-                    self.used_blocks.add(self.null_code_idx)
+                    append_opcode(self.null_code_idx)
                 else:
-                    mycodeshuz.append(self.null_code_idx)
-                    self.used_blocks.add(self.null_code_idx)
+                    append_opcode(self.null_code_idx)
 
         return this_fun, mycodeshuz
 
@@ -1450,10 +1458,9 @@ class WasmVMP:
         for kand, v in if_block_list.items():
             if_block_list_lists.append(v)
 
-        random.shuffle(if_block_list_lists)
-        for blk in if_block_list_lists:
-            for instr in blk:
-                new_code.append(instr)
+        new_code.extend(build_table_dispatch(
+            if_block_list, self.dispatch_opcodes, self.new_local_idx
+        ))
 
         # ==========================================
         # 6. 写入最终代码 (BST Dispatch)

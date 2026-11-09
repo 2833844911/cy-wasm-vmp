@@ -1,0 +1,22 @@
+{
+  "repository": "2833844911/cy-wasm-vmp",
+  "base_commit": "e998a57301ef37c0453e3e567da137d50450a566",
+  "random_seed": 20261109,
+  "settings": {
+    "not_jeb": true,
+    "selected_functions": null,
+    "instruction_expansion_factor": 1
+  },
+  "local_changes": "Prior if/else correctness fix plus instruction dispatch optimization; see included patch.",
+  "python_compatibility": "Shim supplies unused symbol.continue_stmt import on Python 3.12.",
+  "protected_function_indices": [
+    0,
+    1,
+    2
+  ],
+  "note": "MD5 compression and hash entry stay virtualized; only the final output_ptr accessor is skipped by existing core.py behavior.",
+  "protection_seconds": 0.257373208,
+  "baseline_bytes": 1152,
+  "protected_bytes": 5277,
+  "protected_sha256": "fa7b2b0cfa9e5756d0f5489c443ba8821c13d403479cb160db3e41c021b7fdf6"
+}
