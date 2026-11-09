@@ -42,3 +42,5 @@ jobs:
           git -C /tmp/wasm-spec checkout --detach FETCH_HEAD
       - name: Official supported numeric and control suites
         run: node bench/test_spec.mjs /tmp/wasm-spec /tmp/spec.json i32,i64,f32,f64,conversions,local_get,local_set,unwind,return,func,int_exprs,float_exprs,endianness,store
+      - name: Official binary syntax and type coverage
+        run: node bench/test_syntax.mjs /tmp/wasm-spec /tmp/syntax.json

@@ -234,9 +234,8 @@ class WasmCodec:
                 # Add others if needed
             elif 'init_raw' in g:
                  raw = g['init_raw']
-                 # Defensive fix: Ensure we don't duplicate END opcode if init_raw captured it
-                 while raw.endswith(b'\x0b'):
-                     raw = raw[:-1]
+                 # decode_global_section excludes the END opcode already.
+                 # A trailing 0x0b may be part of a numeric constant or index.
                  buffer.extend(raw)
             else:
                  # Should not happen if decoded correctly

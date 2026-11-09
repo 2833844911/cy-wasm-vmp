@@ -349,7 +349,8 @@ class WasmObfuscator:
             section_lists.insert(0, {'section_id': 1, 'data': payload})
             
         # 2. Func Index
-        imported_funcs = len(self.imports)
+        # Only function imports occupy the function index space.
+        imported_funcs = sum(imp['kind'] == 0 for imp in self.imports)
         func_sec = next((s for s in section_lists if s['section_id'] == 3), None)
         internal_count = 0
         if func_sec:

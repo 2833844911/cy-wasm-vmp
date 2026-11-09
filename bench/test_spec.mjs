@@ -1,3 +1,4 @@
+import {parse,wat} from './wast_reader.mjs';
 /** Differential runner for module/invoke commands in official core WAST files. */
 import wabtFactory from 'wabt';
 import fs from 'node:fs';
@@ -9,23 +10,6 @@ const wabt=await wabtFactory();
 const source=process.argv[2];
 if(!source) throw Error('Usage: node bench/test_spec.mjs /path/to/WebAssembly/testsuite [report.json] [suite,...]');
 const suites=(process.argv[4] || 'i32,i64,f32,f64,conversions,select,local_get,local_set,local_tee,call,if,loop,block,br,br_if,br_table,call_indirect,unwind,return,func,int_exprs,float_exprs,endianness,load,store,align').split(',');
-function parse(text) {
-  // A small S-expression reader; comments can nest, quoted strings are opaque.
-  const root=[], stack=[root];let i=0;
-  while(i<text.length) {
-    if(/\s/.test(text[i])) {i++;continue;}
-    if(text.startsWith(';;',i)) {i=text.indexOf('\n',i);if(i<0)break;continue;}
-    if(text.startsWith('(;',i)) {let depth=1;i+=2;while(depth&&i<text.length){if(text.startsWith('(;',i)){depth++;i+=2;}else if(text.startsWith(';)',i)){depth--;i+=2;}else i++;}continue;}
-    if(text[i]==='('){const node=[];stack.at(-1).push(node);stack.push(node);i++;continue;}
-    if(text[i]===')'){assert(stack.length>1);stack.pop();i++;continue;}
-    let start=i;
-    if(text[i]==='"'){i++;while(i<text.length){if(text[i]==='\\'){i+=2;continue;}if(text[i++]==='"')break;}}
-    else while(i<text.length&&!/[\s()]/.test(text[i]))i++;
-    stack.at(-1).push(text.slice(start,i));
-  }
-  assert.equal(stack.length,1);return root;
-}
-const wat=x=>Array.isArray(x)?`(${x.map(wat).join(' ')})`:x;
 function compile(text) {const m=wabt.parseWat('spec.wat',text);try{m.resolveNames();m.validate();return Buffer.from(m.toBinary({}).buffer);}finally{m.destroy();}}
 const constantCache=new Map();
 function constant(c) {const key=wat(c);if(!constantCache.has(key)){const type=c[0].split('.')[0];const bytes=compile(`(module (func (export "v") (result ${type}) ${key}))`);constantCache.set(key,new WebAssembly.Instance(new WebAssembly.Module(bytes)).exports.v());}return constantCache.get(key);}

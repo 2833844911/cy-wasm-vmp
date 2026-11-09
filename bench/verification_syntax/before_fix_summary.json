@@ -1,0 +1,91 @@
+{
+  "officialBeforeFix": {
+    "invalidOutputs": 6,
+    "validOutputs": 2016,
+    "unsupported": 216
+  },
+  "officialFailures": [
+    {
+      "name": "imports_45",
+      "suite": "imports",
+      "seed": 20261109,
+      "inputBytes": 73,
+      "status": "invalid_output",
+      "outputBytes": 512,
+      "errors": {
+        "v8": "CompileError: WebAssembly.Module(): function index 3 out of bounds (3 entries) @+80",
+        "wabt": "Error: validate failed:\n<binary>:0000051: error: function variable out of range: 3 (max 3)\n"
+      }
+    },
+    {
+      "name": "imports_45",
+      "suite": "imports",
+      "seed": 20261110,
+      "inputBytes": 73,
+      "status": "invalid_output",
+      "outputBytes": 536,
+      "errors": {
+        "v8": "CompileError: WebAssembly.Module(): function index 3 out of bounds (3 entries) @+80",
+        "wabt": "Error: validate failed:\n<binary>:0000051: error: function variable out of range: 3 (max 3)\n"
+      }
+    },
+    {
+      "name": "imports_47",
+      "suite": "imports",
+      "seed": 20261109,
+      "inputBytes": 73,
+      "status": "invalid_output",
+      "outputBytes": 512,
+      "errors": {
+        "v8": "CompileError: WebAssembly.Module(): function index 3 out of bounds (3 entries) @+80",
+        "wabt": "Error: validate failed:\n<binary>:0000051: error: function variable out of range: 3 (max 3)\n"
+      }
+    },
+    {
+      "name": "imports_47",
+      "suite": "imports",
+      "seed": 20261110,
+      "inputBytes": 73,
+      "status": "invalid_output",
+      "outputBytes": 536,
+      "errors": {
+        "v8": "CompileError: WebAssembly.Module(): function index 3 out of bounds (3 entries) @+80",
+        "wabt": "Error: validate failed:\n<binary>:0000051: error: function variable out of range: 3 (max 3)\n"
+      }
+    },
+    {
+      "name": "linking_17",
+      "suite": "linking",
+      "seed": 20261109,
+      "inputBytes": 70,
+      "status": "invalid_output",
+      "outputBytes": 500,
+      "errors": {
+        "v8": "CompileError: WebAssembly.Module(): function index 3 out of bounds (3 entries) @+69",
+        "wabt": "Error: validate failed:\n<binary>:0000046: error: function variable out of range: 3 (max 3)\n"
+      }
+    },
+    {
+      "name": "linking_17",
+      "suite": "linking",
+      "seed": 20261110,
+      "inputBytes": 70,
+      "status": "invalid_output",
+      "outputBytes": 524,
+      "errors": {
+        "v8": "CompileError: WebAssembly.Module(): function index 3 out of bounds (3 entries) @+69",
+        "wabt": "Error: validate failed:\n<binary>:0000046: error: function variable out of range: 3 (max 3)\n"
+      }
+    }
+  ],
+  "globalBeforeFix": {
+    "failedBuilds": 15,
+    "failingFixtures": [
+      "global_immediate_0b_f32",
+      "global_immediate_0b_f64",
+      "global_immediate_0b_i32",
+      "global_immediate_0b_i64",
+      "global_init_index_11"
+    ]
+  }
+}

@@ -86,6 +86,20 @@ add('start_data', '(func $init i32.const 0 i32.const 99 i32.store) (start $init)
 add('passive_data', '(func (export "run") (result i32) i32.const 4096 i32.const 0 i32.const 4 memory.init 0 data.drop 0 i32.const 4096 i32.load)', [[]], {support:'(data "abcd")'});
 add('imported_global', '(func (export "run") (result i32) global.get 0)', [[]], {support:'(import "env" "g" (global i32))'});
 
+// 0x0b can be a constant/index byte, not just an expression terminator.
+for(const [kind,value] of [['i32','11'],['i64','11'],['f32','0x1p-105'],['f64','0x1p-847']]) {
+  add(`global_immediate_0b_${kind}`, '(func (export "run") (result '+kind+') global.get 0)', [[]],
+      {global:false,support:`(global ${kind} (${kind}.const ${value}))`});
+}
+add('global_init_index_11', '(func (export "run") (result i32) global.get 12)', [[]],
+    {global:false,support:Array.from({length:12},(_,i)=>`(import "env" "g" (global $g${i} i32))`).join(' ')+ ' (global i32 (global.get $g11))'});
+
+// Non-function imports must not shift the injected start function index.
+add('imported_global_active_data', '(func (export "run") (result i32) i32.const 0 i32.load global.get 0 i32.xor)', [[]],
+    {support:'(import "env" "g" (global i32)) (data (i32.const 0) "abcd")'});
+add('imported_memory_active_data', '(func (export "run") (result i32) i32.const 0 i32.load)', [[]],
+    {memory:false,support:'(import "env" "mem" (memory 512 4096)) (data (i32.const 0) "abcd")'});
+
 // Index 128 needs a multi-byte signed LEB block type; index 64 must not mean void.
 for (const index of [64,128]) {
   const types=Array.from({length:index},(_,i)=>`(type $unused${i} (func))`).join(' ')+` (type $result (func (result i32)))`;
@@ -103,7 +117,7 @@ add('reject_references', '(func (export "run") (result i32) ref.null func ref.is
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'wasm_compatibility_'));
 const records = [], jobs = [];
 let checks = 0;
-const imports = () => ({env:{inc:x=>(x+1)|0,g: new WebAssembly.Global({value:'i32'},42)}});
+const imports = () => ({env:{get mem(){return new WebAssembly.Memory({initial:512,maximum:4096});},inc:x=>(x+1)|0,g: new WebAssembly.Global({value:'i32'},42)}});
 function outcome(e, args) {
   try { return {value:e.run(...args)}; }
   catch(error) { if(error instanceof WebAssembly.RuntimeError) return {trap:true}; throw error; }

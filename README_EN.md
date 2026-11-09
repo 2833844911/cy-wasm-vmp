@@ -3,6 +3,10 @@
 [中文](README.md) | **English**
 
 A powerful WebAssembly binary obfuscation and protection tool that safeguards WASM code through virtualization, control flow flattening, and data encryption techniques.
+## Binary syntax verification
+
+76 official syntax suites, 1119 valid input modules, 2238 builds: all 2022 successful outputs pass WABT and V8, while 216 builds explicitly reject unsupported features. No invalid output remains in this corpus. Fixed start-function indexing with non-function imports and accidental deletion of global-initializer operand bytes. See the [syntax report and limits](bench/verification_syntax/README.md). Valid syntax does not establish runtime equivalence.
+
 ## Second optimization and compatibility checks (2026-11-09)
 
 Direct local dispatch and bounded ID sampling improve MD5 runtime by another 1.7–1.8× over the first optimized version and construction by about 38× on the measured machine. Structured branch stack cleanup, implicit-function `br_if`, numeric types, and missing module sections are fixed. See the [results, reproduction commands, and limitations](bench/verification_v2/README.md).
