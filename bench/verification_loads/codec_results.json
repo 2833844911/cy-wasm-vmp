@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "checks": 46,
+  "validators": [
+    "WABT",
+    "V8"
+  ],
+  "records": [
+    {
+      "name": "all_scalar_memargs",
+      "passed": true,
+      "scalarAccesses": 92
+    },
+    {
+      "name": "explicit_memory_zero",
+      "passed": true,
+      "scalarAccesses": 1
+    }
+  ]
+}

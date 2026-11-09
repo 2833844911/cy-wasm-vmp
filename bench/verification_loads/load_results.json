@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "scalarOpcodes": 14,
+  "functions": 56,
+  "builds": 3,
+  "checks": 3024,
+  "traps": 1740,
+  "validators": [
+    "WABT",
+    "V8"
+  ],
+  "scope": "Native immediate offsets including uint32 max, exact app bounds, signed/narrow loads, bit-preserving float reinterpretation and unchanged business memory; fresh instances after traps.",
+  "records": [
+    {
+      "seed": 20261109,
+      "bytes": 6395,
+      "passed": true
+    },
+    {
+      "seed": 20261110,
+      "bytes": 6385,
+      "passed": true
+    },
+    {
+      "seed": 20261111,
+      "bytes": 6559,
+      "passed": true
+    }
+  ]
+}

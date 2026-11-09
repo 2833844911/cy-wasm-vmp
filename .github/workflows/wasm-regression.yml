@@ -13,6 +13,8 @@ jobs:
         python: ['3.9', '3.12']
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
@@ -32,6 +34,9 @@ jobs:
           node bench/test_handler_sharing.mjs /tmp/handler-sharing.json
           node bench/test_memory_semantics.mjs /tmp/memory-semantics.json
           node bench/test_codec_memargs.mjs /tmp/codec-memargs.json
+          node bench/test_scalar_loads.mjs /tmp/scalar-loads.json
+          node bench/test_early_dedup.mjs /tmp/early-dedup.json
+          python3 bench/test_ast_compact.py --json-output /tmp/ast-compact.json
       - name: Rebuild MD5 with three seeds
         run: |
           python3 bench/protect_optimized.py --output-dir /tmp/vmp-md5

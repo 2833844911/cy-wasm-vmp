@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "originalFunctions": 64,
+  "builds": 3,
+  "checks": 1728,
+  "validators": [
+    "WABT",
+    "V8"
+  ],
+  "records": [
+    {
+      "factor": 1,
+      "passed": true,
+      "constructionCalls": 3013,
+      "genericOccurrences": 128,
+      "retainedGenericHandlers": 2,
+      "outputBytes": 5579
+    },
+    {
+      "factor": 3,
+      "passed": true,
+      "constructionCalls": 3069,
+      "genericOccurrences": 128,
+      "retainedGenericHandlers": 6,
+      "outputBytes": 5706
+    },
+    {
+      "factor": 64,
+      "passed": true,
+      "constructionCalls": 4777,
+      "genericOccurrences": 128,
+      "retainedGenericHandlers": 128,
+      "outputBytes": 10111
+    }
+  ]
+}

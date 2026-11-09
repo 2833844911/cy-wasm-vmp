@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "fixtures": 1,
+  "originalFunctions": 64,
+  "builds": 6,
+  "checks": 3456,
+  "validators": [
+    "WABT",
+    "V8"
+  ],
+  "records": [
+    {
+      "seed": 20261109,
+      "factor": 1,
+      "bytes": 5587,
+      "passed": true
+    },
+    {
+      "seed": 20261109,
+      "factor": 3,
+      "bytes": 5714,
+      "passed": true
+    },
+    {
+      "seed": 20261109,
+      "factor": 64,
+      "bytes": 10119,
+      "passed": true
+    },
+    {
+      "seed": 20261110,
+      "factor": 1,
+      "bytes": 5587,
+      "passed": true
+    },
+    {
+      "seed": 20261110,
+      "factor": 3,
+      "bytes": 5721,
+      "passed": true
+    },
+    {
+      "seed": 20261110,
+      "factor": 64,
+      "bytes": 10029,
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "passed": true,
+  "baselineRef": "62d3075",
+  "nodeComparisons": 322,
+  "scope": "Differential AST types/heights against preserved analyzer, known frame peaks, flat deep-stack analysis allocation samples. Tracemalloc is Python allocation peak, not process RSS.",
+  "fixtures": [
+    {
+      "name": "mixed",
+      "passed": true,
+      "frameBytes": 32
+    },
+    {
+      "name": "block_params_results",
+      "passed": true,
+      "frameBytes": 16
+    },
+    {
+      "name": "if_branches",
+      "passed": true,
+      "frameBytes": 16
+    },
+    {
+      "name": "large_call_results",
+      "passed": true,
+      "frameBytes": 1216
+    }
+  ],
+  "memory": [
+    {
+      "depth": 1024,
+      "baseline": {
+        "depth": 1024,
+        "nodes": 2047,
+        "peakBytes": 9817820,
+        "seconds": 0.019510000000000013
+      },
+      "compact": {
+        "depth": 1024,
+        "nodes": 2047,
+        "peakBytes": 1369012,
+        "seconds": 0.011350083999999983
+      },
+      "peakReductionPercent": 86.05584539133943
+    },
+    {
+      "depth": 2048,
+      "baseline": {
+        "depth": 2048,
+        "nodes": 4095,
+        "peakBytes": 36401444,
+        "seconds": 0.04213600000000001
+      },
+      "compact": {
+        "depth": 2048,
+        "nodes": 4095,
+        "peakBytes": 2729328,
+        "seconds": 0.0208845
+      },
+      "peakReductionPercent": 92.5021435962815
+    }
+  ]
+}

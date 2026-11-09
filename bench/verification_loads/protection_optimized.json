@@ -1,0 +1,32 @@
+{
+  "repository": "2833844911/cy-wasm-vmp",
+  "base_commit": "62d3075dc5aed061e71414d802d020920a90b9d0",
+  "random_seed": 20261109,
+  "settings": {
+    "not_jeb": true,
+    "selected_functions": null,
+    "instruction_expansion_factor": 1
+  },
+  "local_changes": "In-place native scalar loads, generic dedup before body generation, compact typed AST heights.",
+  "python_compatibility": "Unused symbol import removed from the library; no shim required.",
+  "protected_function_indices": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "frame_sizes": {
+    "0": 16,
+    "1": 16,
+    "2": 16,
+    "3": 16
+  },
+  "private_memory_index": 1,
+  "stack_floor": 1952,
+  "stack_capacity": 1048576,
+  "note": "All original functions, including the final accessor, are protected.",
+  "protection_seconds": 0.008463124999999995,
+  "baseline_bytes": 1152,
+  "protected_bytes": 4522,
+  "protected_sha256": "37a6363bd769fc1819d7eb979e648254e1de8b608478a5f1b7756ebfbb562100"
+}

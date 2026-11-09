@@ -455,9 +455,20 @@ class WasmAnalyzer:
             signature = self.types[value]
             return list(signature['params']), list(signature['results'])
 
+        type_bytes = {'i32': 4, 'i64': 8, 'f32': 4, 'f64': 8}
+
+        def stack_width(types):
+            try:
+                return sum(type_bytes[kind] for kind in types)
+            except KeyError as error:
+                raise ValueError(f'Cannot size VMP stack with unresolved type {error.args[0]}') from error
+
         def parse_sequence(current_stack, stop_at_else=False):
             nonlocal cursor
             nodes = []
+            # Keep the live type stack for type checking, but AST consumers only
+            # need byte heights. Copying it per instruction costs O(n * depth).
+            current_bytes = stack_width(current_stack)
             reachable = True
             skipped_depth = 0
             while cursor < total_instrs:
@@ -477,26 +488,31 @@ class WasmAnalyzer:
                     continue
                 if name == 'end' or (name == 'else' and stop_at_else):
                     return nodes
-                before = list(current_stack)
                 node = {'name': name, 'opcode': opcode, 'operands': operands,
                         'pops': [], 'pushes': [], 'children': [], 'else_children': [],
-                        'original_instruction': inst, 'stack_before': before}
+                        'original_instruction': inst, 'stack_bytes_before': current_bytes}
                 if name in ['block', 'loop', 'if']:
                     params, results = block_signature(operands)
                     if name == 'if' and current_stack:
-                        current_stack.pop()
+                        current_bytes -= type_bytes[current_stack.pop()]
                     base = current_stack[:-len(params)] if params else list(current_stack)
-                    node['entry_stack'] = list(base)
+                    base_bytes = current_bytes - stack_width(params)
+                    node['entry_stack_bytes'] = base_bytes
                     node['label_types'] = params if name == 'loop' else results
                     node['children'] = parse_sequence(list(base) + params, stop_at_else=name == 'if')
                     if name == 'if' and instructions[cursor-1][0] == 'else':
                         node['else_children'] = parse_sequence(list(base) + params)
                     current_stack[:] = list(base) + results
+                    current_bytes = base_bytes + stack_width(results)
                 else:
                     pops, pushes = self._get_op_stack_effect(name, operands, inferred_locals)
                     actual = []
                     for required in reversed(pops):
-                        found = current_stack.pop() if current_stack else 'unknown'
+                        if current_stack:
+                            found = current_stack.pop()
+                            current_bytes -= type_bytes[found]
+                        else:
+                            found = 'unknown'
                         actual.insert(0, found if required in ['any', 'unknown'] else required)
                     if name == 'select':
                         chosen = next((t for t in actual[:2] if t not in ['any', 'unknown']), 'unknown')
@@ -506,8 +522,10 @@ class WasmAnalyzer:
                         pushes = [actual[0]]
                     node['pops'], node['pushes'] = actual, list(pushes)
                     current_stack.extend(pushes)
+                    current_bytes += stack_width(pushes)
                     if name in ['unreachable', 'br', 'return', 'br_table']:
                         reachable = False
+                node['stack_bytes_after'] = current_bytes
                 nodes.append(node)
             return nodes
 

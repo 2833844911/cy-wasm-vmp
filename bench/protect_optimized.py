@@ -28,10 +28,10 @@ count = len(processor.function_codes)
 processor.encrypt_module(str(target), not_jeb=True, selected_functions=None, instruction_expansion_factor=1)
 metadata = {
     'repository': '2833844911/cy-wasm-vmp',
-    'base_commit': '63fca0b256ed0d325a75854c74f3790e951f8125',
+    'base_commit': '62d3075dc5aed061e71414d802d020920a90b9d0',
     'random_seed': args.seed,
     'settings': {'not_jeb': True, 'selected_functions': None, 'instruction_expansion_factor': 1},
-    'local_changes': 'Unexported private VMP memory; unchanged application memory/heap bounds; native load offsets.',
+    'local_changes': 'In-place native scalar loads, generic dedup before body generation, compact typed AST heights.',
     'python_compatibility': 'Unused symbol import removed from the library; no shim required.',
     'protected_function_indices': processor.protected_function_indices,
     'frame_sizes': processor.vmp_frame_sizes,

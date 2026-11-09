@@ -2,6 +2,7 @@ from operator import index
 
 from .analyzer import WasmAnalyzer
 from .stack_frames import operand_frame_bytes
+from .load_handlers import build_load_body
 from .utils import (
     add_instr, pack_op, write_leb128_unsigned, write_leb128_signed,
     read_leb128_unsigned, read_leb128_signed, get_opcode_name
@@ -580,11 +581,11 @@ class WasmVMP:
         sizes = {'i32': 4, 'i64': 8, 'f32': 4, 'f64': 8}
 
         def frame(code, target):
-            return {'id': target, 'height': sum(sizes[t] for t in code['entry_stack']),
+            return {'id': target, 'height': code['entry_stack_bytes'],
                     'types': code['label_types']}
 
         def cleanup_branch(code, target, conditional=False):
-            height = sum(sizes[t] for t in code['stack_before']) - (4 if conditional else 0)
+            height = code['stack_bytes_before'] - (4 if conditional else 0)
             result_size = sum(sizes[t] for t in target['types'])
             discarded = height - target['height'] - result_size
             if discarded <= 0:
@@ -992,6 +993,32 @@ class WasmVMP:
                     # 【修正】普通指令处理逻辑 (Normal Instruction)
                     # ============================================
 
+                    # Resolve the stable representative before constructing a
+                    # body. Each occurrence still occupies one bytecode word;
+                    # the empty alias entry only reserves its control-flow ID
+                    # for the two offset passes and is pruned by over().
+                    key = (y_code[3], str(code['pops']), str(code['pushes']), str(code['operands']))
+                    self.putongcodeInfo.setdefault(key, []).append(this_instr_id)
+                    if not hasattr(self, 'generic_handler_dedup'):
+                        self.generic_handler_dedup = HandlerDeduplicator(self.instruction_expansion_factor)
+                    representative = self.generic_handler_dedup.register(key, this_instr_id)
+                    if representative != this_instr_id:
+                        if_block_list[this_instr_id] = []
+                        f_idx_e = next_instr_id
+                        continue
+
+                    # Loads replace their address in place. The helper keeps
+                    # the native application memarg (and its trap behavior),
+                    # while generated operand-stack accesses stay private.
+                    if (0x28 <= code['opcode'] <= 0x35 and code['pops'] == ['i32']
+                            and len(code['pushes']) == 1):
+                        t_list.extend(build_load_body(y_code, code['pushes'][0], duizhangmem))
+                        t_list.append(add_instr(0x0C, pack_op(0)))
+                        t_list.append(add_instr(0x0B))
+                        if_block_list[this_instr_id] = t_list
+                        f_idx_e = next_instr_id
+                        continue
+
                     # 1. 计算所有参数总偏移 (用于反向加载)
                     total_pop_size = 0
                     for parem in code['pops']:
@@ -1037,20 +1064,6 @@ class WasmVMP:
                     # 4. 执行原始指令
                     t_list.append(y_code)
                     
-                    # [Fix] Include pops/pushes AND operands in key.
-                    # y_code[3] (raw bytes) only captures original local index.
-                    # operands captures the remapped VMP local index.
-                    # We must distinguish local.set 10 from local.set 11 even if they were both local.set 0 originally.
-                    key = (y_code[3], str(code['pops']), str(code['pushes']), str(code['operands']))
-                    
-                    if key not in self.putongcodeInfo:
-                        self.putongcodeInfo[key] = [this_instr_id]
-                    else:
-                        self.putongcodeInfo[key].append(this_instr_id)
-                    if not hasattr(self, 'generic_handler_dedup'):
-                        self.generic_handler_dedup = HandlerDeduplicator(self.instruction_expansion_factor)
-                    self.generic_handler_dedup.register(key, this_instr_id)
-
                     # 5. 处理返回值
                     # 5. 处理返回值 (Result Handling)
                     if len(code['pushes']) >= 1:

@@ -3,6 +3,10 @@
 [中文](README.md) | **English**
 
 A powerful WebAssembly binary obfuscation and protection tool that safeguards WASM code through virtualization, control flow flattening, and data encryption techniques.
+## Safe loads and leaner construction
+
+Native-memarg scalar load handlers, deduplication before body construction, and compact AST byte heights are integrated. Measured Base64 construction median drops about 80.9 → 62.0 ms (23% less time); flat depth-2048 AST allocation peak drops about 36.4 → 2.73 MB. MD5 runtime is broadly unchanged. See [regressions, measurements and limits](bench/verification_loads/README.md).
+
 ## Private VMP memory and semantic fixes
 
 The previous **10 application-memory behavior differences are resolved**. Bytecode and frames use an unexported private memory; application limits, imports/exports and heap markers remain intact. The expanded strict official subset passes 168 modules / 8352 comparisons. See the [memory regression report](bench/verification_memory/README.md).
